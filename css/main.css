@@ -1,0 +1,21 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    width: 342px;
+    height: 150px;
+    padding: 16px;
+    background-color: black;
+    margin: 0 24px;
+    border-radius: 9px;
+    cursor: pointer;
+}
