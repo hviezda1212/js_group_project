@@ -1,71 +1,71 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
 }
 
 .container {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 h1 {
-    text-align: center;
-    font-size: 5rem;
-    margin-right: 20%;
-    color: white;
+  text-align: center;
+  font-size: 5rem;
+  margin-right: 20%;
+  color: white;
 }
 .login-wrapper {
-    /* border: 1px solid red; */
-    padding: 5em;
+  /* border: 1px solid red; */
+  padding: 5em;
 }
 #id-box,
 #ps-box {
-    background-color: white;
-    width: 30rem;
-    height: 4rem;
-    padding: 0 1rem;
+  background-color: white;
+  width: 30rem;
+  height: 4rem;
+  padding: 0 1rem;
 
-    &:focus::placeholder {
-        transform: translate(-2%, -90%);
-        transition: transform 0.2s ease-out;
-        font-size: auto;
-    }
+  &:focus::placeholder {
+    transform: translate(-2%, -90%);
+    transition: transform 0.2s ease-out;
+    font-size: auto;
+  }
 }
 
 label {
-    color: white;
+  color: white;
 }
 
 .info-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .forgot-ps > a {
-    color: white;
+  color: white;
 }
 
 .btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.3rem;
 }
 
 .login-btn {
-    width: 30rem;
-    height: 3rem;
-    color: white;
-    text-align: center;
-    border: 1px solid white;
-    cursor: pointer;
-    &:hover {
-        background-color: darkorange;
-    }
+  width: 30rem;
+  height: 3rem;
+  color: white;
+  text-align: center;
+  border: 1px solid white;
+  cursor: pointer;
+  &:hover {
+    background-color: darkorange;
+  }
 }
