@@ -1,3 +1,31 @@
+*{
+    margin: 0;
+}
+header{
+    min-height: 134px;
+    border: 1px solid gray;
+    margin-bottom: 100px;
+}
+
+.highlights{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.highlights .highlight-area{
+    width: 474px;
+    height: 294px;
+    margin-right: 5px;
+    border: 1px solid gray;
+}
+
+.coin-chart{
+    width: 1414px;
+    border: 1px solid gray;
+}
+
 .content-table{
     border-collapse: collapse;
     margin: 25px 0;
