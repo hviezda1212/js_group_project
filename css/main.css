@@ -81,3 +81,21 @@ body {
     border-radius: 9px;
     cursor: pointer;
 }
+.greed-chart-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.items-container {
+    display: flex;
+}
+
+.items-list {
+    display: flex;
+    list-style: none;
+}
+
+.items-list > li {
+    margin: 0 2rem;
+}
