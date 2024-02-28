@@ -252,3 +252,22 @@ const render = () => {
     // HTML에 결과 테이블을 추가
     document.querySelector("#table-data").innerHTML = resultHTML;
 };
+
+  // 스크롤 최상단으로 이동하는 애니메이션
+  document.getElementById("scrollToTop").addEventListener("click", function() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  });
+ 
+  // 스크롤 위치에 따라 스크롤 최상단 버튼 표시/숨김
+  window.onscroll = function() {
+    var scrollButton = document.getElementById("scrollToTop");
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      scrollButton.style.display = "flex";
+    } else {
+      scrollButton.style.display = "none";
+    }
+  };
