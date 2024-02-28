@@ -11,6 +11,9 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+ul {
+  list-style-type: none;
+}
 
 .highlights {
   width: 100%;
@@ -245,3 +248,13 @@ body {
   color: rgb(255, 255, 255);
   background-image: url(../assets/images/up_white.png);
 }
+
+.news-pagination-nav {
+  display: flex;
+  justify-content: center;
+}
+.news-pagination {
+  margin-top: 1.5em;
+  display:flex;
+}
+
