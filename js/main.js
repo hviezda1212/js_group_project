@@ -148,27 +148,6 @@ const getHotTop = async () => {
 
 }
 
-const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
-
-            <td>${index + 1}</td>
-            <td>${coin.name}</td>
-            <td>${coin.symbol}</td>
-            <td>${coin.quote.KRW.price}</td>
-            <td>${coin.quote.KRW.percent_change_1h}</td>
-            <td>${coin.quote.KRW.percent_change_24h}</td>
-            <td>${coin.quote.KRW.percent_change_7d}</td>
-            <td>${coin.quote.KRW.market_cap}</td>
-            <td>${coin.quote.KRW.volume_24h}</td>
-            <td></td>
-            </tr>`;
-    });
-
-    resultHTML += `</tbody>`;
-
-    // HTML에 결과 테이블을 추가
-    document.querySelector("#table-data").innerHTML = resultHTML;
-};
-
 getGreedIndex();
 
 const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
