@@ -93,18 +93,38 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
-.items-container {
-  display: flex;
+.input-container {
+    display: flex;
+    position: relative;
+    margin-top: 1em;
+    margin-left: 50em;
 }
 
-.items-list {
-  display: flex;
-  list-style: none;
+.search-icon {
+    position: absolute;
+    right: 37em;
+    top: 1em;
 }
 
-.items-list > li {
-  margin: 0 2rem;
+.watch-list-btn {
+    border: none;
+    outline: none;
+    margin-right: 1em;
+}
+
+.login-btn,
+.resister-btn {
+    width: 75px;
+    height: 37px;
+    margin-left: 1em;
+    border: 1px solid #793aff;
+    border-radius: 10px;
+    color: #793aff;
+    cursor: pointer;
+    &:hover {
+        background-color: #793aff;
+        color: white;
+    }
 }
 
 .pagination{
