@@ -96,3 +96,21 @@ body {
 .items-list > li {
   margin: 0 2rem;
 }
+
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+
+.coin-chart{
+
+}
+
+.fav-button{
+  border: none;
+  background-color: none;
+}
+
+.page-item .page-link:hover{
+  cursor: pointer;
+}
