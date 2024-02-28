@@ -168,25 +168,24 @@ async function search(event) {
 }
 
 const getlist = async (keyword) => {
-    try {
-        const url = new URL(
-            `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
-        );
+  try {
+    const url = new URL(
+      `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
+    );
 
-        const res = await fetch(url, {
-            headers: {
-                "X-CMC_PRO_API_KEY": APIKEY,
-            },
-        });
-        const data = await res.json();
-        coinList = data.data.filter(
-            (e) =>
-                e.symbol.includes(keyword) ||
-                e.name.toUpperCase().includes(keyword)
-        );
-    } catch (error) {
-        console.error("error message", error);
-    }
+    const res = await fetch(url, {
+      headers: {
+        "X-CMC_PRO_API_KEY": APIKEY,
+      },
+    });
+    const data = await res.json();
+    fearcoinList = data.data.filter(
+      (e) =>
+        e.symbol.includes(keyword) || e.name.toUpperCase().includes(keyword)
+    );
+  } catch (error) {
+    console.error("error message", error);
+  }
 };
 
 // (async () => {
@@ -195,8 +194,8 @@ const getlist = async (keyword) => {
 // })();
 
 const fearGreed = async () => {
-    let endTime = Math.floor(Date.now() / 1000);
-    let startTime = endTime - 604800;
+  let endTime = Math.floor(Date.now() / 1000);
+  let startTime = endTime - 604800;
 
     const url = `https://api.coinmarketcap.com/data-api/v3/fear-greed/chart?start=${startTime}&end=${endTime}`;
     // console.log(url);
@@ -252,12 +251,12 @@ const rendering = () => {
             <td>${coin.quote.KRW.volume_24h}</td>
             <td></td>
             </tr>`;
-    });
+  });
 
-    resultHTML += `</tbody>`;
+  resultHTML += `</tbody>`;
 
-    // HTML에 결과 테이블을 추가
-    document.querySelector("#table-data").innerHTML = resultHTML;
+  // HTML에 결과 테이블을 추가
+  document.querySelector("#table-data").innerHTML = resultHTML;
 };
 getlist();
 
