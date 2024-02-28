@@ -147,7 +147,9 @@ body {
     align-items: center;
 }
 
-.greed-title-box {
+.greed-img {
     display: flex;
+    flex: 1;
+    align-items: center;
     justify-content: center;
 }
