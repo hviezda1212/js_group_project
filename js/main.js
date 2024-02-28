@@ -1,45 +1,34 @@
-let inputBox = document.querySelector(".input-box");
+const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinList = []; // 코인 정보를 담을 배열
 
-inputBox.addEventListener("keydown", search);
+// inputBox.addEventListener("keydown", search);
 
-async function search(event) {
-    if (event.key === "Enter") {
-        let searchCoin = inputBox.value.toUpperCase();
-        await getlist(searchCoin);
-    }
-}
+// async function search(event) {
+//     if (event.key === "Enter") {
+//         let searchCoin = inputBox.value.toUpperCase();
+//         await getlist(searchCoin);
+//     }
+// }
 
-const getlist = async (searchCoin) => {
+const getlist = async () => {
     try {
-        const url = new URL("https://api.bithumb.com/public/ticker/ALL_btc");
+        const url = new URL(
+            `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`
+        );
 
-        const res = await fetch(url);
+        const res = await fetch(url, {
+            headers: {
+                "X-CMC_PRO_API_KEY": APIKEY,
+            },
+        });
         const data = await res.json();
-
-        const coinData = data.data[searchCoin];
-
-        if (coinData) {
-            let minPrice = coinData.min_price;
-            let unitsTraded24H = coinData.units_traded_24H;
-
-            // 코인 정보를 객체로 만들어서 배열에 추가
-            let coinInfo = {
-                searchCoin: searchCoin,
-                minPrice: minPrice,
-                unitsTraded24H: unitsTraded24H,
-            };
-
-            coinList = [coinInfo];
-
-            render();
-        } else {
-            console.log(`Data not found for ${searchCoin}`);
-        }
+        return data;
     } catch (error) {
         console.error("error message", error);
     }
 };
+
+getlist();
 
 const render = () => {
     let resultHTML = `<thead>
@@ -61,7 +50,7 @@ const render = () => {
     coinList.forEach((coin, index) => {
         resultHTML += `
         <tr>
-        
+
             <td>${index + 1}</td>
             <td>${coin.searchCoin}</td>
             <td></td>
