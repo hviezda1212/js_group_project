@@ -1,19 +1,21 @@
 const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinList = []; // 코인 정보를 담을 배열
 
+// const inputBox = document.querySelector(".input-box");
 // inputBox.addEventListener("keydown", search);
 
 // async function search(event) {
 //     if (event.key === "Enter") {
 //         let searchCoin = inputBox.value.toUpperCase();
 //         await getlist(searchCoin);
+//         render();
 //     }
 // }
 
-const getlist = async () => {
+const getlist = async (keyword) => {
     try {
         const url = new URL(
-            `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`
+            `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
         );
 
         const res = await fetch(url, {
@@ -22,13 +24,30 @@ const getlist = async () => {
             },
         });
         const data = await res.json();
-        return data;
+        coinList = data.data.filter(
+            (e) =>
+                e.symbol.includes(keyword) ||
+                e.name.toUpperCase().includes(keyword)
+        );
     } catch (error) {
         console.error("error message", error);
     }
 };
 
-getlist();
+(async () => {
+    await getlist("BT");
+    console.log(coinList.map((e) => e.symbol));
+})();
+
+const fearGreed = async () => {
+    const url =
+        "https://api.coinmarketcap.com/data-api/v3/fear-greed/chart?start=1367193600&end=1709132400";
+    // console.log(url);
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data);
+};
+fearGreed();
 
 const render = () => {
     let resultHTML = `<thead>
@@ -52,14 +71,14 @@ const render = () => {
         <tr>
 
             <td>${index + 1}</td>
-            <td>${coin.searchCoin}</td>
-            <td></td>
-            <td>${coin.minPrice}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>${coin.unitsTraded24H}</td>
+            <td>${coin.name}</td>
+            <td>${coin.symbol}</td>
+            <td>${coin.quote.KRW.price}</td>
+            <td>${coin.quote.KRW.percent_change_1h}</td>
+            <td>${coin.quote.KRW.percent_change_24h}</td>
+            <td>${coin.quote.KRW.percent_change_7d}</td>
+            <td>${coin.quote.KRW.market_cap}</td>
+            <td>${coin.quote.KRW.volume_24h}</td>
             <td></td>
             </tr>`;
     });
