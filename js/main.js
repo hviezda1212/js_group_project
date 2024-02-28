@@ -153,17 +153,17 @@ getGreedIndex();
 const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinList = []; // 코인 정보를 담을 배열
 
-// const inputBox = document.querySelector(".input-box");
+const inputBox = document.querySelector(".input-box");
 const greedChartArea = document.querySelector(".greed-chart-area");
-// inputBox.addEventListener("keydown", search);
+inputBox.addEventListener("keydown", search);
 
-// async function search(event) {
-//     if (event.key === "Enter") {
-//         let searchCoin = inputBox.value.toUpperCase();
-//         await getlist(searchCoin);
-//         render();
-//     }
-// }
+async function search(event) {
+    if (event.key === "Enter") {
+        let searchCoin = inputBox.value.toUpperCase();
+        await getlist(searchCoin);
+        render();
+    }
+}
 
 const getlist = async (keyword) => {
     try {
