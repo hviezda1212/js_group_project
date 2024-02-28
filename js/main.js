@@ -71,6 +71,17 @@ function Main(delay) {
 
 Main(20000);
 
+// 가장 뜨거운 코인 top3
+const getHotTop = async () => {
+  try{
+    
+
+  }catch(error){
+
+  }
+
+}
+
 const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 
 let getGreedIndex = async () => {
