@@ -4,49 +4,78 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>누나코인</title>
-        <link rel="stylesheet" href="../css/main.css" />
+        <link rel="stylesheet" href="/css/main.css" />
     </head>
     <body>
         <!-- 검색창 : 손응수 -->
-        <header></header>
-
+        <header>
+            <div class="navbar-container">
+                <a href="#" class="logo"
+                    ><img src="/assets/images/logo.svg" alt=""
+                /></a>
+                <div class="input-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input
+                        type="text"
+                        class="input-box"
+                        placeholder="코인명을 입력해주세요."
+                    />
+                </div>
+            </div>
+        </header>
         <main>
             <section class="highlights">
+                <div class="section-title">오늘의 하이라이트</div>
                 <!-- 가장 뜨거운 코인 top3 : 최주연 -->
-                <div class="hot-area"></div>
+                <div class="hot-area highlight-area">
+                    <div class="area-title hot-title">
+                        🔥 지금, 가장 뜨거운 코인 TOP5
+                    </div>
+                </div>
                 <!-- 뉴스 : 김미주 -->
-                <div class="news-area"></div>
+                <div class="news-area highlight-area">
+                    <div class="area-title news-title">
+                        🧐 놓치지 말아야 할 코인 뉴스
+                    </div>
+                </div>
+                <div></div>
                 <!-- 탐욕지수 : 손응수 -->
-                <div class="greed-chart-area">
-                    <div class="items-container">
-                        <img src="" alt="" />
-                        <ul class="items-list">
-                            <li>가상자산</li>
-                            <li>거래소</li>
-                            <li>커뮤니티</li>
-                            <li>서비스</li>
-                            <li>가상자산 배우기</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div>반감기:54일</div>
-                        <div>관심 목록</div>
-                        <div>포트폴리오</div>
-                        <input
-                            type="text"
-                            class="input-box"
-                            placeholder="검색"
-                        />
-                    </div>
+                <div class="greed-chart-area highlight-area">
+                    <div class="area-title greed-title">공포 및 탐욕지수</div>
                 </div>
             </section>
 
             <!-- 코인차트 : 박종석 -->
-            <section class="coin-chart"></section>
+            <div class="section-title">
+                오늘의 시가총액별 상위 100개의 가상 자산
+            </div>
+            <section class="coin-chart">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                            <th>Price</th>
+                            <th>1h %</th>
+                            <th>24h %</th>
+                            <th>7dh %</th>
+                            <th>Market Cap</th>
+                            <th>Volume(24h)</th>
+                            <th>Circulating Supply</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-data"></tbody>
+                </table>
+            </section>
         </main>
 
         <footer></footer>
 
-        <script src="main.js"></script>
+        <script
+            src="https://kit.fontawesome.com/6e648835c4.js"
+            crossorigin="anonymous"
+        ></script>
+        <script src="../js/main.js"></script>
     </body>
 </html>

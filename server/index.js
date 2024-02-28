@@ -7,6 +7,6 @@ const port = 7777;
 app.use(express.json());
 app.use(cors());
 
-app.listen(port, (res, req) => {
+app.listen(port, () => {
     console.log(`here is ${port}`);
 });
