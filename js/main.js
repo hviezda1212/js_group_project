@@ -2,6 +2,7 @@ const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinList = []; // 코인 정보를 담을 배열
 
 // const inputBox = document.querySelector(".input-box");
+const greedChartArea = document.querySelector(".greed-chart-area");
 // inputBox.addEventListener("keydown", search);
 
 // async function search(event) {
@@ -34,20 +35,31 @@ const getlist = async (keyword) => {
     }
 };
 
-(async () => {
-    await getlist("BT");
-    console.log(coinList.map((e) => e.symbol));
-})();
+// (async () => {
+//     await getlist("BT");
+//     console.log(coinList.map((e) => e.symbol));
+// })();
 
 const fearGreed = async () => {
-    const url =
-        "https://api.coinmarketcap.com/data-api/v3/fear-greed/chart?start=1367193600&end=1709132400";
+    let endTime = Math.floor(Date.now() / 1000);
+    let startTime = endTime - 604800;
+
+    const url = `https://api.coinmarketcap.com/data-api/v3/fear-greed/chart?start=${startTime}&end=${endTime}`;
     // console.log(url);
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data);
+    // console.log(data.data.dataList);
 };
 fearGreed();
+
+const fearGreedRender = () => {
+    let greedHTML = ` <div class="area-title greed-title">
+    <img
+        src="../assets/images/feargreed.svg"
+        alt="공포탐욕지수"
+    />
+</div>`;
+};
 
 const render = () => {
     let resultHTML = `<thead>
