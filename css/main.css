@@ -232,11 +232,12 @@ body {
     border: 2px solid white;
 
     transform-origin: 140px 5px;
-    transform: rotate(160deg);
+    transform: rotate(140deg);
 
     position: relative;
     left: -105px;
     top: 1px;
+    display: none;
 }
 
 .news-img {
