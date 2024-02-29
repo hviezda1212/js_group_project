@@ -1,17 +1,19 @@
-const apiKey = "ce14db1d-0bc9-43ee-b1ba-b5200094351f";
+//const apiKey = "ce14db1d-0bc9-43ee-b1ba-b5200094351f";
 const url =
     "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
 let coinList = [];
+let prevPriceList={};
 let totalResult = 0;
 let page = 1;
 const pageSize = 100;
 const groupSize = 5;
+let currentPrice = 0;
 
 const getData = async () => {
     try {
         coinList = [];
-        console.log(url);
+    // console.log(url);
         const response = await fetch(url, {
             headers: {
                 "X-CMC_PRO_API_KEY": apiKey,
@@ -32,7 +34,7 @@ const getData = async () => {
             }
         }
         totalResult = data.data.length;
-        console.log("ttt", coinList.length);
+    // console.log("ttt", coinList.length);
         render();
         paginationRender();
     } catch (error) {
@@ -41,9 +43,9 @@ const getData = async () => {
 };
 
 const render = () => {
-    let newsHTML = "";
+  let tableHTML = "";
     for (i = 0; i < coinList.length; i++) {
-        newsHTML += `            <tr>
+    tableHTML += `            <tr>
         <td id = "favorite"><button class = "fav-button"><i class="fa-regular fa-star"></i></button></td>
         <td id = "rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
         <td id = "name">${coinList[i]["name"]}</td>
@@ -77,9 +79,10 @@ const render = () => {
             coinList[i]["symbol"]
         }</td>
     </tr>`;
+    currentPrice = coinList[i]["quote"].USD["price"]
     }
-    document.getElementById("table-data").innerHTML = newsHTML;
-    console.log(newsHTML);
+  document.getElementById("table-data").innerHTML = tableHTML;
+  // console.log(tableHTML);
 };
 
 const paginationRender = () => {
@@ -148,9 +151,8 @@ const getHotTop = async () => {
     try {
     } catch (error) {}
 };
-getData();
 
-const APIKEY = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+//const APIKEY = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
 let coinListItems = []; // 코인 정보를 담을 배열
 
 const inputBox = document.querySelector(".input-box");
@@ -258,24 +260,178 @@ const rendering = () => {
     document.querySelector("#table-data").innerHTML = resultHTML;
 };
 getlist();
+
+//region NEWS
+let news_List = [];
+let articles = [];
+let news_page = 1;
+let news_totalPage = 1;
+let news_totalResult = 0;
+const NEWS_PAGE_SIZE = 1;
+const news_groupSize = 3;
+
+let news_url = new URL(`https://noonanewsapi.netlify.app/top-headlines?`);
+
+const getNews = async () => {
+  try {
+    news_url.searchParams.set("page", news_page);
+    console.log("error", news_page);
+    const response = await fetch(news_url);
+    const data = await response.json();
+    if (response.status === 200) {
+      if (data.articles.length == 0) {
+        news_page = 0;
+        news_totalPage = 0;
+        news_paginationRender();
+        throw new Error("No result for this search");
+      }
+      news_List = data.articles;
+      news_totalPage = 3;
+      news_totalResult = data.totalResults;
+      news_render();
+      news_paginationRender();
+    } else {
+      news_page = 0;
+      news_totalPage = 0;
+      news_paginationRender();
+      throw new Error(data.message);
+    }
+  } catch (error) {
+    console.log("error", error.message);
+    news_page = 0;
+    news_totalPage = 0;
+    news_paginationRender();
+    errorRender(error.message);
+  }
+};
+
+const getLatestNews = async () => {
+  news_url = new URL(
+    `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=1`
+  );
+  getNews();
+};
+
+const news_render = () => {
+  const newsHTML = news_List
+    .map(
+      (news) => `        <div class="news">
+  <div class="img-area">
+    <img class="news-img" src=${news.urlToImage} />
+  </div>
+  <div class="text-area">
+    <div class="news-title">${
+      news.title == null || news.title == ""
+        ? "내용없음"
+        : news.title.length > 33
+        ? news.title.substring(0, 33)
+        : news.title
+    }</div>
+    <p>${
+      news.description == null || news.description == ""
+        ? "내용없음"
+        : news.description.length > 40
+        ? news.description.substring(0, 40) + "..."
+        : news.description
+    }</p>
+    <div>${news.source.name}${news.publishedAt}</div>
+  </div>
+</div>`
+    )
+    .join("");
+
+  document.getElementById("news-board").innerHTML = newsHTML;
+};
+
+const errorRender = (errorMessage) => {
+  const errorHTML = `<div class="alert alert-danger" role = "alert">
+    ${errorMessage}
+  </div>`;
+
+  document.getElementById("news-board").innerHTML = errorHTML;
+};
+
+const news_paginationRender = () => {
+  let news_paginationHTML = ``;
+  let news_pageGroup = Math.ceil(news_page / news_groupSize);
+  let news_lastPage = news_pageGroup * news_groupSize;
+
+  if (news_lastPage > news_totalPage) {
+    news_lastPage = news_totalPage;
+  }
+  let news_firstPage =
+    news_lastPage - (news_groupSize - 1) <= 0
+      ? 1
+      : news_lastPage - (news_groupSize - 1);
+  for (let i = news_firstPage; i <= news_lastPage; i++) {
+    news_paginationHTML += `<li class="page-item">
+                        <input class="page-link" type="radio" onclick="news_moveToPage(${i})" ${
+      i == news_page ? "checked" : ""
+    } ></input>
+                       </li>`;
+  }
+
+  document.querySelector(".news-pagination").innerHTML = news_paginationHTML;
+};
+
+const news_moveToPage = (pageNum) => {
+  news_page = pageNum;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  getNews();
+};
+
+getLatestNews();
+
+//regionend NEWS
+
+//region SCROLL
+
 // 스크롤 최상단으로 이동하는 애니메이션
 document.getElementById("scrollToTop").addEventListener("click", function () {
-    window.scroll({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-    });
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
 });
 
 // 스크롤 위치에 따라 스크롤 최상단 버튼 표시/숨김
 window.onscroll = function () {
-    var scrollButton = document.getElementById("scrollToTop");
-    if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
-    ) {
-        scrollButton.style.display = "flex";
-    } else {
-        scrollButton.style.display = "none";
-    }
+  var scrollButton = document.getElementById("scrollToTop");
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollButton.style.display = "flex";
+  } else {
+    scrollButton.style.display = "none";
+  }
 };
+
+//regionend SCROLL
+
+//region DARK
+document.getElementById('dark-toggle').addEventListener("click", function() {
+  if(document.querySelector('body').classList.contains('dark-mode')){
+      document.body.classList.remove("dark-mode");
+  }else{
+      document.body.classList.add("dark-mode");
+  }
+},false);
+
+//regionend DARK
+
+//region TOGGLE
+const toggleList = document.querySelectorAll(".toggleSwitch");
+
+toggleList.forEach(($toggle) => {
+  $toggle.onclick = () => {
+    $toggle.classList.toggle('active');
+  }
+});
+
+document.querySelector(".toggleSwitch").addEventListener("click", function() {
+  if(document.querySelector('.highlights').classList.contains("active")){
+      document.querySelector('.highlights').classList.remove("active");
+  }else{
+      document.querySelector('.highlights').classList.add("active");
+  }
+},false);
+//regionend TOGGLE
