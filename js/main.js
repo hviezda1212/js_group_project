@@ -258,7 +258,7 @@ let news_page = 1;
 let news_totalPage = 1;
 let news_totalResult = 0;
 const NEWS_PAGE_SIZE = 1;
-const news_groupSize = 5;
+const news_groupSize = 3;
 
 let news_url = new URL(`https://noonanewsapi.netlify.app/top-headlines?`);
 
@@ -276,7 +276,7 @@ const getNews = async () => {
         throw new Error("No result for this search");
       }
       news_List = data.articles;
-      news_totalPage = Math.ceil(data.totalResults / NEWS_PAGE_SIZE);
+      news_totalPage = 3;
       news_totalResult = data.totalResults;
       news_render();
       news_paginationRender();
@@ -305,12 +305,26 @@ const getLatestNews = async () => {
 const news_render = () => {
   const newsHTML = news_List
     .map(
-      (news) => `        <div class="row news">
-  <div class="col-lg-4">
+      (news) => `        <div class="news">
+  <div class="img-area">
     <img class="news-img" src=${news.urlToImage} />
   </div>
-  <div class="col-lg-8">
-    <h3>${news.title}</h3>
+  <div class="text-area">
+    <div class="news-title">${
+      news.title == null || news.title == ""
+        ? "내용없음"
+        : news.title.length > 33
+        ? news.title.substring(0, 33)
+        : news.title
+    }</div>
+    <p>${
+      news.description == null || news.description == ""
+        ? "내용없음"
+        : news.description.length > 40
+        ? news.description.substring(0, 40) + "..."
+        : news.description
+    }</p>
+    <div>${news.source.name}${news.publishedAt}</div>
   </div>
 </div>`
     )
@@ -382,3 +396,32 @@ window.onscroll = function () {
 };
 
 //regionend SCROLL
+
+//region DARK
+document.getElementById('dark-toggle').addEventListener("click", function() {
+  if(document.querySelector('body').classList.contains('dark-mode')){
+      document.body.classList.remove("dark-mode");
+  }else{
+      document.body.classList.add("dark-mode");
+  }
+},false);
+
+//regionend DARK
+
+//region TOGGLE
+const toggleList = document.querySelectorAll(".toggleSwitch");
+
+toggleList.forEach(($toggle) => {
+  $toggle.onclick = () => {
+    $toggle.classList.toggle('active');
+  }
+});
+
+document.querySelector(".toggleSwitch").addEventListener("click", function() {
+  if(document.querySelector('.highlights').classList.contains("active")){
+      document.querySelector('.highlights').classList.remove("active");
+  }else{
+      document.querySelector('.highlights').classList.add("active");
+  }
+},false);
+//regionend TOGGLE
