@@ -389,10 +389,4 @@ input[type='radio']:hover {
   background: #fff !important;
 }
 
-.toggleSwitch, .toggleButton {
-  transition: all 0.2s ease-in;
-}
-
-.highlights.active {
-  display:none;
-}
+.toggleSw
