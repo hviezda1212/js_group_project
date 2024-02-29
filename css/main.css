@@ -1,247 +1,316 @@
 * {
-  margin: 0;
+    margin: 0;
 }
 header {
-  min-height: 134px;
-  border: 1px solid gray;
-  margin-bottom: 100px;
+    min-height: 134px;
+    border: 1px solid gray;
+    margin-bottom: 100px;
 }
 body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .highlights {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
 }
 
 .highlights .highlight-area {
-  width: 474px;
-  height: 294px;
-  margin-right: 5px;
-  border: 1px solid gray;
+    width: 474px;
+    height: 294px;
+    margin-right: 5px;
+    border: 1px solid gray;
 }
 
 .coin-chart {
-  width: 1414px;
-  border: 1px solid gray;
+    width: 1414px;
+    border: 1px solid gray;
 }
 
 .content-table {
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  min-width: 400px;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
 }
 
 .content-table thead tr {
-  background-color: #009879;
-  color: white;
-  text-align: left;
-  font-weight: bold;
+    background-color: #009879;
+    color: white;
+    text-align: left;
+    font-weight: bold;
 }
 
 .content-table th,
 .content-table td {
-  padding: 12px 15px;
-  text-align: right;
+    padding: 12px 15px;
+    text-align: right;
 }
 
 .content-table tbody tr {
-  border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
 }
 
 .content-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+    background-color: #f3f3f3;
 }
 
 .content-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #009879;
 }
 
 .navbar-container {
-  display: flex;
-  justify-content: space-around;
-  margin: 2em 2em;
+    display: flex;
+    justify-content: space-around;
+    margin: 2em 2em;
 }
 .btn-items {
-  margin: 0 10em;
-}
-
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin: 0 10em;
 }
 
 .item {
-  width: 342px;
-  height: 150px;
-  padding: 16px;
-  background-color: black;
-  margin: 0 24px;
-  border-radius: 9px;
-  cursor: pointer;
+    width: 342px;
+    height: 150px;
+    padding: 16px;
+    background-color: black;
+    margin: 0 24px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+.area-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
-.greed-chart-area {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.area-box {
+    display: flex;
+    width: 177px;
+    justify-content: center;
+    margin-top: 3em;
+    position: relative;
+    cursor: pointer;
+}
+.greed-img {
+    width: 278px;
+    height: 140px;
+}
+.feargreed-result-box {
+    position: absolute;
+    top: 3.3rem;
+    right: 3.2rem;
+}
+
+.feargreed-result-box .feargreed-num {
+    font-size: 2.5rem;
+}
+
+.feargreed-result-box .feargreed-result {
+    font-size: 0.8rem;
+    color: darkgray;
+}
+
+.feargreed-num,
+.feargreed-result {
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
 }
 .input-container {
-  display: flex;
-  position: relative;
-  margin-top: 1em;
-  margin-left: 50em;
+    display: flex;
+    position: relative;
+    margin-top: 1em;
+    margin-left: 50em;
 }
 
 .search-icon {
-  position: absolute;
-  right: 37em;
-  top: 1em;
+    position: absolute;
+    right: 37em;
+    top: 1em;
 }
 
 .watch-list-btn {
-  border: none;
-  outline: none;
-  margin-right: 1em;
+    border: none;
+    outline: none;
+    margin-right: 1em;
 }
 
 .login-btn,
 .resister-btn {
-  width: 75px;
-  height: 37px;
-  margin-left: 1em;
-  border: 1px solid #793aff;
-  border-radius: 10px;
-  color: #793aff;
-  cursor: pointer;
-  &:hover {
-    background-color: #793aff;
-    color: white;
-  }
+    width: 75px;
+    height: 37px;
+    margin-left: 1em;
+    border: 1px solid #793aff;
+    border-radius: 10px;
+    color: #793aff;
+    cursor: pointer;
+    &:hover {
+        background-color: #793aff;
+        color: white;
+    }
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .coin-chart {
 }
 
 .fav-button {
-  border: none;
-  background-color: none;
+    border: none;
+    background-color: none;
 }
 
 .page-item .page-link:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .input-container {
-  display: flex;
-  position: relative;
-  margin-top: 1em;
-  margin-left: 50em;
+    display: flex;
+    position: relative;
+    margin-top: 1em;
+    margin-left: 50em;
 }
 
 .search-icon {
-  position: absolute;
-  right: 37em;
-  top: 1em;
+    position: absolute;
+    right: 39em;
+    top: 0.8em;
 }
 
 .watch-list-btn {
-  border: none;
-  outline: none;
-  margin-right: 1em;
+    border: none;
+    outline: none;
+    margin-right: 1em;
 }
 
 .login-btn,
 .resister-btn {
-  width: 75px;
-  height: 37px;
-  margin-left: 1em;
-  border: 1px solid #793aff;
-  border-radius: 10px;
-  color: #793aff;
-  cursor: pointer;
-  &:hover {
-    background-color: #793aff;
-    color: white;
-  }
+    width: 80px;
+    height: 37px;
+    margin-left: 1em;
+    border: 1px solid #793aff;
+    border-radius: 10px;
+    color: #793aff;
+    cursor: pointer;
+    &:hover {
+        background-color: #793aff;
+        color: white;
+    }
 }
 
 .input-wrapper {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 .input-box {
-  width: 373px;
-  height: 41px;
-  border-radius: 10px;
-  padding: 0 1em;
-  background-color: #eeeeee;
+    width: 373px;
+    height: 41px;
+    border-radius: 10px;
+    padding: 0 1em;
+    background-color: #eeeeee;
 
-  &::placeholder {
-    text-align: center;
-  }
+    &::placeholder {
+        text-align: center;
+    }
 }
 .btn-items {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
-.greed-img {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
+.indicator {
+    width: 13px;
+    height: 13px;
+    background: black;
+    border-radius: 9999px;
+    border: 2px solid white;
+
+    transform-origin: 140px 5px;
+    transform: rotate(140deg);
+
+    position: relative;
+    left: -105px;
+    top: 1px;
+    display: none;
 }
 
 .news-img {
-  max-width: 100%;
-  max-height: 150px;
+    max-width: 100%;
+    max-height: 150px;
 }
 
 .scroll-to-top {
-  position: fixed;
-  right: 16px;
-  bottom: 76px;
-  width: 50px;
-  height: 50px;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  background: rgb(13, 20, 33);
-  color: rgb(255, 255, 255);
-  border-radius: 100%;
-  user-select: none;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out 0s;
-  z-index: 9999;
-  opacity: 0.85;
-  outline: none;
-  align-items: center;
-  justify-items: center;
+    position: fixed;
+    right: 16px;
+    bottom: 76px;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(13, 20, 33);
+    color: rgb(255, 255, 255);
+    border-radius: 100%;
+    user-select: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out 0s;
+    z-index: 9999;
+    opacity: 0.85;
+    outline: none;
+    align-items: center;
+    justify-items: center;
 }
 
 .scroll-to-top:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 .icon-up {
-  height: 30px;
-  width: 30px;
-  color: rgb(255, 255, 255);
-  background-image: url(../assets/images/up_white.png);
+    height: 30px;
+    width: 30px;
+    color: rgb(255, 255, 255);
+    background-image: url(../assets/images/up_white.png);
+}
+
+.greed-img {
+    transform-origin: center;
+    color: black;
+}
+
+.list-items {
+    list-style: none;
+    display: flex;
+    margin-top: 1.3em;
+}
+
+.list-items li {
+    margin: 0 2em;
+    cursor: pointer;
+    font-weight: 900;
+}
+.greed-title {
+    color: black;
+    font-weight: bolder;
+    margin-top: 1em;
+    margin-left: 1em;
+    font-size: 1.5rem;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.greed-title-box {
+    background-color: white;
+}
+.result-greed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
