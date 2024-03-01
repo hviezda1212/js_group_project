@@ -635,6 +635,25 @@ transition: all 0.2s ease-in;
 display:none;
 }
 
+.coin-img-size{
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  margin-right: 5px;
+}
+
+.higher{
+  color: green
+}
+
+.lower{
+  color: red
+}
+
+.same{
+  color: black;
+}
+
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
 

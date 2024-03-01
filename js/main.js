@@ -1,6 +1,5 @@
 // const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
-//const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
-const apiKey = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
+// const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
 const url =
     "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
@@ -12,9 +11,28 @@ const pageSize = 100;
 const groupSize = 5;
 let currentPrice = 0;
 
+const initializePrevPriceList = async ()=>{
+  coinList = [];
+    console.log(url);
+    const response = await fetch(url, {
+      headers: {
+        "X-CMC_PRO_API_KEY": apiKey,
+        mode: mode,
+      },
+    });
+    const data = await response.json();
+    for(i=0; i<data.data.length;i++){
+      tempCoinSymbol = data.data[i]["symbol"];
+      prevPriceList[tempCoinSymbol]=[0]
+    //   console.log(prevPriceList)
+    }
+}
+initializePrevPriceList();
+
 const getData = async () => {
     try {
         coinList = [];
+        console.log(coinList)
     // console.log(url);
         const response = await fetch(url, {
             headers: {
@@ -29,17 +47,26 @@ const getData = async () => {
         if (page === 1) {
             for (i = 0; i < pageSize; i++) {
                 coinList.push(data.data[i]);
+                // prevPriceList에 코인 가격 정보를 쌓는다
+                tempCoinSymbol = coinList[i]["symbol"]
+                tempCoinPrice = coinList[i]["quote"].USD["price"]
+                prevPriceList[tempCoinSymbol].push(tempCoinPrice)
             }
         } else {
             for (i = page * 100 - 99; i < pageSize * page + 1; i++) {
                 coinList.push(data.data[i]);
+                // prevPriceList에 코인 가격 정보를 쌓는다
+                tempCoinSymbol = coinList[i]["symbol"]
+                tempCoinPrice = coinList[i]["quote"].USD["price"]
+                prevPriceList[tempCoinSymbol].push(tempCoinPrice)
             }
         }
         totalResult = data.data.length;
     // console.log("ttt", coinList.length);
         render();
         paginationRender();
-        topCoinRender();
+        // console.log("priceis", prevPriceList["BTC"][prevPriceList["BTC"].length-1])
+        // console.log("prevpriceis", prevPriceList["BTC"][prevPriceList["BTC"].length-2])
     } catch (error) {
         console.log("error", error);
     }
@@ -48,16 +75,15 @@ const getData = async () => {
 const render = () => {
   let tableHTML = "";
     for (i = 0; i < coinList.length; i++) {
+    coinSymbol = coinList[i]["symbol"]
+    coinPrice = coinList[i]["quote"].USD["price"]
     tableHTML += `            <tr>
         <td id = "favorite"><button class = "fav-button"><i class="fa-regular fa-star"></i></button></td>
         <td id = "rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-        <td id = "name">${coinList[i]["name"]}</td>
+        <td id = "name"><img class = "coin-img-size" src ='https://s2.coinmarketcap.com/static/img/coins/64x64/${coinList[i]["id"]}.png'></img><span>${coinList[i]["name"]}</span></td>
         <td id = "symbol">${coinList[i]["symbol"]}</td>
         <td id = "price">${
-            "$" +
-            coinList[i]["quote"].USD["price"].toLocaleString("en-US", {
-                maximumFractionDigits: 2,
-            })
+            checkPriceChange(coinPrice,coinSymbol)
         }</td>
         <td id = "1h">${
             coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"
@@ -87,6 +113,30 @@ const render = () => {
   document.getElementById("table-data").innerHTML = tableHTML;
   // console.log(tableHTML);
 };
+
+const checkPriceChange = (price, symbol) =>{
+  if(price>prevPriceList[symbol][prevPriceList[symbol].length-2]){
+    // document.getElementById("price").className = "higher"
+    return `<span style = "color:green">${"$"+price.toLocaleString("en-US", {
+      maximumFractionDigits: 2,
+  })}</span>`
+    //초록색
+  }else if(price<prevPriceList[symbol][prevPriceList[symbol].length-2]){
+    // document.getElementById("price").className = "lower"
+    return `<span style = "color:red">${"$"+price.toLocaleString("en-US", {
+      maximumFractionDigits: 2,
+  })}</span>`
+    //빨간색
+  }else{
+    // document.getElementById("price").className = "same"
+    return `<span style = "color:black">${"$"+price.toLocaleString("en-US", {
+      maximumFractionDigits: 2,
+  })}</span>`
+    //검은색
+  }
+  // prevPriceList의 가격정보를 불러와 가격을 비교한다
+  // -1인덱스가격 (최신가격)이 -2인덱스가격 (전가격)보다 높으면 초록색, 낮으면 빨간색, 같으면 검은색으로 표시한다
+}
 
 const paginationRender = () => {
     //total result
