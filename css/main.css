@@ -11,11 +11,13 @@ header {
   border: 1px solid gray;
   margin-bottom: 100px;
 }
-body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+
+#dark-toggle {
+  position: relative;
+  right: 5em;
+  cursor: pointer;
 }
+
 #white-toggle {
   display: none;
 }
@@ -191,7 +193,11 @@ ul {
 .navbar-container {
   display: flex;
   justify-content: space-around;
-  margin: 2em 2em;
+  align-items: center;
+  margin-top: 2em;
+}
+.list-items-container {
+  margin-right: 40em;
 }
 .btn-items {
   margin: 0 10em;
@@ -232,6 +238,12 @@ ul {
   position: relative;
   right: 4.5em;
   align-items: center;
+}
+
+.star-btn {
+  border: none;
+  color: yellow;
+  background-color: white;
 }
 
 .wrapper {
@@ -369,6 +381,7 @@ ul {
   border: 1px solid #793aff;
   border-radius: 10px;
   color: #793aff;
+  font-size: 0.9rem;
   cursor: pointer;
   &:hover {
     background-color: #793aff;
