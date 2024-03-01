@@ -35,6 +35,12 @@ box-shadow: 0 2px 8px #38556450;
 overflow: hidden;
 }
 
+.area-title{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 공통 슬라이더 속성 */
 .slide-container{
 border: 1px solid blue;
 overflow: hidden;
