@@ -115,6 +115,11 @@ background-color: #793aff;
 .coin-name{
   margin-right: 14px;
   font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
 }
 
 .coin-symbol{
@@ -128,7 +133,7 @@ background-color: #793aff;
 
 
 #hot-container{
-  /* background-color: pink; */
+  background-color: pink;
 }
 
 #cold-container{

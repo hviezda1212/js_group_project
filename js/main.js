@@ -1,6 +1,6 @@
 // const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
 //const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
-//const apiKey = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
+const apiKey = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 const url =
     "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
@@ -159,14 +159,18 @@ const topCoinRender = () => {
 
   for(i=0; i<hotList.length; i++){
     hotHTML += 
-    ` <tr class="hot-list list">
-    <td>${hotList.indexOf(hotList[i])+1}</td>
-    <td>${hotList[i]["name"]}</td>
-    <td>${hotList[i]["symbol"]}</td>
-    <td>${
-      hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-    }</td>
-  </tr>`
+    `<div class="hot-list list">
+      <div class="coin-left">
+        <div class="coin-rank">${hotList.indexOf(hotList[i])+1}</div>
+        <div class="coin-names">
+          <div class="coin-name">${hotList[i]["name"]}</div>
+          <div class="coin-symbol">${hotList[i]["symbol"]}</div>
+        </div>
+      </div>
+      <div class="coin-24h">${
+        hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+      }</div>
+    </div>`
   }
   document.getElementById("hot-container").innerHTML = hotHTML;
 
@@ -177,14 +181,18 @@ const topCoinRender = () => {
   
   for(i=0; i<coldList.length; i++){
     coldHTML += 
-    ` <tr class="cold-list list">
-      <td>${coldList.indexOf(coldList[i])+1}</td>
-      <td id = "name">${coldList[i]["name"]}</td>
-      <td id = "symbol">${coldList[i]["symbol"]}</td>
-      <td id = "24h">${
+    `<div class="hot-list list">
+      <div class="coin-left">
+        <div class="coin-rank">${coldList.indexOf(coldList[i])+1}</div>
+        <div class="coin-names">
+          <div class="coin-name">${coldList[i]["name"]}</div>
+          <div class="coin-symbol">${coldList[i]["symbol"]}</div>
+        </div>
+      </div>
+      <div class="coin-24h">${
         coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-      }</td>
-    </tr>`
+      }</div>
+    </div>`
   }
   document.getElementById("cold-container").innerHTML = coldHTML;
 }
@@ -475,42 +483,41 @@ document.querySelector(".toggleSwitch").addEventListener("click", function() {
 //regionend TOGGLE
 
 // 슬라이드 기능
-// const swiper = document.querySelector('.slide-wrapper');
-// const bullets = document.querySelectorAll('.slide-dot');
+const swiper = document.querySelector('.slide-wrapper');
+const bullets = document.querySelectorAll('.slide-dot');
 
-// let currentSlide = 0;
+let currentSlide = 0;
 
-// const showSlide = (slideIndex) => {
-//   const slideWidth = document.querySelector('.slide-content').offsetWidth;
-//   swiper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
-//   currentSlide = slideIndex;
+const showSlide = (slideIndex) => {
+  const slideWidth = document.querySelector('.slide-content').offsetWidth;
+  swiper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+  currentSlide = slideIndex;
 
-//   bullets.forEach((bullet, index) => {
-//     if(index === currentSlide){
-//       bullet.classList.add('active');
-//     }else{
-//       bullet.classList.remove('active');
-//     }
-//   })
-// }
+  bullets.forEach((bullet, index) => {
+    if(index === currentSlide){
+      bullet.classList.add('active');
+    }else{
+      bullet.classList.remove('active');
+    }
+  })
+}
 
-// bullets.forEach((bullet, index) => {
-//   bullet.addEventListener('click', () => {
-//     showSlide(index);
-//   })
-// })
+bullets.forEach((bullet, index) => {
+  bullet.addEventListener('click', () => {
+    showSlide(index);
+  })
+})
 
 // // 오토 슬라이드
-// const intervalDuration = 5000;
+ const intervalDuration = 5000;
 
 // // 슬라이드 변경 함수
-// const autoSlide = () => {
-//   const nextSlide = (currentSlide + 1) % bullets.length;
-//   showSlide(nextSlide);
-// }
+const autoSlide = () => {
+  const nextSlide = (currentSlide + 1) % bullets.length;
+  showSlide(nextSlide);
+}
 
 // // 자동 슬라이드 설정(
-// const autoSlideInterval = setInterval(autoSlide, intervalDuration);
+const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
-
-// showSlide(0);
+showSlide(0);
