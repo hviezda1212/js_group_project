@@ -1,5 +1,5 @@
 // const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
-// const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+//const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
 const url =
     "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
@@ -38,6 +38,7 @@ const getData = async () => {
     // console.log("ttt", coinList.length);
         render();
         paginationRender();
+        topCoinRender();
     } catch (error) {
         console.log("error", error);
     }
@@ -147,11 +148,28 @@ function Main(delay) {
 //20초마다 코인 정보를 업데이트한다
 Main(20000);
 
+
 // 가장 뜨거운 코인 top3
-const getHotTop = async () => {
-    try {
-    } catch (error) {}
-};
+const topCoinRender = () => {
+  // hot top3
+  const hotList = coinList.slice(0,3);
+  console.log("hotList: " + hotList)
+  let hotHTML = "";
+
+  for(i=0; i<hotList.length; i++){
+    hotHTML += 
+    ` <tr class="hot-list list">
+    <td>${hotList.indexOf(hotList[i])+1}</td>
+    <td>${hotList[i]["name"]}</td>
+    <td>${hotList[i]["symbol"]}</td>
+    <td>${
+      hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+    }</td>
+  </tr>`
+  }
+  document.getElementById("hot-container").innerHTML = hotHTML;
+}
+
 
 //const APIKEY = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
 let coinListItems = []; // 코인 정보를 담을 배열
@@ -435,3 +453,44 @@ document.querySelector(".toggleSwitch").addEventListener("click", function() {
   }
 },false);
 //regionend TOGGLE
+
+// 슬라이드 기능
+const swiper = document.querySelector('.slide-wrapper');
+const bullets = document.querySelectorAll('.slide-dot');
+
+let currentSlide = 0;
+
+const showSlide = (slideIndex) => {
+  const slideWidth = document.querySelector('.slide-content').offsetWidth;
+  swiper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+  currentSlide = slideIndex;
+
+  bullets.forEach((bullet, index) => {
+    if(index === currentSlide){
+      bullet.classList.add('active');
+    }else{
+      bullet.classList.remove('active');
+    }
+  })
+}
+
+bullets.forEach((bullet, index) => {
+  bullet.addEventListener('click', () => {
+    showSlide(index);
+  })
+})
+
+// 오토 슬라이드
+const intervalDuration = 5000;
+
+// 슬라이드 변경 함수
+const autoSlide = () => {
+  const nextSlide = (currentSlide + 1) % bullets.length;
+  showSlide(nextSlide);
+}
+
+// 자동 슬라이드 설정(
+const autoSlideInterval = setInterval(autoSlide, intervalDuration);
+
+
+showSlide(0);

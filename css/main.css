@@ -1,409 +1,311 @@
 * {
-    margin: 0;
+  margin: 0;
 }
 header {
-    min-height: 134px;
-    border: 1px solid gray;
-    margin-bottom: 100px;
+  min-height: 134px;
+  border: 1px solid gray;
+  margin-bottom: 100px;
 }
 body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 ul {
-  list-style-type: none;
+list-style-type: none;
 }
 
+/* 오늘의 하이라이트 */
 .highlights {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
 }
 
 .highlights .highlight-area {
-  width: 474px;
-  height: 294px;
-  margin-right: 5px;
-  border-radius: 10px;
+width: 474px;
+height: 294px;
+margin-right: 5px;
+border-radius: 10px;
+padding: 30px;
+box-sizing: border-box;
+box-shadow: 0 2px 8px #38556450;
+overflow: hidden;
 }
 
+.slide-container{
+border: 1px solid blue;
+overflow: hidden;
+}
+
+.slide-wrapper{
+width: 100%;
+background-color: pink;
+display: flex;
+transition: transform 1s;
+}
+
+.slide-content{
+width: 100%;
+flex: 0 0 100%; 
+}
+
+.slide-pagination{
+display: flex;
+justify-content: center;
+margin-top: 10px;
+}
+
+.slide-dot{
+width: 9px;
+height: 9px;
+margin-right: 5px;
+border-radius: 50px;
+background-color: #CCCCCC;
+}
+
+.slide-dot.active{
+background-color: #793aff;
+}
+
+/* 지금, 가장 뜨거운 코인, 차가운 코인 top3 */
+.topcoin-container{
+width: 100%;
+border: 1px solid black;
+}
+
+
+/* 코인 시황 */
 .coin-chart {
-    width: 1414px;
-    border: 1px solid gray;
+  width: 1414px;
+  border: 1px solid gray;
 }
 
 .content-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    min-width: 400px;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
 }
 
 .content-table thead tr {
-    background-color: #009879;
-    color: white;
-    text-align: left;
-    font-weight: bold;
+  background-color: #009879;
+  color: white;
+  text-align: left;
+  font-weight: bold;
 }
 
 .content-table th,
 .content-table td {
-    padding: 12px 15px;
-    text-align: right;
+  padding: 12px 15px;
+  text-align: right;
 }
 
 .content-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .content-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 
 .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #009879;
 }
 
 .navbar-container {
-    display: flex;
-    justify-content: space-around;
-    margin: 2em 2em;
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 2em;
 }
 .btn-items {
-    margin: 0 10em;
+  margin: 0 10em;
 }
 
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .item {
-    width: 342px;
-    height: 150px;
-    padding: 16px;
-    background-color: black;
-    margin: 0 24px;
-    border-radius: 9px;
-    cursor: pointer;
+  width: 342px;
+  height: 150px;
+  padding: 16px;
+  background-color: black;
+  margin: 0 24px;
+  border-radius: 9px;
+  cursor: pointer;
 }
 .area-wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .area-box {
-    display: flex;
-    width: 177px;
-    justify-content: center;
-    margin-top: 3em;
-    position: relative;
-    cursor: pointer;
+  display: flex;
+  width: 177px;
+  justify-content: center;
+  margin-top: 3em;
+  position: relative;
+  cursor: pointer;
 }
 
 .greed-chart-area {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
 .greed-img {
-    width: 278px;
-    height: 140px;
+  width: 278px;
+  height: 140px;
 }
 .feargreed-result-box {
-    position: absolute;
-    top: 3.3rem;
-    right: 3.2rem;
+  position: absolute;
+  top: 3.3rem;
+  right: 3.2rem;
 }
 
 .feargreed-result-box .feargreed-num {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 .feargreed-result-box .feargreed-result {
-    font-size: 0.8rem;
-    color: darkgray;
+  font-size: 0.8rem;
+  color: darkgray;
 }
 
 .feargreed-num,
 .feargreed-result {
-    text-align: center;
-    font-family: "Courier New", Courier, monospace;
-    font-weight: bold;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
 }
 .input-container {
-    display: flex;
-    position: relative;
-    margin-top: 1em;
-    margin-left: 50em;
+  display: flex;
+  position: relative;
+  margin-top: 1em;
+  margin-left: 50em;
 }
 
 .search-icon {
-    position: absolute;
-    right: 37em;
-    top: 1em;
+  position: absolute;
+  right: 37em;
+  top: 1em;
 }
 
 .watch-list-btn {
-    border: none;
-    outline: none;
-    margin-right: 1em;
+  border: none;
+  outline: none;
+  margin-right: 1em;
 }
 
 .login-btn,
 .resister-btn {
-    width: 75px;
-    height: 37px;
-    margin-left: 1em;
-    border: 1px solid #793aff;
-    border-radius: 10px;
-    color: #793aff;
-    cursor: pointer;
-    &:hover {
-        background-color: #793aff;
-        color: white;
-    }
+  width: 75px;
+  height: 37px;
+  margin-left: 1em;
+  border: 1px solid #793aff;
+  border-radius: 10px;
+  color: #793aff;
+  cursor: pointer;
+  &:hover {
+      background-color: #793aff;
+      color: white;
+  }
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .coin-chart {
 }
 
 .fav-button {
-    border: none;
-    background-color: none;
+  border: none;
+  background-color: none;
 }
 
 .page-item .page-link:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .input-container {
-    display: flex;
-    position: relative;
-    margin-top: 1em;
-    margin-left: 50em;
+  display: flex;
+  position: relative;
+  margin-top: 1em;
+  margin-left: 50em;
 }
 
 .search-icon {
-    position: absolute;
-    right: 39em;
-    top: 0.8em;
+  position: absolute;
+  right: 39em;
+  top: 0.8em;
 }
 
 .watch-list-btn {
-    border: none;
-    outline: none;
-    margin-right: 1em;
+  border: none;
+  outline: none;
+  margin-right: 1em;
 }
 
 .login-btn,
 .resister-btn {
-    width: 80px;
-    height: 37px;
-    margin-left: 1em;
-    border: 1px solid #793aff;
-    border-radius: 10px;
-    color: #793aff;
-    cursor: pointer;
-    &:hover {
-        background-color: #793aff;
-        color: white;
-    }
+  width: 80px;
+  height: 37px;
+  margin-left: 1em;
+  border: 1px solid #793aff;
+  border-radius: 10px;
+  color: #793aff;
+  cursor: pointer;
+  &:hover {
+      background-color: #793aff;
+      color: white;
+  }
 }
 
 .input-wrapper {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .input-box {
-    width: 373px;
-    height: 41px;
-    border-radius: 10px;
-    padding: 0 1em;
-    background-color: #eeeeee;
+  width: 373px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 0 1em;
+  background-color: #eeeeee;
 
-    &::placeholder {
-        text-align: center;
-    }
+  &::placeholder {
+      text-align: center;
+  }
 }
 .btn-items {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .indicator {
-    width: 13px;
-    height: 13px;
-    background: black;
-    border-radius: 9999px;
-    border: 2px solid white;
+  width: 13px;
+  height: 13px;
+  background: black;
+  border-radius: 9999px;
+  border: 2px solid white;
 
-    transform-origin: 140px 5px;
-    transform: rotate(140deg);
+  transform-origin: 140px 5px;
+  transform: rotate(140deg);
 
-    position: relative;
-    left: -105px;
-    top: 1px;
-    display: none;
+  position: relative;
+  left: -105px;
+  top: 1px;
+  display: none;
 }
 
 .scroll-to-top {
-    position: fixed;
-    right: 16px;
-    bottom: 76px;
-    width: 50px;
-    height: 50px;
-    display: inline-flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    background: rgb(13, 20, 33);
-    color: rgb(255, 255, 255);
-    border-radius: 100%;
-    user-select: none;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out 0s;
-    z-index: 9999;
-    opacity: 0.85;
-    outline: none;
-    align-items: center;
-    justify-items: center;
-}
-
-.scroll-to-top:hover {
-    opacity: 0.7;
-}
-
-.icon-up {
-    height: 30px;
-    width: 30px;
-    color: rgb(255, 255, 255);
-    background-image: url(../assets/images/up_white.png);
-}
-
-.greed-img {
-    transform-origin: center;
-    color: black;
-}
-
-.list-items {
-    list-style: none;
-    display: flex;
-    margin-top: 1.3em;
-}
-
-.list-items li {
-    margin: 0 2em;
-    cursor: pointer;
-    font-weight: 900;
-}
-.greed-title {
-    color: black;
-    font-weight: bolder;
-    margin-top: 1em;
-    margin-left: 1em;
-    font-size: 1.5rem;
-    font-family: "Courier New", Courier, monospace;
-}
-
-.greed-title-box {
-    background-color: white;
-}
-.result-greed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.news-area{
-  border:none;
-  border-radius:10px;
-  box-shadow: 0 2px 8px #38556450;
-  padding:30px;
-}
-
-.news {
-  display:flex;
-}
-
-.news-title{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 700;
-}
-
-.news-title .more {
-  color: #793aff; 
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.news-img {
-  width: 165px;
-  height: 115px;
-}
-
-.news-pagination-nav {
-  display: flex;
-  justify-content: center;
-}
-.news-pagination {
-  margin-top: 1.5em;
-  display:flex;
-}
-
-input[type='radio'] {
-  margin : 5px;
-  -webkit-appearance: none; 
-  -moz-appearance: none; 
-  appearance: none; 
-  width: 10px;
-  height: 10px;
-  border: none; 
-  border-radius: 100% !important;
-  outline: none; 
-  cursor: pointer;
-  background-color: #CCCCCC;
-}
-
-input[type='radio']:checked {
-  background-color: #793aff; 
-  border: none; 
-  box-shadow: 0; 
-}
-
-input[type='radio']:hover {
-  background-color: gray;
-  border: none; 
-  box-shadow: 0; 
-}
-
-
-/*DARK MODE*/
-.dark-toggle{
-  width: 20px;
-  height: 20px;
-}
-
-.dark-mode {
-  background-color: #0D1421;
-  color: white;
-}
-
-.dark-mode .scroll-to-top{
   position: fixed;
   right: 16px;
   bottom: 76px;
@@ -414,7 +316,7 @@ input[type='radio']:hover {
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
-  background: white;
+  background: rgb(13, 20, 33);
   color: rgb(255, 255, 255);
   border-radius: 100%;
   user-select: none;
@@ -428,53 +330,204 @@ input[type='radio']:hover {
   justify-items: center;
 }
 
-.dark-mode .icon-up {
+.scroll-to-top:hover {
+  opacity: 0.7;
+}
+
+.icon-up {
   height: 30px;
   width: 30px;
   color: rgb(255, 255, 255);
-  background-image: url(../assets/images/up_black.png);
+  background-image: url(../assets/images/up_white.png);
+}
+
+.greed-img {
+  transform-origin: center;
+  color: black;
+}
+
+.list-items {
+  list-style: none;
+  display: flex;
+  margin-top: 1.3em;
+}
+
+.list-items li {
+  margin: 0 2em;
+  cursor: pointer;
+  font-weight: 900;
+}
+.greed-title {
+  color: black;
+  font-weight: bolder;
+  margin-top: 1em;
+  margin-left: 1em;
+  font-size: 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.greed-title-box {
+  background-color: white;
+}
+.result-greed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-area{
+border:none;
+border-radius:10px;
+/* box-shadow: 0 2px 8px #38556450;
+padding:30px; */
+}
+
+.news {
+display:flex;
+}
+
+.news-title{
+display:flex;
+justify-content: space-between;
+align-items: center;
+font-weight: 700;
+}
+
+.news-title .more {
+color: #793aff; 
+font-weight: 800;
+cursor: pointer;
+}
+
+.news-img {
+width: 165px;
+height: 115px;
+}
+
+.news-pagination-nav {
+display: flex;
+justify-content: center;
+}
+.news-pagination {
+margin-top: 1.5em;
+display:flex;
+}
+
+input[type='radio'] {
+margin : 5px;
+-webkit-appearance: none; 
+-moz-appearance: none; 
+appearance: none; 
+width: 10px;
+height: 10px;
+border: none; 
+border-radius: 100% !important;
+outline: none; 
+cursor: pointer;
+background-color: #CCCCCC;
+}
+
+input[type='radio']:checked {
+background-color: #793aff; 
+border: none; 
+box-shadow: 0; 
+}
+
+input[type='radio']:hover {
+background-color: gray;
+border: none; 
+box-shadow: 0; 
+}
+
+
+/*DARK MODE*/
+.dark-toggle{
+width: 20px;
+height: 20px;
+}
+
+.dark-mode {
+background-color: #0D1421;
+color: white;
+}
+
+.dark-mode .scroll-to-top{
+position: fixed;
+right: 16px;
+bottom: 76px;
+width: 50px;
+height: 50px;
+display: inline-flex;
+-webkit-box-pack: center;
+justify-content: center;
+-webkit-box-align: center;
+align-items: center;
+background: white;
+color: rgb(255, 255, 255);
+border-radius: 100%;
+user-select: none;
+cursor: pointer;
+opacity: 0;
+transition: opacity 0.3s ease-in-out 0s;
+z-index: 9999;
+opacity: 0.85;
+outline: none;
+align-items: center;
+justify-items: center;
+}
+
+.dark-mode .icon-up {
+height: 30px;
+width: 30px;
+color: rgb(255, 255, 255);
+background-image: url(../assets/images/up_black.png);
 }
 
 .dark-mode .highlight-area{
-  background-color:#222531
+background-color:#222531
 }
 
 .toggleSwitch {
-  width: 100px;
-  margin: 30px;
-  height: 50px;
-  display: block;
-  position: relative;
-  border-radius: 30px;
-  background-color: #fff;
-  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
-  cursor: pointer;
+width: 100px;
+margin: 30px;
+height: 50px;
+display: block;
+position: relative;
+border-radius: 30px;
+background-color: #fff;
+box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+cursor: pointer;
 }
 
 .toggleSwitch .toggleButton {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 50%;
-  left: 4px;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  background: #793aff;
+width: 40px;
+height: 40px;
+position: absolute;
+top: 50%;
+left: 4px;
+transform: translateY(-50%);
+border-radius: 50%;
+background: #793aff;
 }
 
 .toggleSwitch.active {
-  background: #793aff;
+background: #793aff;
 }
 
 .toggleSwitch.active .toggleButton {
-  left: calc(100% - 44px);
-  background: #fff !important;
+left: calc(100% - 44px);
+background: #fff !important;
 }
 
 .toggleSwitch, .toggleButton {
-  transition: all 0.2s ease-in;
+transition: all 0.2s ease-in;
 }
 
 .highlights.active {
-  display:none;
+display:none;
+}
+
+/* 모바일 버전 */
+@media screen and (max-width: 48rem) {
+
 }
