@@ -199,7 +199,7 @@ const topCoinRender = () => {
 
 
 
-//const APIKEY = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinListItems = []; // 코인 정보를 담을 배열
 
 const inputBox = document.querySelector(".input-box");
@@ -215,24 +215,25 @@ async function search(event) {
 }
 
 const getlist = async (keyword) => {
-  try {
-    const url = new URL(
-      `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
-    );
+    try {
+        const url = new URL(
+            `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
+        );
 
-    const res = await fetch(url, {
-      headers: {
-        "X-CMC_PRO_API_KEY": APIKEY,
-      },
-    });
-    const data = await res.json();
-    fearcoinList = data.data.filter(
-      (e) =>
-        e.symbol.includes(keyword) || e.name.toUpperCase().includes(keyword)
-    );
-  } catch (error) {
-    console.error("error message", error);
-  }
+        const res = await fetch(url, {
+            headers: {
+                "X-CMC_PRO_API_KEY": APIKEY,
+            },
+        });
+        const data = await res.json();
+        coinListItems = data.data.filter(
+            (e) =>
+                e.symbol.includes(keyword) ||
+                e.name.toUpperCase().includes(keyword)
+        );
+    } catch (error) {
+        console.error("error message", error);
+    }
 };
 
 // (async () => {
@@ -241,14 +242,14 @@ const getlist = async (keyword) => {
 // })();
 
 const fearGreed = async () => {
-  let endTime = Math.floor(Date.now() / 1000);
-  let startTime = endTime - 604800;
+    let endTime = Math.floor(Date.now() / 1000);
+    let startTime = endTime - 604800;
 
     const url = `https://api.coinmarketcap.com/data-api/v3/fear-greed/chart?start=${startTime}&end=${endTime}`;
     // console.log(url);
     const res = await fetch(url);
     const data = await res.json();
-    // console.log("data: ", data);
+    console.log("data: ", data);
 
     return data.data.dataList;
 };
@@ -298,12 +299,12 @@ const rendering = () => {
             <td>${coin.quote.KRW.volume_24h}</td>
             <td></td>
             </tr>`;
-  });
+    });
 
-  resultHTML += `</tbody>`;
+    resultHTML += `</tbody>`;
 
-  // HTML에 결과 테이블을 추가
-  document.querySelector("#table-data").innerHTML = resultHTML;
+    // HTML에 결과 테이블을 추가
+    document.querySelector("#table-data").innerHTML = resultHTML;
 };
 getlist();
 
@@ -319,111 +320,111 @@ const news_groupSize = 3;
 let news_url = new URL(`https://noonanewsapi.netlify.app/top-headlines?`);
 
 const getNews = async () => {
-  try {
-    news_url.searchParams.set("page", news_page);
-    console.log("error", news_page);
-    const response = await fetch(news_url);
-    const data = await response.json();
-    if (response.status === 200) {
-      if (data.articles.length == 0) {
+    try {
+        news_url.searchParams.set("page", news_page);
+        console.log("error", news_page);
+        const response = await fetch(news_url);
+        const data = await response.json();
+        if (response.status === 200) {
+            if (data.articles.length == 0) {
+                news_page = 0;
+                news_totalPage = 0;
+                news_paginationRender();
+                throw new Error("No result for this search");
+            }
+            news_List = data.articles;
+            news_totalPage = 3;
+            news_totalResult = data.totalResults;
+            news_render();
+            news_paginationRender();
+        } else {
+            news_page = 0;
+            news_totalPage = 0;
+            news_paginationRender();
+            throw new Error(data.message);
+        }
+    } catch (error) {
+        console.log("error", error.message);
         news_page = 0;
         news_totalPage = 0;
         news_paginationRender();
-        throw new Error("No result for this search");
-      }
-      news_List = data.articles;
-      news_totalPage = 3;
-      news_totalResult = data.totalResults;
-      news_render();
-      news_paginationRender();
-    } else {
-      news_page = 0;
-      news_totalPage = 0;
-      news_paginationRender();
-      throw new Error(data.message);
+        errorRender(error.message);
     }
-  } catch (error) {
-    console.log("error", error.message);
-    news_page = 0;
-    news_totalPage = 0;
-    news_paginationRender();
-    errorRender(error.message);
-  }
 };
 
 const getLatestNews = async () => {
-  news_url = new URL(
-    `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=1`
-  );
-  getNews();
+    news_url = new URL(
+        `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=1`
+    );
+    getNews();
 };
 
 const news_render = () => {
-  const newsHTML = news_List
-    .map(
-      (news) => `        <div class="news">
+    const newsHTML = news_List
+        .map(
+            (news) => `        <div class="news">
   <div class="img-area">
     <img class="news-img" src=${news.urlToImage} />
   </div>
   <div class="text-area">
     <div class="news-title">${
-      news.title == null || news.title == ""
-        ? "내용없음"
-        : news.title.length > 33
-        ? news.title.substring(0, 33)
-        : news.title
+        news.title == null || news.title == ""
+            ? "내용없음"
+            : news.title.length > 33
+            ? news.title.substring(0, 33)
+            : news.title
     }</div>
     <p>${
-      news.description == null || news.description == ""
-        ? "내용없음"
-        : news.description.length > 40
-        ? news.description.substring(0, 40) + "..."
-        : news.description
+        news.description == null || news.description == ""
+            ? "내용없음"
+            : news.description.length > 40
+            ? news.description.substring(0, 40) + "..."
+            : news.description
     }</p>
     <div>${news.source.name}${news.publishedAt}</div>
   </div>
 </div>`
-    )
-    .join("");
+        )
+        .join("");
 
-  document.getElementById("news-board").innerHTML = newsHTML;
+    document.getElementById("news-board").innerHTML = newsHTML;
 };
 
 const errorRender = (errorMessage) => {
-  const errorHTML = `<div class="alert alert-danger" role = "alert">
+    const errorHTML = `<div class="alert alert-danger" role = "alert">
     ${errorMessage}
   </div>`;
 
-  document.getElementById("news-board").innerHTML = errorHTML;
+    document.getElementById("news-board").innerHTML = errorHTML;
 };
 
 const news_paginationRender = () => {
-  let news_paginationHTML = ``;
-  let news_pageGroup = Math.ceil(news_page / news_groupSize);
-  let news_lastPage = news_pageGroup * news_groupSize;
+    let news_paginationHTML = ``;
+    let news_pageGroup = Math.ceil(news_page / news_groupSize);
+    let news_lastPage = news_pageGroup * news_groupSize;
 
-  if (news_lastPage > news_totalPage) {
-    news_lastPage = news_totalPage;
-  }
-  let news_firstPage =
-    news_lastPage - (news_groupSize - 1) <= 0
-      ? 1
-      : news_lastPage - (news_groupSize - 1);
-  for (let i = news_firstPage; i <= news_lastPage; i++) {
-    news_paginationHTML += `<li class="page-item">
+    if (news_lastPage > news_totalPage) {
+        news_lastPage = news_totalPage;
+    }
+    let news_firstPage =
+        news_lastPage - (news_groupSize - 1) <= 0
+            ? 1
+            : news_lastPage - (news_groupSize - 1);
+    for (let i = news_firstPage; i <= news_lastPage; i++) {
+        news_paginationHTML += `<li class="page-item">
                         <input class="page-link" type="radio" onclick="news_moveToPage(${i})" ${
-      i == news_page ? "checked" : ""
-    } ></input>
+            i == news_page ? "checked" : ""
+        } ></input>
                        </li>`;
-  }
+    }
 
-  document.querySelector(".news-pagination").innerHTML = news_paginationHTML;
+    document.querySelector(".news-pagination").innerHTML = news_paginationHTML;
 };
 
 const news_moveToPage = (pageNum) => {
-  news_page = pageNum;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  getNews();
+    news_page = pageNum;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    getNews();
 };
 
 getLatestNews();
@@ -434,34 +435,62 @@ getLatestNews();
 
 // 스크롤 최상단으로 이동하는 애니메이션
 document.getElementById("scrollToTop").addEventListener("click", function () {
-  window.scroll({
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+    });
 });
 
 // 스크롤 위치에 따라 스크롤 최상단 버튼 표시/숨김
 window.onscroll = function () {
-  var scrollButton = document.getElementById("scrollToTop");
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    scrollButton.style.display = "flex";
-  } else {
-    scrollButton.style.display = "none";
-  }
+    var scrollButton = document.getElementById("scrollToTop");
+    if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+    ) {
+        scrollButton.style.display = "flex";
+    } else {
+        scrollButton.style.display = "none";
+    }
 };
 
 //regionend SCROLL
 
 //region DARK
-document.getElementById('dark-toggle').addEventListener("click", function() {
-  if(document.querySelector('body').classList.contains('dark-mode')){
-      document.body.classList.remove("dark-mode");
-  }else{
-      document.body.classList.add("dark-mode");
-  }
-},false);
+let darkToggle = document.querySelector("#dark-toggle");
+let switchImg = document.querySelector("#dark-toggle img");
+let logoImg = document.querySelector(".logo img");
+let body = document.querySelector("body");
+let watchListBtn = document.querySelector(".watch-list-btn");
 
+darkToggle.addEventListener(
+    "click",
+    () => {
+        if (body.classList.contains("dark-mode")) {
+            document.body.classList.remove("dark-mode");
+            switchImg.src = "../assets/images/moon.png";
+            logoImg.src = "../assets/images/logo.svg";
+        } else {
+            body.classList.add("dark-mode");
+            switchImg.src = "../assets/images/sun.png";
+            logoImg.src = "../assets/images/logo-dark.svg";
+            watchListBtn.style.backgroundColor = "#0d1421";
+            watchListBtn.style.color = "white";
+        }
+    },
+    false
+);
+
+//dark 모드시 로고
+
+//dark 토글 클릭
+
+let searchIcon = document.querySelector(".search-icon");
+
+darkToggle.addEventListener("click", () => {
+    searchIcon.style.color = "black";
+});
 //regionend DARK
 
 //region TOGGLE
