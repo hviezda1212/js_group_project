@@ -82,7 +82,15 @@ background-color: #793aff;
   height: 100%;
 }
 
-.hot-list{
+.topcoin-container{
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.list{
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -90,27 +98,37 @@ background-color: #793aff;
 
 .coin-left{
   width: 40%;
-  border: 1px solid red;
   display: flex;
   justify-content: space-between;
 }
 
 .coin-names{
   display: flex;
-  border: 1px solid blue;
+}
+
+.coin-rank{
+  font-size: 16px;
+  font-weight: 500;
+  color: #8B8B8B;
 }
 
 .coin-name{
   margin-right: 14px;
+  font-weight: 700;
 }
-/* .topcoin-container{
-width: 100%;
-height: 100%;
-border: 1px solid black;
-} */
+
+.coin-symbol{
+  font-weight: 600;
+  color: #9A9999;
+}
+
+.coin-24h{
+  font-weight: 600;
+}
+
 
 #hot-container{
-  background-color: pink;
+  /* background-color: pink; */
 }
 
 #cold-container{
