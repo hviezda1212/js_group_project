@@ -21,6 +21,11 @@ header {
     display: none;
 }
 
+ul {
+list-style-type: none;
+}
+
+/* 오늘의 하이라이트 */
 .highlights {
     width: 100%;
     display: flex;
@@ -29,12 +34,125 @@ header {
 }
 
 .highlights .highlight-area {
-    width: 474px;
-    height: 294px;
-    margin-right: 5px;
-    border: 1px solid gray;
+width: 474px;
+height: 294px;
+margin-right: 5px;
+border-radius: 10px;
+padding: 30px;
+box-sizing: border-box;
+box-shadow: 0 2px 8px #38556450;
+overflow: hidden;
 }
 
+.area-title{
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 공통 슬라이더 속성 */
+.slide-container{
+  height: 170px;
+  border: 1px solid blue;
+  overflow: hidden;
+}
+
+.slide-wrapper{
+width: 100%;
+display: flex;
+transition: transform 1s;
+}
+
+.slide-content{
+width: 100%;
+flex: 0 0 100%; 
+}
+
+.slide-pagination{
+display: flex;
+justify-content: center;
+margin-top: 15px;
+}
+
+.slide-dot{
+width: 9px;
+height: 9px;
+margin-right: 5px;
+border-radius: 50px;
+background-color: #CCCCCC;
+}
+
+.slide-dot.active{
+background-color: #793aff;
+}
+
+/* 지금, 가장 뜨거운 코인, 차가운 코인 top3 */
+.topcoin-wrapper{
+  height: 100%;
+}
+
+.topcoin-container{
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.list{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.coin-left{
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.coin-names{
+  display: flex;
+}
+
+.coin-rank{
+  font-size: 16px;
+  font-weight: 500;
+  color: #8B8B8B;
+}
+
+.coin-name{
+  margin-right: 14px;
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.coin-symbol{
+  font-weight: 600;
+  color: #9A9999;
+}
+
+.coin-24h{
+  font-weight: 600;
+}
+
+
+#hot-container{
+  background-color: pink;
+}
+
+#cold-container{
+  background-color: skyblue;
+}
+#third-container{
+  background-color: lemonchiffon;
+}
+
+/* 코인 시황 */
 .coin-chart {
     width: 1414px;
     border: 1px solid gray;
@@ -147,6 +265,13 @@ header {
     position: relative;
     cursor: pointer;
 }
+
+.greed-chart-area {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
 .greed-img {
     width: 278px;
     height: 140px;
@@ -171,6 +296,18 @@ header {
     text-align: center;
     font-family: "Courier New", Courier, monospace;
     font-weight: bold;
+}
+.input-container {
+  display: flex;
+  position: relative;
+  margin-top: 1em;
+  margin-left: 50em;
+}
+
+.search-icon {
+  position: absolute;
+  right: 37em;
+  top: 1em;
 }
 
 .watch-list-btn {
@@ -209,6 +346,19 @@ header {
     cursor: pointer;
 }
 
+.input-container {
+  display: flex;
+  position: relative;
+  margin-top: 1em;
+  margin-left: 50em;
+}
+
+.search-icon {
+  position: absolute;
+  right: 39em;
+  top: 0.8em;
+}
+
 .watch-list-btn {
     border: none;
     outline: none;
@@ -216,11 +366,35 @@ header {
     background-color: white;
 }
 
+.login-btn,
+.resister-btn {
+  width: 80px;
+  height: 37px;
+  margin-left: 1em;
+  border: 1px solid #793aff;
+  border-radius: 10px;
+  color: #793aff;
+  cursor: pointer;
+  &:hover {
+      background-color: #793aff;
+      color: white;
+  }
+
 .input-wrapper {
     display: flex;
     align-items: center;
 }
+.input-box {
+  width: 373px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 0 1em;
+  background-color: #eeeeee;
 
+  &::placeholder {
+      text-align: center;
+  }
+}
 .btn-items {
     display: flex;
     align-items: center;
@@ -240,11 +414,6 @@ header {
     left: -105px;
     top: 1px;
     display: none;
-}
-
-.news-img {
-    max-width: 100%;
-    max-height: 150px;
 }
 
 .scroll-to-top {
@@ -288,6 +457,17 @@ header {
     color: black;
 }
 
+.list-items {
+  list-style: none;
+  display: flex;
+  margin-top: 1.3em;
+}
+
+.list-items li {
+  margin: 0 2em;
+  cursor: pointer;
+  font-weight: 900;
+}
 .greed-title {
     color: black;
     font-weight: bolder;
@@ -304,6 +484,77 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.news-area{
+border:none;
+border-radius:10px;
+/* box-shadow: 0 2px 8px #38556450;
+padding:30px; */
+}
+
+.news {
+display:flex;
+}
+
+.news-title{
+display:flex;
+justify-content: space-between;
+align-items: center;
+font-weight: 700;
+}
+
+.news-title .more {
+color: #793aff; 
+font-weight: 800;
+cursor: pointer;
+}
+
+.news-img {
+width: 165px;
+height: 115px;
+}
+
+.news-pagination-nav {
+display: flex;
+justify-content: center;
+}
+.news-pagination {
+margin-top: 1.5em;
+display:flex;
+}
+
+input[type='radio'] {
+margin : 5px;
+-webkit-appearance: none; 
+-moz-appearance: none; 
+appearance: none; 
+width: 10px;
+height: 10px;
+border: none; 
+border-radius: 100% !important;
+outline: none; 
+cursor: pointer;
+background-color: #CCCCCC;
+}
+
+input[type='radio']:checked {
+background-color: #793aff; 
+border: none; 
+box-shadow: 0; 
+}
+
+input[type='radio']:hover {
+background-color: gray;
+border: none; 
+box-shadow: 0; 
+}
+
+
+/*DARK MODE*/
+.dark-toggle{
+width: 20px;
+height: 20px;
 }
 
 .dark-mode {
@@ -386,4 +637,9 @@ header {
 
 .highlights.active {
     display: none;
+}
+
+/* 모바일 버전 */
+@media screen and (max-width: 48rem) {
+
 }
