@@ -2,9 +2,9 @@
   margin: 0;
 }
 body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 header {
   min-height: 134px;
@@ -17,11 +17,11 @@ body {
   box-sizing: border-box;
 }
 #white-toggle {
-    display: none;
+  display: none;
 }
 
 ul {
-list-style-type: none;
+  list-style-type: none;
 }
 
 /* 오늘의 하이라이트 */
@@ -33,64 +33,64 @@ list-style-type: none;
 }
 
 .highlights .highlight-area {
-width: 474px;
-height: 294px;
-margin-right: 5px;
-border-radius: 10px;
-padding: 30px;
-box-sizing: border-box;
-box-shadow: 0 2px 8px #38556450;
-overflow: hidden;
+  width: 474px;
+  height: 294px;
+  margin-right: 5px;
+  border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px #38556450;
+  overflow: hidden;
 }
 
-.area-title{
+.area-title {
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 700;
 }
 
 /* 공통 슬라이더 속성 */
-.slide-container{
+.slide-container {
   height: 170px;
   border: 1px solid blue;
   overflow: hidden;
 }
 
-.slide-wrapper{
-width: 100%;
-display: flex;
-transition: transform 1s;
+.slide-wrapper {
+  width: 100%;
+  display: flex;
+  transition: transform 1s;
 }
 
-.slide-content{
-width: 100%;
-flex: 0 0 100%; 
+.slide-content {
+  width: 100%;
+  flex: 0 0 100%;
 }
 
-.slide-pagination{
-display: flex;
-justify-content: center;
-margin-top: 15px;
+.slide-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 }
 
-.slide-dot{
-width: 9px;
-height: 9px;
-margin-right: 5px;
-border-radius: 50px;
-background-color: #CCCCCC;
+.slide-dot {
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+  border-radius: 50px;
+  background-color: #cccccc;
 }
 
-.slide-dot.active{
-background-color: #793aff;
+.slide-dot.active {
+  background-color: #793aff;
 }
 
 /* 지금, 가장 뜨거운 코인, 차가운 코인 top3 */
-.topcoin-wrapper{
+.topcoin-wrapper {
   height: 100%;
 }
 
-.topcoin-container{
+.topcoin-container {
   height: 100%;
   display: flex;
   flex-flow: column;
@@ -98,29 +98,29 @@ background-color: #793aff;
   border: 1px solid black;
 }
 
-.list{
+.list {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.coin-left{
+.coin-left {
   width: 40%;
   display: flex;
   justify-content: space-between;
 }
 
-.coin-names{
+.coin-names {
   display: flex;
 }
 
-.coin-rank{
+.coin-rank {
   font-size: 16px;
   font-weight: 500;
-  color: #8B8B8B;
+  color: #8b8b8b;
 }
 
-.coin-name{
+.coin-name {
   margin-right: 14px;
   font-weight: 700;
   overflow: hidden;
@@ -130,24 +130,23 @@ background-color: #793aff;
   max-width: 100%;
 }
 
-.coin-symbol{
+.coin-symbol {
   font-weight: 600;
-  color: #9A9999;
+  color: #9a9999;
 }
 
-.coin-24h{
+.coin-24h {
   font-weight: 600;
 }
 
-
-#hot-container{
+#hot-container {
   background-color: pink;
 }
 
-#cold-container{
+#cold-container {
   background-color: skyblue;
 }
-#third-container{
+#third-container {
   background-color: lemonchiffon;
 }
 
@@ -198,47 +197,47 @@ background-color: #793aff;
   margin: 0 10em;
 }
 .list-items {
-    list-style: none;
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    margin-top: 1.5em;
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 1.5em;
 }
 .list-item {
-    margin-right: 2em;
+  margin-right: 2em;
 }
 .input-container {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 .search-icon {
-    position: absolute;
-    right: 25em;
-    top: 0.8em;
+  position: absolute;
+  right: 25em;
+  top: 0.8em;
 }
 .input-box {
-    width: 373px;
-    height: 41px;
-    border-radius: 10px;
-    padding: 0 1em;
-    margin-right: 5em;
-    background-color: #eeeeee;
-    border: none;
-    &::placeholder {
-        text-align: center;
-    }
+  width: 373px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 0 1em;
+  margin-right: 5em;
+  background-color: #eeeeee;
+  border: none;
+  &::placeholder {
+    text-align: center;
+  }
 }
 #dark-toggle {
-    display: flex;
-    position: relative;
-    right: 4.5em;
-    align-items: center;
+  display: flex;
+  position: relative;
+  right: 4.5em;
+  align-items: center;
 }
 
 .wrapper {
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item {
@@ -265,9 +264,9 @@ align-items: center;
 }
 
 .greed-chart-area {
-display: flex;
-justify-content: space-between;
-align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .greed-img {
@@ -324,8 +323,8 @@ align-items: center;
   color: #793aff;
   cursor: pointer;
   &:hover {
-      background-color: #793aff;
-      color: white;
+    background-color: #793aff;
+    color: white;
   }
 }
 
@@ -372,8 +371,8 @@ align-items: center;
   color: #793aff;
   cursor: pointer;
   &:hover {
-      background-color: #793aff;
-      color: white;
+    background-color: #793aff;
+    color: white;
   }
 }
 
@@ -389,7 +388,7 @@ align-items: center;
   background-color: #eeeeee;
 
   &::placeholder {
-      text-align: center;
+    text-align: center;
   }
 }
 .btn-items {
@@ -483,178 +482,177 @@ align-items: center;
   align-items: center;
 }
 
-.news-area{
-border:none;
-border-radius:10px;
-/* box-shadow: 0 2px 8px #38556450;
+.news-area {
+  border: none;
+  border-radius: 10px;
+  /* box-shadow: 0 2px 8px #38556450;
 padding:30px; */
 }
 
 .news {
-display:flex;
+  display: flex;
 }
 
-.news-title{
-display:flex;
-justify-content: space-between;
-align-items: center;
-font-weight: 700;
+.news-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
 }
 
 .news-title .more {
-color: #793aff; 
-font-weight: 800;
-cursor: pointer;
+  color: #793aff;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .news-img {
-width: 165px;
-height: 115px;
+  width: 165px;
+  height: 115px;
 }
 
 .news-pagination-nav {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .news-pagination {
-margin-top: 1.5em;
-display:flex;
+  margin-top: 1.5em;
+  display: flex;
 }
 
-input[type='radio'] {
-margin : 5px;
--webkit-appearance: none; 
--moz-appearance: none; 
-appearance: none; 
-width: 10px;
-height: 10px;
-border: none; 
-border-radius: 100% !important;
-outline: none; 
-cursor: pointer;
-background-color: #CCCCCC;
+input[type="radio"] {
+  margin: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 100% !important;
+  outline: none;
+  cursor: pointer;
+  background-color: #cccccc;
 }
 
-input[type='radio']:checked {
-background-color: #793aff; 
-border: none; 
-box-shadow: 0; 
+input[type="radio"]:checked {
+  background-color: #793aff;
+  border: none;
+  box-shadow: 0;
 }
 
-input[type='radio']:hover {
-background-color: gray;
-border: none; 
-box-shadow: 0; 
+input[type="radio"]:hover {
+  background-color: gray;
+  border: none;
+  box-shadow: 0;
 }
-
 
 /*DARK MODE*/
-.dark-toggle{
-width: 20px;
-height: 20px;
+.dark-toggle {
+  width: 20px;
+  height: 20px;
 }
 
 .dark-mode {
-background-color: #0D1421;
-color: white;
+  background-color: #0d1421;
+  color: white;
 }
 
-.dark-mode .scroll-to-top{
-position: fixed;
-right: 16px;
-bottom: 76px;
-width: 50px;
-height: 50px;
-display: inline-flex;
--webkit-box-pack: center;
-justify-content: center;
--webkit-box-align: center;
-align-items: center;
-background: white;
-color: rgb(255, 255, 255);
-border-radius: 100%;
-user-select: none;
-cursor: pointer;
-opacity: 0;
-transition: opacity 0.3s ease-in-out 0s;
-z-index: 9999;
-opacity: 0.85;
-outline: none;
-align-items: center;
-justify-items: center;
+.dark-mode .scroll-to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 76px;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background: white;
+  color: rgb(255, 255, 255);
+  border-radius: 100%;
+  user-select: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out 0s;
+  z-index: 9999;
+  opacity: 0.85;
+  outline: none;
+  align-items: center;
+  justify-items: center;
 }
 
 .dark-mode .icon-up {
-height: 30px;
-width: 30px;
-color: rgb(255, 255, 255);
-background-image: url(../assets/images/up_black.png);
+  height: 30px;
+  width: 30px;
+  color: rgb(255, 255, 255);
+  background-image: url(../assets/images/up_black.png);
 }
 
-.dark-mode .highlight-area{
-background-color:#222531
+.dark-mode .highlight-area {
+  background-color: #222531;
 }
 
 .toggleSwitch {
-width: 100px;
-margin: 30px;
-height: 50px;
-display: block;
-position: relative;
-border-radius: 30px;
-background-color: #fff;
-box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
-cursor: pointer;
+  width: 100px;
+  margin: 30px;
+  height: 50px;
+  display: block;
+  position: relative;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  cursor: pointer;
 }
 
 .toggleSwitch .toggleButton {
-width: 40px;
-height: 40px;
-position: absolute;
-top: 50%;
-left: 4px;
-transform: translateY(-50%);
-border-radius: 50%;
-background: #793aff;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #793aff;
 }
 
 .toggleSwitch.active {
-background: #793aff;
+  background: #793aff;
 }
 
 .toggleSwitch.active .toggleButton {
-left: calc(100% - 44px);
-background: #fff !important;
+  left: calc(100% - 44px);
+  background: #fff !important;
 }
 
-.toggleSwitch, .toggleButton {
-transition: all 0.2s ease-in;
+.toggleSwitch,
+.toggleButton {
+  transition: all 0.2s ease-in;
 }
 
 .highlights.active {
-display:none;
+  display: none;
 }
 
-.coin-img-size{
+.coin-img-size {
   height: 24px;
   width: 24px;
   border-radius: 12px;
   margin-right: 5px;
 }
 
-.higher{
-  color: green
+.higher {
+  color: green;
 }
 
-.lower{
-  color: red
+.lower {
+  color: red;
 }
 
-.same{
+.same {
   color: black;
 }
 
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
-
 }
