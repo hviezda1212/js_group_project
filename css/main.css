@@ -36,14 +36,16 @@ overflow: hidden;
 }
 
 .area-title{
+  margin-bottom: 20px;
   font-size: 20px;
   font-weight: 700;
 }
 
 /* 공통 슬라이더 속성 */
 .slide-container{
-border: 1px solid blue;
-overflow: hidden;
+  height: 170px;
+  border: 1px solid blue;
+  overflow: hidden;
 }
 
 .slide-wrapper{
@@ -60,7 +62,7 @@ flex: 0 0 100%;
 .slide-pagination{
 display: flex;
 justify-content: center;
-margin-top: 10px;
+margin-top: 15px;
 }
 
 .slide-dot{
@@ -76,10 +78,19 @@ background-color: #793aff;
 }
 
 /* 지금, 가장 뜨거운 코인, 차가운 코인 top3 */
-.topcoin-container{
-width: 100%;
-border: 1px solid black;
+.topcoin-wrapper{
+  height: 100%;
 }
+
+.coin-left{
+  display: flex;
+  justify-content: flex-start;
+}
+/* .topcoin-container{
+width: 100%;
+height: 100%;
+border: 1px solid black;
+} */
 
 #hot-container{
   background-color: pink;

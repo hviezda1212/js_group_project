@@ -475,42 +475,42 @@ document.querySelector(".toggleSwitch").addEventListener("click", function() {
 //regionend TOGGLE
 
 // 슬라이드 기능
-const swiper = document.querySelector('.slide-wrapper');
-const bullets = document.querySelectorAll('.slide-dot');
+// const swiper = document.querySelector('.slide-wrapper');
+// const bullets = document.querySelectorAll('.slide-dot');
 
-let currentSlide = 0;
+// let currentSlide = 0;
 
-const showSlide = (slideIndex) => {
-  const slideWidth = document.querySelector('.slide-content').offsetWidth;
-  swiper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
-  currentSlide = slideIndex;
+// const showSlide = (slideIndex) => {
+//   const slideWidth = document.querySelector('.slide-content').offsetWidth;
+//   swiper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+//   currentSlide = slideIndex;
 
-  bullets.forEach((bullet, index) => {
-    if(index === currentSlide){
-      bullet.classList.add('active');
-    }else{
-      bullet.classList.remove('active');
-    }
-  })
-}
+//   bullets.forEach((bullet, index) => {
+//     if(index === currentSlide){
+//       bullet.classList.add('active');
+//     }else{
+//       bullet.classList.remove('active');
+//     }
+//   })
+// }
 
-bullets.forEach((bullet, index) => {
-  bullet.addEventListener('click', () => {
-    showSlide(index);
-  })
-})
+// bullets.forEach((bullet, index) => {
+//   bullet.addEventListener('click', () => {
+//     showSlide(index);
+//   })
+// })
 
-// 오토 슬라이드
-const intervalDuration = 5000;
+// // 오토 슬라이드
+// const intervalDuration = 5000;
 
-// 슬라이드 변경 함수
-const autoSlide = () => {
-  const nextSlide = (currentSlide + 1) % bullets.length;
-  showSlide(nextSlide);
-}
+// // 슬라이드 변경 함수
+// const autoSlide = () => {
+//   const nextSlide = (currentSlide + 1) % bullets.length;
+//   showSlide(nextSlide);
+// }
 
-// 자동 슬라이드 설정(
-const autoSlideInterval = setInterval(autoSlide, intervalDuration);
+// // 자동 슬라이드 설정(
+// const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
 
-showSlide(0);
+// showSlide(0);
