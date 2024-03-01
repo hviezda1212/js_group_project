@@ -1,5 +1,6 @@
 // const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
 //const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+const apiKey = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 const url =
     "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
@@ -149,7 +150,7 @@ function Main(delay) {
 Main(20000);
 
 
-// 가장 뜨거운 코인 top3
+// 가장 뜨거운 코인, 가장 차가운 코인 top3
 const topCoinRender = () => {
   // hot top3
   const hotList = coinList.slice(0,3);
@@ -168,7 +169,26 @@ const topCoinRender = () => {
   </tr>`
   }
   document.getElementById("hot-container").innerHTML = hotHTML;
+
+  // cold top3
+  const coldList = coinList.slice(-3);
+  console.log("coldList: " + coldList) 
+  let coldHTML = "";
+  
+  for(i=0; i<coldList.length; i++){
+    coldHTML += 
+    ` <tr class="cold-list list">
+      <td>${coldList.indexOf(coldList[i])+1}</td>
+      <td id = "name">${coldList[i]["name"]}</td>
+      <td id = "symbol">${coldList[i]["symbol"]}</td>
+      <td id = "24h">${
+        coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+      }</td>
+    </tr>`
+  }
+  document.getElementById("cold-container").innerHTML = coldHTML;
 }
+
 
 
 //const APIKEY = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";

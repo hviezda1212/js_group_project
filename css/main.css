@@ -42,7 +42,6 @@ overflow: hidden;
 
 .slide-wrapper{
 width: 100%;
-background-color: pink;
 display: flex;
 transition: transform 1s;
 }
@@ -76,6 +75,16 @@ width: 100%;
 border: 1px solid black;
 }
 
+#hot-container{
+  background-color: pink;
+}
+
+#cold-container{
+  background-color: skyblue;
+}
+#third-container{
+  background-color: lemonchiffon;
+}
 
 /* 코인 시황 */
 .coin-chart {
