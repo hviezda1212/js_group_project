@@ -129,19 +129,19 @@ const paginationRender = () => {
     document.querySelector(".pagination").innerHTML = paginationHTML;
 };
 
-// const moveToPage = (pageNum) => {
-//     getData();
-//     page = pageNum;
-// };
+const moveToPage = (pageNum) => {
+    getData();
+    page = pageNum;
+};
 
-// function Main(delay) {
-//     getData();
-//     setInterval(() => {
-//         getData();
-//     }, delay);
-// }
-// //20초마다 코인 정보를 업데이트한다
-// Main(20000);
+function Main(delay) {
+    getData();
+    setInterval(() => {
+        getData();
+    }, delay);
+}
+//20초마다 코인 정보를 업데이트한다
+Main(20000);
 
 // 가장 뜨거운 코인 top3
 const getHotTop = async () => {
@@ -150,7 +150,7 @@ const getHotTop = async () => {
 };
 getData();
 
-//const APIKEY = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinListItems = []; // 코인 정보를 담을 배열
 
 const inputBox = document.querySelector(".input-box");
@@ -177,7 +177,7 @@ const getlist = async (keyword) => {
             },
         });
         const data = await res.json();
-        coinList = data.data.filter(
+        coinListItems = data.data.filter(
             (e) =>
                 e.symbol.includes(keyword) ||
                 e.name.toUpperCase().includes(keyword)
@@ -409,18 +409,36 @@ window.onscroll = function () {
 //regionend SCROLL
 
 //region DARK
-document.getElementById("dark-toggle").addEventListener(
+let darkToggle = document.querySelector("#dark-toggle");
+let switchImg = document.querySelector("#dark-toggle img");
+let logoImg = document.querySelector(".logo img");
+let body = document.querySelector("body");
+
+darkToggle.addEventListener(
     "click",
-    function () {
-        if (document.querySelector("body").classList.contains("dark-mode")) {
+    () => {
+        if (body.classList.contains("dark-mode")) {
             document.body.classList.remove("dark-mode");
+            switchImg.src = "../assets/images/moon.png";
+            logoImg.src = "../assets/images/logo.svg";
         } else {
-            document.body.classList.add("dark-mode");
+            body.classList.add("dark-mode");
+            switchImg.src = "../assets/images/sun.png";
+            logoImg.src = "../assets/images/logo-dark.svg";
         }
     },
     false
 );
 
+//dark 모드시 로고
+
+//dark 토글 클릭
+
+let searchIcon = document.querySelector(".search-icon");
+
+darkToggle.addEventListener("click", () => {
+    searchIcon.style.color = "black";
+});
 //regionend DARK
 
 //region TOGGLE
@@ -445,4 +463,3 @@ document.querySelector(".toggleSwitch").addEventListener(
     },
     false
 );
-//regionend TOGGLE

@@ -1,19 +1,24 @@
 * {
     margin: 0;
 }
-header {
-    min-height: 134px;
-    border: 1px solid gray;
-    margin-bottom: 100px;
-}
 body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+header {
+    min-height: 134px;
+    border: 1px solid gray;
+    margin-bottom: 100px;
+}
 
-ul {
-  list-style-type: none;
+#dark-toggle {
+    position: relative;
+    right: 5em;
+    cursor: pointer;
+}
+#white-toggle {
+    display: none;
 }
 
 .highlights {
@@ -24,10 +29,10 @@ ul {
 }
 
 .highlights .highlight-area {
-  width: 474px;
-  height: 294px;
-  margin-right: 5px;
-  border-radius: 10px;
+    width: 474px;
+    height: 294px;
+    margin-right: 5px;
+    border: 1px solid gray;
 }
 
 .coin-chart {
@@ -70,16 +75,52 @@ ul {
 .navbar-container {
     display: flex;
     justify-content: space-around;
-    margin: 2em 2em;
+    align-items: center;
+    margin-top: 2em;
 }
-.btn-items {
-    margin: 0 10em;
+.list-items-container {
+    margin-right: 40em;
+}
+.list-items {
+    list-style: none;
+    display: flex;
+    cursor: pointer;
+}
+.list-item {
+    margin-right: 2em;
+}
+.input-container {
+    display: flex;
+    position: relative;
+}
+.search-icon {
+    position: absolute;
+    right: 25em;
+    top: 0.8em;
+}
+.input-box {
+    width: 373px;
+    height: 41px;
+    border-radius: 10px;
+    padding: 0 1em;
+    margin-right: 5em;
+    background-color: #eeeeee;
+    border: none;
+    &::placeholder {
+        text-align: center;
+    }
+}
+#dark-toggle {
+    display: flex;
+    position: relative;
+    right: 4.5em;
+    align-items: center;
 }
 
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.star-btn {
+    border: none;
+    color: yellow;
+    background-color: white;
 }
 
 .item {
@@ -104,13 +145,6 @@ ul {
     position: relative;
     cursor: pointer;
 }
-
-.greed-chart-area {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .greed-img {
     width: 278px;
     height: 140px;
@@ -136,18 +170,6 @@ ul {
     font-family: "Courier New", Courier, monospace;
     font-weight: bold;
 }
-.input-container {
-    display: flex;
-    position: relative;
-    margin-top: 1em;
-    margin-left: 50em;
-}
-
-.search-icon {
-    position: absolute;
-    right: 37em;
-    top: 1em;
-}
 
 .watch-list-btn {
     border: none;
@@ -163,6 +185,7 @@ ul {
     border: 1px solid #793aff;
     border-radius: 10px;
     color: #793aff;
+    font-size: 0.9rem;
     cursor: pointer;
     &:hover {
         background-color: #793aff;
@@ -175,9 +198,6 @@ ul {
     justify-content: center;
 }
 
-.coin-chart {
-}
-
 .fav-button {
     border: none;
     background-color: none;
@@ -187,55 +207,18 @@ ul {
     cursor: pointer;
 }
 
-.input-container {
-    display: flex;
-    position: relative;
-    margin-top: 1em;
-    margin-left: 50em;
-}
-
-.search-icon {
-    position: absolute;
-    right: 39em;
-    top: 0.8em;
-}
-
 .watch-list-btn {
     border: none;
     outline: none;
     margin-right: 1em;
-}
-
-.login-btn,
-.resister-btn {
-    width: 80px;
-    height: 37px;
-    margin-left: 1em;
-    border: 1px solid #793aff;
-    border-radius: 10px;
-    color: #793aff;
-    cursor: pointer;
-    &:hover {
-        background-color: #793aff;
-        color: white;
-    }
+    background-color: white;
 }
 
 .input-wrapper {
     display: flex;
     align-items: center;
 }
-.input-box {
-    width: 373px;
-    height: 41px;
-    border-radius: 10px;
-    padding: 0 1em;
-    background-color: #eeeeee;
 
-    &::placeholder {
-        text-align: center;
-    }
-}
 .btn-items {
     display: flex;
     align-items: center;
@@ -255,6 +238,11 @@ ul {
     left: -105px;
     top: 1px;
     display: none;
+}
+
+.news-img {
+    max-width: 100%;
+    max-height: 150px;
 }
 
 .scroll-to-top {
@@ -298,17 +286,6 @@ ul {
     color: black;
 }
 
-.list-items {
-    list-style: none;
-    display: flex;
-    margin-top: 1.3em;
-}
-
-.list-items li {
-    margin: 0 2em;
-    cursor: pointer;
-    font-weight: 900;
-}
 .greed-title {
     color: black;
     font-weight: bolder;
@@ -327,154 +304,84 @@ ul {
     align-items: center;
 }
 
-.news-area{
-  border:none;
-  border-radius:10px;
-  box-shadow: 0 2px 8px #38556450;
-  padding:30px;
-}
-
-.news {
-  display:flex;
-}
-
-.news-title{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 700;
-}
-
-.news-title .more {
-  color: #793aff; 
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.news-img {
-  width: 165px;
-  height: 115px;
-}
-
-.news-pagination-nav {
-  display: flex;
-  justify-content: center;
-}
-.news-pagination {
-  margin-top: 1.5em;
-  display:flex;
-}
-
-input[type='radio'] {
-  margin : 5px;
-  -webkit-appearance: none; 
-  -moz-appearance: none; 
-  appearance: none; 
-  width: 10px;
-  height: 10px;
-  border: none; 
-  border-radius: 100% !important;
-  outline: none; 
-  cursor: pointer;
-  background-color: #CCCCCC;
-}
-
-input[type='radio']:checked {
-  background-color: #793aff; 
-  border: none; 
-  box-shadow: 0; 
-}
-
-input[type='radio']:hover {
-  background-color: gray;
-  border: none; 
-  box-shadow: 0; 
-}
-
-
-/*DARK MODE*/
-.dark-toggle{
-  width: 20px;
-  height: 20px;
-}
-
 .dark-mode {
-  background-color: #0D1421;
-  color: white;
+    background-color: #0d1421;
+    color: white;
 }
 
-.dark-mode .scroll-to-top{
-  position: fixed;
-  right: 16px;
-  bottom: 76px;
-  width: 50px;
-  height: 50px;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  background: white;
-  color: rgb(255, 255, 255);
-  border-radius: 100%;
-  user-select: none;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out 0s;
-  z-index: 9999;
-  opacity: 0.85;
-  outline: none;
-  align-items: center;
-  justify-items: center;
+.dark-mode .scroll-to-top {
+    position: fixed;
+    right: 16px;
+    bottom: 76px;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background: white;
+    color: rgb(255, 255, 255);
+    border-radius: 100%;
+    user-select: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out 0s;
+    z-index: 9999;
+    opacity: 0.85;
+    outline: none;
+    align-items: center;
+    justify-items: center;
 }
 
 .dark-mode .icon-up {
-  height: 30px;
-  width: 30px;
-  color: rgb(255, 255, 255);
-  background-image: url(../assets/images/up_black.png);
+    height: 30px;
+    width: 30px;
+    color: rgb(255, 255, 255);
+    background-image: url(../assets/images/up_black.png);
 }
 
-.dark-mode .highlight-area{
-  background-color:#222531
+.dark-mode .highlight-area {
+    background-color: #222531;
 }
 
 .toggleSwitch {
-  width: 100px;
-  margin: 30px;
-  height: 50px;
-  display: block;
-  position: relative;
-  border-radius: 30px;
-  background-color: #fff;
-  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
-  cursor: pointer;
+    width: 100px;
+    margin: 30px;
+    height: 50px;
+    display: block;
+    position: relative;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+    cursor: pointer;
 }
 
 .toggleSwitch .toggleButton {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 50%;
-  left: 4px;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  background: #793aff;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: #793aff;
 }
 
 .toggleSwitch.active {
-  background: #793aff;
+    background: #793aff;
 }
 
 .toggleSwitch.active .toggleButton {
-  left: calc(100% - 44px);
-  background: #fff !important;
+    left: calc(100% - 44px);
+    background: #fff !important;
 }
 
-.toggleSwitch, .toggleButton {
-  transition: all 0.2s ease-in;
+.toggleSwitch,
+.toggleButton {
+    transition: all 0.2s ease-in;
 }
 
 .highlights.active {
-  display:none;
+    display: none;
 }
