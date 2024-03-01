@@ -82,9 +82,26 @@ background-color: #793aff;
   height: 100%;
 }
 
-.coin-left{
+.hot-list{
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+
+.coin-left{
+  width: 40%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+}
+
+.coin-names{
+  display: flex;
+  border: 1px solid blue;
+}
+
+.coin-name{
+  margin-right: 14px;
 }
 /* .topcoin-container{
 width: 100%;
