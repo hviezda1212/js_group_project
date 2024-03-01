@@ -85,6 +85,8 @@ header {
     list-style: none;
     display: flex;
     cursor: pointer;
+    align-items: center;
+    margin-top: 1.5em;
 }
 .list-item {
     margin-right: 2em;

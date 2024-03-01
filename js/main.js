@@ -413,6 +413,7 @@ let darkToggle = document.querySelector("#dark-toggle");
 let switchImg = document.querySelector("#dark-toggle img");
 let logoImg = document.querySelector(".logo img");
 let body = document.querySelector("body");
+let watchListBtn = document.querySelector(".watch-list-btn");
 
 darkToggle.addEventListener(
     "click",
@@ -425,6 +426,8 @@ darkToggle.addEventListener(
             body.classList.add("dark-mode");
             switchImg.src = "../assets/images/sun.png";
             logoImg.src = "../assets/images/logo-dark.svg";
+            watchListBtn.style.backgroundColor = "#0d1421";
+            watchListBtn.style.color = "white";
         }
     },
     false
