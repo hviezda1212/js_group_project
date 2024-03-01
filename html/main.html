@@ -206,7 +206,13 @@
               <th>유통량</th>
             </tr>
           </thead>
-          <tbody id="table-data"></tbody>
+          <tbody id="table-data">
+            <tr>
+              <td class="favorite-icon" onclick="redirectToWatchList(`${i}`)">
+                <i class="fa-regular fa-star"></i>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </section>
       <nav aria-label="Page navigation example">

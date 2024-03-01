@@ -74,45 +74,103 @@ const getData = async () => {
 
 const render = () => {
   let tableHTML = "";
-  for (i = 0; i < coinList.length; i++) {
-    coinSymbol = coinList[i]["symbol"];
-    coinPrice = coinList[i]["quote"].USD["price"];
-    tableHTML += `            <tr>
-        <td id = "favorite"><button class = "fav-button"><i class="fa-regular fa-star"></i></button></td>
-        <td id = "rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-        <td id = "name"><img class = "coin-img-size" src ='https://s2.coinmarketcap.com/static/img/coins/64x64/${
-          coinList[i]["id"]
-        }.png'></img><span>${coinList[i]["name"]}</span></td>
-        <td id = "symbol">${coinList[i]["symbol"]}</td>
-        <td id = "price">${checkPriceChange(coinPrice, coinSymbol)}</td>
-        <td id = "1h">${
-          coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"
-        }</td>
-        <td id = "24h">${
-          coinList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-        }</td>
-        <td id = "7d">${
-          coinList[i]["quote"].USD["percent_change_7d"].toFixed(2) + "%"
-        }</td>
-        <td id = "market-cap">${
-          "$" +
-          Math.floor(coinList[i]["quote"].USD["market_cap"]).toLocaleString()
-        }</td>
-        <td id = "volume">${
-          "$" +
-          Math.floor(coinList[i]["quote"].USD["volume_24h"]).toLocaleString()
-        }</td>
-        <td id = "circulating-supply">${
-          Math.floor(coinList[i]["circulating_supply"]).toLocaleString() +
-          " " +
-          coinList[i]["symbol"]
-        }</td>
-    </tr>`;
-    currentPrice = coinList[i]["quote"].USD["price"];
+  for (let i = 0; i < coinList.length; i++) {
+    const coin = coinList[i];
+    const coinSymbol = coin["symbol"];
+    const coinPrice = coin["quote"].USD["price"];
+    tableHTML += `            
+        <tr>
+            <td id="favorite"><button class="fav-button" onclick="redirectToWatchList(${i})"><i class="fa-regular fa-star"></i></button></td>
+            <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+            <td id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coin["id"]}.png'></img><span>${coin["name"]}</span></td>
+            <td id="symbol">${coin["symbol"]}</td>
+            <td id="price">${"$" + coin["quote"].USD["price"].toLocaleString('en-US', { maximumFractionDigits: 2 })}</td>
+            <td id="1h">${coin["quote"].USD["percent_change_1h"].toFixed(2) + "%"}</td>
+            <td id="24h">${coin["quote"].USD["percent_change_24h"].toFixed(2) + "%"}</td>
+            <td id="7d">${coin["quote"].USD["percent_change_7d"].toFixed(2) + "%"}</td>
+            <td id="market-cap">${"$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()}</td>
+            <td id="volume">${"$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()}</td>
+            <td id="circulating-supply">${Math.floor(coin["circulating_supply"]).toLocaleString() + " " + coin["symbol"]}</td>
+        </tr>`;
+    currentPrice = coin["quote"].USD["price"];
   }
   document.getElementById("table-data").innerHTML = tableHTML;
-  // console.log(tableHTML);
 };
+
+// const render = () => {
+//   let tableHTML = "";
+//   for (let i = 0; i < coinList.length; i++) {
+//     coinSymbol = coinList[i]["symbol"];
+//     coinPrice = coinList[i]["quote"].USD["price"];
+//     tableHTML += `            
+//         <tr>
+//             <td id="favorite"><button class="fav-button"><i class="fa-regular fa-star"></i></button></td>
+//             <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+//             <td id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coinList[i]["id"]}.png'></img><span>${coinList[i]["name"]}</span></td>
+//             <td id="symbol">${coinList[i]["symbol"]}</td>
+//             <td id="price">${checkPriceChange(coinPrice, coinSymbol)}</td>
+//             <td id="1h">${coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"}</td>
+//             <td id="24h">${coinList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"}</td>
+//             <td id="7d">${coinList[i]["quote"].USD["percent_change_7d"].toFixed(2) + "%"}</td>
+//             <td id="market-cap">${"$" + Math.floor(coinList[i]["quote"].USD["market_cap"]).toLocaleString()}</td>
+//             <td id="volume">${"$" + Math.floor(coinList[i]["quote"].USD["volume_24h"]).toLocaleString()}</td>
+//             <td id="circulating-supply">${Math.floor(coinList[i]["circulating_supply"]).toLocaleString() + " " + coinList[i]["symbol"]}</td>
+//         </tr>`;
+//     currentPrice = coinList[i]["quote"].USD["price"];
+//   }
+//   document.getElementById("table-data").innerHTML = tableHTML;
+// };
+
+// const render = () => {
+//   let tableHTML = "";
+//   for (i = 0; i < coinList.length; i++) {
+//     coinSymbol = coinList[i]["symbol"];
+//     coinPrice = coinList[i]["quote"].USD["price"];
+//     tableHTML += `            <tr>
+//         <td id = "favorite"><button class = "fav-button"><i class="fa-regular fa-star"></i></button></td>
+//         <td id = "rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+//         <td id = "name"><img class = "coin-img-size" src ='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+//           coinList[i]["id"]
+//         }.png'></img><span>${coinList[i]["name"]}</span></td>
+//         <td id = "symbol">${coinList[i]["symbol"]}</td>
+//         <td id = "price">${checkPriceChange(coinPrice, coinSymbol)}</td>
+//         <td id = "1h">${
+//           coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"
+//         }</td>
+//         <td id = "24h">${
+//           coinList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+//         }</td>
+//         <td id = "7d">${
+//           coinList[i]["quote"].USD["percent_change_7d"].toFixed(2) + "%"
+//         }</td>
+//         <td id = "market-cap">${
+//           "$" +
+//           Math.floor(coinList[i]["quote"].USD["market_cap"]).toLocaleString()
+//         }</td>
+//         <td id = "volume">${
+//           "$" +
+//           Math.floor(coinList[i]["quote"].USD["volume_24h"]).toLocaleString()
+//         }</td>
+//         <td id = "circulating-supply">${
+//           Math.floor(coinList[i]["circulating_supply"]).toLocaleString() +
+//           " " +
+//           coinList[i]["symbol"]
+//         }</td>
+//     </tr>`;
+//     currentPrice = coinList[i]["quote"].USD["price"];
+//   }
+//   document.getElementById("table-data").innerHTML = tableHTML;
+//   // console.log(tableHTML);
+// };
+
+function redirectToWatchList(index) {
+  const clickedCoin = coinList[index];
+  let clickedCoins = JSON.parse(localStorage.getItem('clickedCoins')) || [];
+  clickedCoins.push(clickedCoin);
+  localStorage.setItem('clickedCoins', JSON.stringify(clickedCoins));
+  console.log("clickedCoins", clickedCoins);
+  window.location.href = 'watchList.html';
+}
 
 const checkPriceChange = (price, symbol) => {
   if (price > prevPriceList[symbol][prevPriceList[symbol].length - 2]) {
