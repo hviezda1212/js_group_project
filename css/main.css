@@ -113,6 +113,7 @@ ul {
 }
 
 .coin-names {
+  width: 80%;
   display: flex;
 }
 
