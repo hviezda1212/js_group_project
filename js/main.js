@@ -1,4 +1,4 @@
- const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
+// const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=4000";
