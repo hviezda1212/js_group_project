@@ -423,10 +423,7 @@ getlist();
 let news_List = [];
 let articles = [];
 let news_page = 1;
-let news_totalPage = 1;
-let news_totalResult = 0;
-const NEWS_PAGE_SIZE = 1;
-const news_groupSize = 3;
+const NEWS_PAGE_SIZE = 3;
 
 let news_url = new URL(`https://noonanewsapi.netlify.app/top-headlines?`);
 
@@ -439,64 +436,55 @@ const getNews = async () => {
     if (response.status === 200) {
       if (data.articles.length == 0) {
         news_page = 0;
-        news_totalPage = 0;
-        news_paginationRender();
         throw new Error("No result for this search");
       }
       news_List = data.articles;
       news_totalPage = 3;
-      news_totalResult = data.totalResults;
       news_render();
-      news_paginationRender();
     } else {
       news_page = 0;
-      news_totalPage = 0;
-      news_paginationRender();
       throw new Error(data.message);
     }
   } catch (error) {
     console.log("error", error.message);
     news_page = 0;
-    news_totalPage = 0;
-    news_paginationRender();
     errorRender(error.message);
   }
 };
 
 const getLatestNews = async () => {
   news_url = new URL(
-    `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=1`
+    `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=${NEWS_PAGE_SIZE}`
   );
   getNews();
 };
 
 const news_render = () => {
-  const newsHTML = news_List
-    .map(
-      (news) => `        <div class="news">
-  <div class="img-area">
-    <img class="news-img" src=${news.urlToImage} />
-  </div>
-  <div class="text-area">
-    <div class="news-title">${
-      news.title == null || news.title == ""
-        ? "내용없음"
-        : news.title.length > 33
-        ? news.title.substring(0, 33)
-        : news.title
-    }</div>
-    <p>${
-      news.description == null || news.description == ""
-        ? "내용없음"
-        : news.description.length > 40
-        ? news.description.substring(0, 40) + "..."
-        : news.description
-    }</p>
-    <div>${news.source.name}${news.publishedAt}</div>
-  </div>
-</div>`
-    )
-    .join("");
+  let newsHTML = ``;
+    for (let i = 0; i <= NEWS_PAGE_SIZE - 1; i++) {
+      newsHTML += `<div class="news news_slide-content">
+      <div class="img-area">
+        <img class="news-img" src=${news_List[i].urlToImage} />
+      </div>
+      <div class="text-area">
+        <div class="news-title">${
+          news_List[i].title == null || news_List[i].title == ""
+            ? "내용없음"
+            : news_List[i].title.length > 33
+            ? news_List[i].title.substring(0, 33)
+            : news_List[i].title
+        }</div>
+        <p>${
+          news_List[i].description == null || news_List[i].description == ""
+            ? "내용없음"
+            : news_List[i].description.length > 40
+            ? news_List[i].description.substring(0, 40) + "..."
+            : news_List[i].description
+        }</p>
+        <div>${news_List[i].source.name}${news_List[i].publishedAt}</div>
+      </div>
+    </div>`;
+    }
 
   document.getElementById("news-board").innerHTML = newsHTML;
 };
@@ -507,35 +495,6 @@ const errorRender = (errorMessage) => {
   </div>`;
 
   document.getElementById("news-board").innerHTML = errorHTML;
-};
-
-const news_paginationRender = () => {
-  let news_paginationHTML = ``;
-  let news_pageGroup = Math.ceil(news_page / news_groupSize);
-  let news_lastPage = news_pageGroup * news_groupSize;
-
-  if (news_lastPage > news_totalPage) {
-    news_lastPage = news_totalPage;
-  }
-  let news_firstPage =
-    news_lastPage - (news_groupSize - 1) <= 0
-      ? 1
-      : news_lastPage - (news_groupSize - 1);
-  for (let i = news_firstPage; i <= news_lastPage; i++) {
-    news_paginationHTML += `<li class="page-item">
-                        <input class="page-link" type="radio" onclick="news_moveToPage(${i})" ${
-      i == news_page ? "checked" : ""
-    } ></input>
-                       </li>`;
-  }
-
-  document.querySelector(".news-pagination").innerHTML = news_paginationHTML;
-};
-
-const news_moveToPage = (pageNum) => {
-  news_page = pageNum;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  getNews();
 };
 
 getLatestNews();
@@ -662,3 +621,55 @@ const autoSlide = () => {
 const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
 showSlide(0);
+
+// 뉴스 슬라이드 기능
+const news_swiper = document.querySelector(".news_slide-wrapper");
+const news_bullets = document.querySelectorAll(".news_slide-dot");
+const news_nextSlide = (currentSlide + 1) % news_bullets.length;
+let sliderClone = news_swiper.firstElementChild.cloneNode(true);
+let sliderInterval = 2000;  
+const news_slideWidth = document.querySelector(".news_slide-content").offsetWidth;
+
+let news_currentIndex = 0;
+let news_currentSlide = 0;
+
+news_swiper.appendChild(sliderClone);
+
+    function sliderEffect(){
+      news_currentIndex++;
+
+      news_swiper.style.transition = "all 0.6s";
+        news_swiper.style.transform = `translateX(-${news_slideWidth * news_currentIndex}px)`;
+
+        // 마지막 이미지에 위치했을 때 
+        if(news_currentIndex == news_nextSlide){
+            setTimeout(() => {
+              news_swiper.style.transition = "0s";
+              news_swiper.style.transform = `translateX(0px)`;
+            }, 700);
+            news_currentIndex = 0;
+        }
+    };
+
+    setInterval(sliderEffect, sliderInterval);
+
+
+  news_bullets.forEach((bullet, index) => {
+    if (index === news_currentSlide) {
+      bullet.classList.add("active");
+    } else {
+      bullet.classList.remove("active");
+    }
+  });
+
+
+news_bullets.forEach((bullet, index) => {
+  bullet.addEventListener("click", () => {
+    news_showSlide(index);
+  });
+});
+
+sliderEffect();
+
+news_showSlide(0);
+

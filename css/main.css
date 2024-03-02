@@ -49,6 +49,7 @@ ul {
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 700;
+  display:flex;
 }
 
 /* 공통 슬라이더 속성 */
@@ -81,10 +82,55 @@ ul {
   margin-right: 5px;
   border-radius: 50px;
   background-color: #cccccc;
+  cursor:pointer;
 }
 
 .slide-dot.active {
   background-color: #793aff;
+}
+
+.slide-dot:hover {
+  background-color: gray;
+}
+
+.news_slide-container {
+  height: 170px;
+  border: 1px solid blue;
+  overflow: hidden;
+}
+
+.news_slide-wrapper {
+  width: 100%;
+  display: flex;
+  transition: transform 1s;
+}
+
+.news_slide-content {
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+.news_slide-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.news_slide-dot {
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+  border-radius: 50px;
+  background-color: #cccccc;
+  cursor:pointer;
+}
+
+.news_slide-dot.active {
+  background-color: #793aff;
+}
+
+.news_slide-dot:hover {
+  background-color: gray;
 }
 
 /* 지금, 가장 뜨거운 코인, 차가운 코인 top3 */
@@ -498,8 +544,10 @@ ul {
 .news-area {
   border: none;
   border-radius: 10px;
-  /* box-shadow: 0 2px 8px #38556450;
-padding:30px; */
+}
+
+.more {
+  color: #793aff;
 }
 
 .news {
