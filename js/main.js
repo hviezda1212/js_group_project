@@ -519,14 +519,18 @@ logoClick.addEventListener("click", () => {
 });
 
 //즐겨찾기 마우스 hover했을 때, 노란색 이미지로 변경
-let mouseOver = document.querySelector(".star-img");
-mouseOver.addEventListener("mouseover", function () {
-    this.src = "../assets/images/star-active.png";
-});
 //즐겨찾기 마우스 out 할 때, 본 이미지로 변경
-mouseOver.addEventListener("mouseout", function () {
-    this.src = "../assets/images/star.png";
-});
+const starImg = document.querySelector(".star-img");
+
+starImg.addEventListener("mouseover", toggleStarImage);
+starImg.addEventListener("mouseout", toggleStarImage);
+
+function toggleStarImage() {
+    const imageName = this.src.includes("star-active.png")
+        ? "star.png"
+        : "star-active.png";
+    this.src = `../assets/images/${imageName}`;
+}
 
 //region DARK
 let darkToggle = document.querySelector("#dark-toggle");
