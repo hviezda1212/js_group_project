@@ -464,7 +464,7 @@ a {
 
 .fav-button {
   border: none;
-  background-color: none;
+  background-color: white;
 }
 
 .page-item .page-link:hover {

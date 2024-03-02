@@ -81,23 +81,44 @@ const render = () => {
     const coinSymbol = coin["symbol"];
     const coinPrice = coin["quote"].USD["price"];
     tableHTML += `            
-        <tr>
-            <td id="favorite"><button class="fav-button" onclick="redirectToWatchList(${i})"><i class="fa-regular fa-star"></i></button></td>
-            <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-            <td id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coin["id"]}.png'></img><span>${coin["name"]}</span></td>
-            <td id="symbol">${coin["symbol"]}</td>
-            <td id="price">${"$" + coin["quote"].USD["price"].toLocaleString('en-US', { maximumFractionDigits: 2 })}</td>
-            <td id="1h">${coin["quote"].USD["percent_change_1h"].toFixed(2) + "%"}</td>
-            <td id="24h">${coin["quote"].USD["percent_change_24h"].toFixed(2) + "%"}</td>
-            <td id="7d">${coin["quote"].USD["percent_change_7d"].toFixed(2) + "%"}</td>
-            <td id="market-cap">${"$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()}</td>
-            <td id="volume">${"$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()}</td>
-            <td id="circulating-supply">${Math.floor(coin["circulating_supply"]).toLocaleString() + " " + coin["symbol"]}</td>
-        </tr>`;
+      <tr>
+        <td id="favorite">
+          <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
+            <img
+              src="../assets/images/star.png"
+              width="20"
+              height="19"
+              alt=""
+              class="star-img"
+            />
+          </button>
+        </td>
+        <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+        <td id="name">
+          <img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coin["id"]}.png'></img>
+          <span>${coin["name"]}</span>
+        </td>
+        <td id="symbol">${coin["symbol"]}</td>
+        <td id="price">${"$" + coin["quote"].USD["price"].toLocaleString('en-US', { maximumFractionDigits: 2 })}</td>
+        <td id="1h">${coin["quote"].USD["percent_change_1h"].toFixed(2) + "%"}</td>
+        <td id="24h">${coin["quote"].USD["percent_change_24h"].toFixed(2) + "%"}</td>
+        <td id="7d">${coin["quote"].USD["percent_change_7d"].toFixed(2) + "%"}</td>
+        <td id="market-cap">${"$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()}</td>
+        <td id="volume">${"$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()}</td>
+        <td id="circulating-supply">${Math.floor(coin["circulating_supply"]).toLocaleString() + " " + coin["symbol"]}</td>
+      </tr>`;
     currentPrice = coin["quote"].USD["price"];
   }
   document.getElementById("table-data").innerHTML = tableHTML;
 };
+
+function toggleStar(img) {
+  if (img.src.includes('star.png')) {
+    img.src = "../assets/images/star-active.png"; // Change to yellow star image path
+  } else {
+    img.src = "../assets/images/star.png"; // Change to default star image path
+  }
+}
 
 // const render = () => {
 //   let tableHTML = "";
