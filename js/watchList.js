@@ -1,7 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    renderWatchlist();
-});
-
 function renderWatchlist() {
     let watchlistHTML = "";
     const clickedCoins = JSON.parse(localStorage.getItem('clickedCoins')) || [];
@@ -30,7 +26,7 @@ function renderWatchlist() {
 
         watchlistHTML += `
             <tr>
-                <td id="favorite"><button class="fav-button" onclick="redirectToWatchList(${i})"><i class="fa-regular fa-star"></i></button></td>
+                <td id="favorite"><button class="fav-button" onclick="removeFromWatchlist(${i})"><i class="fa-regular fa-star"></i></button></td>
                 <td id="rank">${i + 1}</td>
                 <td id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png'></img><span>${coin.name || 'N/A'}</span></td>
                 <td id="symbol">${coinSymbol}</td>
@@ -56,3 +52,20 @@ function renderWatchlist() {
         watchlistTable.innerHTML = watchlistHTML;
     }
 }
+
+function removeFromWatchlist(index) {
+    let clickedCoins = JSON.parse(localStorage.getItem('clickedCoins')) || [];
+    clickedCoins.splice(index, 1);
+    localStorage.setItem('clickedCoins', JSON.stringify(clickedCoins));
+    renderWatchlist();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    renderWatchlist();
+});
+
+function redirectToWatchList(index) {
+    // Your logic to toggle favorite icon color goes here
+    const favoriteIcon = document.querySelector(`#watchlist-data tr:nth-child(${index + 1}) .favorite-icon`);
+    favoriteIcon.classList.toggle("yellow");
+  }
