@@ -31,10 +31,14 @@
           </div>
           <div class="input-container">
             <i
-                          class="fa-solid fa-magnifying-glass search-icon"
-                          id="mobile-search"
-                      ></i>
-            <i class="fa-solid fa-bars" id="menu-bars" onclick="toggleMenu()"></i>
+              class="fa-solid fa-magnifying-glass search-icon"
+              id="mobile-search"
+            ></i>
+            <i
+              class="fa-solid fa-bars"
+              id="menu-bars"
+              onclick="toggleMenu()"
+            ></i>
             <input
               type="text"
               class="input-box"
@@ -64,7 +68,12 @@
           <button class="close-btn">X</button>
         </div>
         <div class="input-wrapper">
-          <input type="text" name="" placeholder="SEARCH" id="mobile-input-box" />
+          <input
+            type="text"
+            name=""
+            placeholder="SEARCH"
+            id="mobile-input-box"
+          />
           <button class="mobile-input-btn">GO</button>
         </div>
         <ul class="mobile-list-items">
@@ -75,6 +84,12 @@
         </ul>
       </div>
       <main>
+        <section class="toggle-section">
+          <div class="toggle-text">하이라이트 숨기기</div>
+          <label for="toggle" class="toggleSwitch">
+            <span class="toggleButton"></span>
+          </label>
+        </section>
         <section class="highlight-section">
           <div class="highlights">
             <div class="section-title">오늘의 하이라이트</div>
@@ -83,7 +98,10 @@
               <div class="topcoin-area highlight-area">
                 <div class="slide-container top">
                   <div class="slide-wrapper topcoin-wrapper">
-                    <div id="third-container" class="topcoin-container slide-content">
+                    <div
+                      id="third-container"
+                      class="topcoin-container slide-content"
+                    >
                       <div class="area-title third-title">
                         ✅ 지금, 테스트용 코인 TOP 3
                       </div>
@@ -93,7 +111,11 @@
                             <div class="coin-rank">1</div>
                             <div class="coin-names">
                               <div class="coin-name">
-                                <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
+                                <img
+                                  class="coin-img-size"
+                                  src="/assets/images/bitcoin.png"
+                                  alt="coin-img"
+                                />
                                 <span>Bittensor</span>
                               </div>
                               <div class="coin-symbol">BTC</div>
@@ -106,7 +128,11 @@
                             <div class="coin-rank">1</div>
                             <div class="coin-names">
                               <div class="coin-name">
-                                <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
+                                <img
+                                  class="coin-img-size"
+                                  src="/assets/images/bitcoin.png"
+                                  alt="coin-img"
+                                />
                                 <span>Worldcoin</span>
                               </div>
                               <div class="coin-symbol">BTC</div>
@@ -119,7 +145,11 @@
                             <div class="coin-rank">1</div>
                             <div class="coin-names">
                               <div class="coin-name">
-                                <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
+                                <img
+                                  class="coin-img-size"
+                                  src="/assets/images/bitcoin.png"
+                                  alt="coin-img"
+                                />
                                 <span>Shiba Inu</span>
                               </div>
                               <div class="coin-symbol">BTC</div>
@@ -165,7 +195,7 @@
                   <div id="news-board" class="news_slide-wrapper"></div>
                 </div>
                 <div class="news_slide-pagination">
-                  <div class="news_slide-dot"></div>
+                  <div class="news_slide-dot active"></div>
                   <div class="news_slide-dot"></div>
                   <div class="news_slide-dot"></div>
                 </div>
@@ -174,54 +204,70 @@
               <div class="greed-chart-area highlight-area greed-title-box">
                 <div class="area-title greed-title">공포탐욕지수</div>
                 <div class="area-wrapper">
-                    <div class="area-box">
-                        <img
-                            class="greed-img"
-                            src="../assets/images/feargreed.svg"
-                            alt=""
-                        />
-                        <div class="feargreed-result-box">
-                            <div class="feargreed-num"></div>
-                            <div class="feargreed-result">극도의 탐욕</div>
-                            <div class="indicator"></div>
-                        </div>
+                  <div class="area-box">
+                    <img
+                      class="greed-img"
+                      src="../assets/images/feargreed.svg"
+                      alt=""
+                    />
+                    <div class="feargreed-result-box">
+                      <div class="feargreed-num"></div>
+                      <div class="feargreed-result">극도의 탐욕</div>
+                      <div class="indicator"></div>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </section>
+
         <!-- 코인차트 : 박종석 -->
-        <div class="section-title">오늘의 시가총액별 상위 100개의 가상 자산</div>
+        <div class="section-title">
+          오늘의 시가총액별 상위 100개의 가상 자산
+        </div>
         <section class="coin-chart">
-          <table class="content-table">
+          <table class="content-table table-container">
             <thead>
               <tr class="">
-                <th></th>
-                <th>#</th>
-                <th>코인명</th>
-                <th>심볼</th>
-                <th id="price">가격</th>
-                <th>1h %</th>
-                <th>24h %</th>
-                <th>7d %</th>
-                <th>시가총액</th>
-                <th>거래량(24h)</th>
-                <th>유통량</th>
+                <th class="priority-1"></th>
+                <th class="priority-1">#</th>
+                <th class="priority-1">코인명</th>
+                <th class="priority-1">심볼</th>
+                <th class="priority-1" id="price">가격</th>
+                <th class="priority-1">1h %</th>
+                <th class="priority-2">24h %</th>
+                <th class="priority-2">7d %</th>
+                <th class="priority-2">시가총액</th>
+                <th class="priority-2">거래량(24h)</th>
+                <th class="priority-2">유통량</th>
               </tr>
             </thead>
             <tbody id="table-data">
               <tr>
-                <td class="favorite-icon" onclick="redirectToWatchList(`${i}`)">
-                  <i class="fa-regular fa-star"></i>
+                <td id="favorite">
+                  <button
+                    class="fav-button"
+                    onclick="toggleStar(this.querySelector('img'))"
+                  >
+                    <img
+                      src="../assets/images/star.png"
+                      width="20"
+                      height="19"
+                      alt=""
+                      class="star-img"
+                    />
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination"></ul>
+          </nav>
         </section>
-        <nav aria-label="Page navigation example">
-          <ul class="pagination"></ul>
-        </nav>
         <!-- 스크롤 : 김미주 -->
-        <div class="scroll-to-top" id="scrollToTop">
+        <div class="scroll-to-top" id="scrollToTop" style="display: none">
           <a class="icon-up"> </a>
         </div>
       </main>
@@ -229,7 +275,11 @@
       <footer>
         <div class="footer-container">
           <div class="footer-top">
-            <div class="footer-logo"><a href="/html/main.html"><img src="/assets/images/logo.svg" alt="logo"></a></div>
+            <div class="footer-logo">
+              <a href="/html/main.html"
+                ><img src="/assets/images/logo.svg" alt="logo"
+              /></a>
+            </div>
             <div class="footer-menu-area">
               <div class="footer-menu-group">
                 <div class="footer-menu">
@@ -288,7 +338,6 @@
       </footer>
     </div>
 
-  </div>
     <script
       src="https://kit.fontawesome.com/6e648835c4.js"
       crossorigin="anonymous"
