@@ -513,7 +513,10 @@ getlist();
 let news_List = [];
 let articles = [];
 let news_page = 1;
-const NEWS_PAGE_SIZE = 3;
+let news_totalPage = 1;
+let news_totalResult = 0;
+const NEWS_PAGE_SIZE = 1;
+const news_groupSize = 3;
 
 let news_url = new URL(`https://noonanewsapi.netlify.app/top-headlines?`);
 
@@ -526,25 +529,33 @@ const getNews = async () => {
     if (response.status === 200) {
       if (data.articles.length == 0) {
         news_page = 0;
+        news_totalPage = 0;
+        news_paginationRender();
         throw new Error("No result for this search");
       }
       news_List = data.articles;
       news_totalPage = 3;
+      news_totalResult = data.totalResults;
       news_render();
+      news_paginationRender();
     } else {
       news_page = 0;
+      news_totalPage = 0;
+      news_paginationRender();
       throw new Error(data.message);
     }
   } catch (error) {
     console.log("error", error.message);
     news_page = 0;
+    news_totalPage = 0;
+    news_paginationRender();
     errorRender(error.message);
   }
 };
 
 const getLatestNews = async () => {
   news_url = new URL(
-    `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=${NEWS_PAGE_SIZE}`
+    `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=1`
   );
   getNews();
 };
@@ -585,6 +596,35 @@ const errorRender = (errorMessage) => {
   </div>`;
 
   document.getElementById("news-board").innerHTML = errorHTML;
+};
+
+const news_paginationRender = () => {
+  let news_paginationHTML = ``;
+  let news_pageGroup = Math.ceil(news_page / news_groupSize);
+  let news_lastPage = news_pageGroup * news_groupSize;
+
+  if (news_lastPage > news_totalPage) {
+    news_lastPage = news_totalPage;
+  }
+  let news_firstPage =
+    news_lastPage - (news_groupSize - 1) <= 0
+      ? 1
+      : news_lastPage - (news_groupSize - 1);
+  for (let i = news_firstPage; i <= news_lastPage; i++) {
+    news_paginationHTML += `<li class="page-item">
+                        <input class="page-link" type="radio" onclick="news_moveToPage(${i})" ${
+      i == news_page ? "checked" : ""
+    } ></input>
+                       </li>`;
+  }
+
+  document.querySelector(".news-pagination").innerHTML = news_paginationHTML;
+};
+
+const news_moveToPage = (pageNum) => {
+  news_page = pageNum;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  getNews();
 };
 
 getLatestNews();
@@ -636,9 +676,9 @@ function toggleStarImage() {
 //region DARK
 let darkToggle = document.querySelector("#dark-toggle");
 let switchImg = document.querySelector("#dark-toggle img");
-let logoImg = document.querySelector(".logo-img");
+let logoImg = document.querySelector(".logo img");
 let body = document.querySelector("body");
-let watchListBtn = document.querySelector("#watch-list-btn");
+let watchListBtn = document.querySelector(".watch-list-btn");
 
 darkToggle.addEventListener(
   "click",
