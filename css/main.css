@@ -41,6 +41,9 @@ ul, li{
 .logo-img {
   cursor: pointer;
 }
+.footer-img {
+  cursor: pointer;
+}
 
 .input-box {
   width: 373px;
@@ -684,53 +687,6 @@ input[type="radio"]:hover {
   box-shadow: 0;
 }
 
-/*DARK MODE*/
-.dark-toggle {
-  width: 20px;
-  height: 20px;
-}
-
-.dark-mode {
-  background-color: #0d1421;
-  color: white;
-}
-
-.dark-mode .scroll-to-top {
-  position: fixed;
-  right: 16px;
-  bottom: 76px;
-  width: 50px;
-  height: 50px;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  background: white;
-  color: rgb(255, 255, 255);
-  border-radius: 100%;
-  user-select: none;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out 0s;
-  z-index: 9999;
-  opacity: 0.85;
-  outline: none;
-  align-items: center;
-  justify-items: center;
-}
-
-.dark-mode .icon-up {
-  height: 30px;
-  width: 30px;
-  color: rgb(255, 255, 255);
-  background-image: url(../assets/images/up_black.png);
-}
-
-.dark-mode .highlight-area {
-  background-color: #222531;
-}
-
 .toggleSwitch {
   width: 100px;
   height: 50px;
@@ -1050,4 +1006,71 @@ footer{
   .footer-menu-third{
     margin-right: 117px;
   }
+}
+
+/*DARK MODE*/
+.dark-toggle {
+  width: 20px;
+  height: 20px;
+}
+
+.dark-mode {
+  background-color: #0d1421;
+  color: white;
+}
+
+.dark-mode .scroll-to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 76px;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background: white;
+  color: rgb(255, 255, 255);
+  border-radius: 100%;
+  user-select: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out 0s;
+  z-index: 9999;
+  opacity: 0.85;
+  outline: none;
+  align-items: center;
+  justify-items: center;
+}
+
+.dark-mode .icon-up {
+  height: 30px;
+  width: 30px;
+  color: rgb(255, 255, 255);
+  background-image: url(../assets/images/up_black.png);
+}
+
+.dark-mode .highlight-area {
+  background-color: #222531;
+}
+
+.dark-mode footer{
+  background-color: #222531;
+}
+
+.dark-mode .toggleSwitch {
+  background-color: #222531;
+}
+
+.dark-mode .toggleSwitch .toggleButton {
+  background: #793aff;
+}
+
+.dark-mode .toggleSwitch.active {
+  background: #793aff;
+}
+
+.dark-mode .toggleSwitch.active .toggleButton {
+  background: #222531 !important;
 }
