@@ -23,6 +23,8 @@ header {
 }
 
 ul {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 
@@ -706,6 +708,63 @@ input[type="radio"]:hover {
 
 .same {
   color: black;
+}
+
+/* footer */
+footer{
+  margin-top: 100px;
+  background-color: rgba(241, 241, 241, 0.541);
+  /* border-top: 1px solid #c0c0c0; */
+}
+
+.footer-container{
+  padding: 70px 160px 60px 130px;
+}
+
+.footer-top{
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-logo img{
+  width: 200px;
+}
+
+.footer-menu-area{
+  display: flex;
+  margin-top: 15px;
+}
+
+.footer-menu{
+  margin-right: 70px;
+}
+
+.footer-menu:last-child{
+  margin-right: 0;
+}
+
+.menu-title{
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.menu-item{
+  margin-bottom: 13px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(153, 153, 153);
+  cursor: pointer;
+}
+.menu-item:hover{
+  color: rgb(83, 83, 83);
+}
+
+.copyright{
+  margin-top: 100px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(128, 126, 126);
 }
 
 /* 모바일 버전 */
