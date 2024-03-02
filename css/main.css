@@ -21,6 +21,10 @@ ul, li{
 }
 
 /* header*/
+#menu-bars {
+  display: none;
+}
+
 .navbar-container {
   display: flex;
   justify-content: space-around;
@@ -53,9 +57,6 @@ ul, li{
 }
 .btn-items {
   margin: 0 10em;
-}
-#meun-bars {
-  display: none;
 }
 
 .login-btn,
@@ -797,6 +798,14 @@ footer{
     &:hover {
       cursor: pointer;
     }
+  }
+
+  #mobile-search {
+    display: block;
+  }
+
+  .input-box {
+    display: none;
   }
 
   .navbar-wrapper ul {
