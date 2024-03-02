@@ -514,22 +514,44 @@ document.getElementById("scrollToTop").addEventListener("click", function () {
 
 // 스크롤 위치에 따라 스크롤 최상단 버튼 표시/숨김
 window.onscroll = function () {
-  var scrollButton = document.getElementById("scrollToTop");
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    scrollButton.style.display = "flex";
-  } else {
-    scrollButton.style.display = "none";
-  }
+    var scrollButton = document.getElementById("scrollToTop");
+    if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+    ) {
+        scrollButton.style.display = "flex";
+    } else {
+        scrollButton.style.display = "none";
+    }
 };
 
 //regionend SCROLL
+//로고 이미지시 해당 메인페이지로 이동
+let logoClick = document.querySelector(".logo-img");
+logoClick.addEventListener("click", () => {
+    window.location.href = "../html/main.html";
+});
+
+//즐겨찾기 마우스 hover했을 때, 노란색 이미지로 변경
+//즐겨찾기 마우스 out 할 때, 본 이미지로 변경
+const starImg = document.querySelector(".star-img");
+
+starImg.addEventListener("mouseover", toggleStarImage);
+starImg.addEventListener("mouseout", toggleStarImage);
+
+function toggleStarImage() {
+    const imageName = this.src.includes("star-active.png")
+        ? "star.png"
+        : "star-active.png";
+    this.src = `../assets/images/${imageName}`;
+}
 
 //region DARK
 let darkToggle = document.querySelector("#dark-toggle");
 let switchImg = document.querySelector("#dark-toggle img");
-let logoImg = document.querySelector(".logo img");
+let logoImg = document.querySelector(".logo-img");
 let body = document.querySelector("body");
-let watchListBtn = document.querySelector(".watch-list-btn");
+let watchListBtn = document.querySelector("#watch-list-btn");
 
 darkToggle.addEventListener(
   "click",
@@ -537,6 +559,8 @@ darkToggle.addEventListener(
     if (body.classList.contains("dark-mode")) {
       document.body.classList.remove("dark-mode");
       switchImg.src = "../assets/images/moon.png";
+            watchListBtn.style.backgroundColor = "#white";
+            watchListBtn.style.color = "black";
       logoImg.src = "../assets/images/logo.svg";
     } else {
       body.classList.add("dark-mode");
@@ -673,3 +697,22 @@ sliderEffect();
 
 news_showSlide(0);
 
+//모바일버전에서 메뉴 버튼 클릭시 메뉴 리스트
+
+function toggleMenu() {
+    let listItems = document.querySelector(".mobile-container");
+    let header = document.querySelector("header");
+    if (listItems.style.display === "none") {
+        listItems.style.display = "block";
+        header.style.display = "none";
+    } else {
+        listItems.style.display = "none";
+    }
+}
+
+//x버튼 클릭시 메뉴창 사라지고 원래 이미지 노출
+
+let closeBtn = document.querySelector(".close-btn");
+closeBtn.addEventListener("click", () => {
+    console.log("ggg");
+});

@@ -20,32 +20,70 @@
     <!-- 검색창 : 손응수 -->
     <header>
       <div class="navbar-container">
-        <a href="#" class="logo"
-          ><img src="../assets/images/logo.svg" alt=""
-        /></a>
-        <div class="list-items-container">
-          <ul class="list-items">
-            <li class="list-item">가상자산</li>
-            <li class="news-item">뉴스룸</li>
-          </ul>
-        </div>
-        <div class="input-container">
-          <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          <input
-            type="text"
-            class="input-box"
-            placeholder="코인명을 입력해주세요."
-          />
-          <a href="#" id="dark-toggle"
-            ><img src="../assets/images/moon.png" alt="" />
-          </a>
+                <div class="navbar-wrapper">
+                    <img
+                        src="../assets/images/logo.svg"
+                        class="logo-img"
+                        alt=""
+                    />
 
-          <button class="watch-list-btn">관심 목록</button>
-          <button class="login-btn">로그인</button>
-          <button class="resister-btn">회원가입</button>
+                    <ul class="list-items">
+                        <li class="list-item">가상자산</li>
+                        <li class="news-item">뉴스룸</li>
+                    </ul>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <i
+                        class="fa-solid fa-bars"
+                        id="menu-bars"
+                        onclick="toggleMenu()"
+                    ></i>
+                    <input
+                        type="text"
+                        class="input-box"
+                        placeholder="코인명을 입력해주세요."
+                    />
+                    <a href="#" id="dark-toggle"
+                        ><img src="../assets/images/moon.png" alt="" />
+                    </a>
+                    <label>
+                        <img
+                            src="../assets/images/star.png"
+                            width="20"
+                            height="19"
+                            alt=""
+                            class="star-img"
+                        />
+                        <button id="watch-list-btn">관심 목록</button>
+                    </label>
+                    <button class="login-btn">로그인</button>
+                    <button class="resister-btn">회원가입</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="mobile-container">
+            <div class="close-btn-container">
+                <button class="close-btn">X</button>
+            </div>
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    name=""
+                    placeholder="SEARCH"
+                    id="mobile-input-box"
+                />
+                <button class="mobile-input-btn">GO</button>
+            </div>
+            <ul class="mobile-list-items">
+                <li class="mobile-item">로그인</li>
+                <li class="mobile-item">관심목록</li>
+                <li class="mobile-item">가상자산</li>
+                <li class="mobile-item">뉴스룸</li>
+            </ul>
         </div>
-      </div>
-    </header>
     <main>
       <section class="highlights">
         <div class="section-title">오늘의 하이라이트</div>

@@ -1,29 +1,161 @@
 * {
   margin: 0;
 }
+header {
+  min-height: 134px;
+  border: 1px solid gray;
+  margin-bottom: 100px;
+  /* display: none; */
+}
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-header {
-  min-height: 134px;
-  border: 1px solid gray;
-  margin-bottom: 100px;
-}
 
-#dark-toggle {
-  position: relative;
-  right: 5em;
+/* header*/
+.navbar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2em;
+}
+.logo-img {
   cursor: pointer;
 }
 
-#white-toggle {
+.input-box {
+  width: 373px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 0 1em;
+  background-color: #eeeeee;
+
+  &::placeholder {
+    text-align: center;
+  }
+}
+.search-icon {
+  position: relative;
+  right: -22em;
+  top: 0em;
+  z-index: 9999;
+}
+.navbar-wrapper {
+  display: flex;
+}
+.btn-items {
+  margin: 0 10em;
+}
+#meun-bars {
   display: none;
 }
 
-ul {
-  list-style-type: none;
+.login-btn,
+.resister-btn {
+  width: 80px;
+  height: 37px;
+  margin-left: 1em;
+  border: 1px solid #793aff;
+  border-radius: 10px;
+  color: #793aff;
+  cursor: pointer;
+  &:hover {
+    background-color: #793aff;
+    color: white;
+  }
+}
+
+#watch-list-btn {
+  border: none;
+  outline: none;
+  margin-right: 1em;
+}
+.star-img {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+
+/*mobile*/
+.mobile-container {
+  margin: 2em 1em;
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+.input-wrapper {
+  display: flex;
+  /* height: 100vh; */
+}
+
+.close-btn-container {
+  margin-bottom: 2em;
+}
+.close-btn {
+  width: 16px;
+  height: 16px;
+  border: none;
+  font-size: 100%;
+  line-height: normal;
+  cursor: pointer;
+  color: black;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+#mobile-input-box {
+  margin: 0px;
+  padding: 1px 40px 0px 10px;
+  vertical-align: middle;
+  width: 100%;
+  border: 1px solid rgb(120, 120, 120);
+  box-sizing: border-box;
+  color: rgb(102, 102, 102);
+  font-size: 1rem;
+  font-family: nyt-franklin, helvetica, arial, sans-serif;
+  font-weight: normal;
+  height: 35px;
+  letter-spacing: 0.5px;
+  line-height: 16px;
+  padding: 1px 40px 0px 10p;
+  vertical-align: middle;
+  border-radius: 3px;
+  margin-right: 1em;
+}
+.mobile-input-btn {
+  width: 35px;
+  height: 35px;
+  color: white;
+  font-size: 11px;
+  background-color: rgb(86, 123, 149);
+  border: rgb(50, 104, 145);
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  padding-block: 1px;
+  padding-inline: 6px;
+  transition: all 0.6s ease 0s;
+  border-radius: 3px;
+}
+.mobile-list-items {
+  list-style: none;
+  padding: 0;
+}
+
+.mobile-item {
+  color: black;
+  padding: 24px 0;
+  cursor: pointer;
+  &:hover {
+    background-color: burlywood;
+  }
 }
 
 /* 오늘의 하이라이트 */
@@ -49,7 +181,7 @@ ul {
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 700;
-  display:flex;
+  display: flex;
 }
 
 /* 공통 슬라이더 속성 */
@@ -82,7 +214,7 @@ ul {
   margin-right: 5px;
   border-radius: 50px;
   background-color: #cccccc;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .slide-dot.active {
@@ -122,7 +254,7 @@ ul {
   margin-right: 5px;
   border-radius: 50px;
   background-color: #cccccc;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .news_slide-dot.active {
@@ -236,77 +368,7 @@ ul {
   border-bottom: 2px solid #009879;
 }
 
-.navbar-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 2em;
-}
-.list-items-container {
-  margin-right: 40em;
-}
-.btn-items {
-  margin: 0 10em;
-}
-.list-items {
-  list-style: none;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  margin-top: 1.5em;
-}
-.list-item {
-  margin-right: 2em;
-}
-.input-container {
-  display: flex;
-  position: relative;
-}
-.search-icon {
-  position: absolute;
-  right: 25em;
-  top: 0.8em;
-}
-.input-box {
-  width: 373px;
-  height: 41px;
-  border-radius: 10px;
-  padding: 0 1em;
-  margin-right: 5em;
-  background-color: #eeeeee;
-  border: none;
-  &::placeholder {
-    text-align: center;
-  }
-}
-#dark-toggle {
-  display: flex;
-  position: relative;
-  right: 4.5em;
-  align-items: center;
-}
-
-.star-btn {
-  border: none;
-  color: yellow;
-  background-color: white;
-}
-
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.item {
-  width: 342px;
-  height: 150px;
-  padding: 16px;
-  background-color: black;
-  margin: 0 24px;
-  border-radius: 9px;
-  cursor: pointer;
-}
+/* 공포 탐욕 지수*/
 .area-wrapper {
   display: flex;
   justify-content: center;
@@ -319,12 +381,6 @@ ul {
   margin-top: 3em;
   position: relative;
   cursor: pointer;
-}
-
-.greed-chart-area {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .greed-img {
@@ -352,39 +408,6 @@ ul {
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
 }
-.input-container {
-  display: flex;
-  position: relative;
-  margin-top: 1em;
-  margin-left: 50em;
-}
-
-.search-icon {
-  position: absolute;
-  right: 37em;
-  top: 1em;
-}
-
-.watch-list-btn {
-  border: none;
-  outline: none;
-  margin-right: 1em;
-}
-
-.login-btn,
-.resister-btn {
-  width: 75px;
-  height: 37px;
-  margin-left: 1em;
-  border: 1px solid #793aff;
-  border-radius: 10px;
-  color: #793aff;
-  cursor: pointer;
-  &:hover {
-    background-color: #793aff;
-    color: white;
-  }
-}
 
 .pagination {
   display: flex;
@@ -400,73 +423,16 @@ ul {
   cursor: pointer;
 }
 
-.input-container {
-  display: flex;
-  position: relative;
-  margin-top: 1em;
-  margin-left: 50em;
-}
-
-.search-icon {
-  position: absolute;
-  right: 39em;
-  top: 0.8em;
-}
-
-.watch-list-btn {
-  border: none;
-  outline: none;
-  margin-right: 1em;
-}
-
-.login-btn,
-.resister-btn {
-  width: 80px;
-  height: 37px;
-  margin-left: 1em;
-  border: 1px solid #793aff;
-  border-radius: 10px;
-  color: #793aff;
-  font-size: 0.9rem;
-  cursor: pointer;
-  &:hover {
-    background-color: #793aff;
-    color: white;
-  }
-}
-
-.input-wrapper {
-  display: flex;
-  align-items: center;
-}
-.input-box {
-  width: 373px;
-  height: 41px;
-  border-radius: 10px;
-  padding: 0 1em;
-  background-color: #eeeeee;
-
-  &::placeholder {
-    text-align: center;
-  }
-}
-.btn-items {
-  display: flex;
-  align-items: center;
-}
-
 .indicator {
-  width: 13px;
-  height: 13px;
+  width: 20px;
+  height: 20px;
   background: black;
   border-radius: 9999px;
   border: 2px solid white;
-
-  transform-origin: 140px 5px;
-  transform: rotate(140deg);
-
+  transform-origin: 145px 4px;
+  transform: rotate(150deg);
   position: relative;
-  left: -105px;
+  left: -100px;
   top: 1px;
   display: none;
 }
@@ -716,4 +682,49 @@ input[type="radio"]:hover {
 
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
+  #dark-toggle {
+    display: none;
+  }
+
+  #menu-bars {
+    display: block;
+    font-size: 2rem;
+    margin-right: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .navbar-wrapper ul {
+    display: none;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .login-btn,
+  .resister-btn {
+    display: none;
+  }
+  label {
+    display: none;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .highlights {
+    display: grid;
+    grid-gap: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-title {
+    font-size: 1.0625rem;
+    font-weight: 900;
+  }
 }
