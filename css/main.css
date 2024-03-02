@@ -14,6 +14,9 @@ body {
 }
 
 /* header*/
+#menu-bars {
+    display: none;
+}
 .navbar-container {
     display: flex;
     justify-content: space-around;
@@ -46,9 +49,6 @@ body {
 }
 .btn-items {
     margin: 0 10em;
-}
-#meun-bars {
-    display: none;
 }
 
 .login-btn,
@@ -474,6 +474,12 @@ a {
         &:hover {
             cursor: pointer;
         }
+    }
+    #mobile-search {
+        display: block;
+    }
+    .input-box {
+        display: none;
     }
 
     .navbar-wrapper ul {

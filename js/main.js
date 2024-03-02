@@ -1,5 +1,5 @@
-// const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
-// const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
+// const  = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
 const url =
     "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
@@ -556,7 +556,7 @@ darkToggle.addEventListener(
         if (body.classList.contains("dark-mode")) {
             document.body.classList.remove("dark-mode");
             switchImg.src = "../assets/images/moon.png";
-            watchListBtn.style.backgroundColor = "#white";
+            watchListBtn.style.backgroundColor = "white";
             watchListBtn.style.color = "black";
             logoImg.src = "../assets/images/logo.svg";
         } else {
@@ -647,20 +647,19 @@ showSlide(0);
 
 //모바일버전에서 메뉴 버튼 클릭시 메뉴 리스트
 
-function toggleMenu() {
-    let listItems = document.querySelector(".mobile-container");
-    let header = document.querySelector("header");
-    if (listItems.style.display === "none") {
-        listItems.style.display = "block";
-        header.style.display = "none";
-    } else {
-        listItems.style.display = "none";
-    }
-}
-
 //x버튼 클릭시 메뉴창 사라지고 원래 이미지 노출
+
+let listItems = document.querySelector(".mobile-container");
+let header = document.querySelector("header");
+
+function toggleMenu() {
+    listItems.style.display === "none"
+        ? ((listItems.style.display = "block"), (header.style.display = "none"))
+        : (listItems.style.display = "none");
+}
 
 let closeBtn = document.querySelector(".close-btn");
 closeBtn.addEventListener("click", () => {
-    console.log("ggg");
+    listItems.style.display = "none";
+    header.style.display = "block";
 });
