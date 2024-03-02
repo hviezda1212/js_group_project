@@ -65,6 +65,7 @@ const getData = async () => {
     // console.log("ttt", coinList.length);
     render();
     paginationRender();
+    topCoinRender();
     // console.log("priceis", prevPriceList["BTC"][prevPriceList["BTC"].length-1])
     // console.log("prevpriceis", prevPriceList["BTC"][prevPriceList["BTC"].length-2])
   } catch (error) {
@@ -269,49 +270,67 @@ Main(30000);
 // 가장 뜨거운 코인, 가장 차가운 코인 top3
 const topCoinRender = () => {
   // hot top3
-  const hotList = coinList.slice(0, 3);
+  const hotList = coinList
+  .sort((a, b) => b.quote.USD.percent_change_24h - a.quote.USD.percent_change_24h)
+  .slice(0, 3);
   console.log("hotList: " + hotList);
   let hotHTML = "";
 
   for (i = 0; i < hotList.length; i++) {
-    hotHTML += `<div class="hot-list list">
-      <div class="coin-left">
-        <div class="coin-rank">${hotList.indexOf(hotList[i]) + 1}</div>
-        <div class="coin-names">
-          <div class="coin-name">${hotList[i]["name"]}</div>
-          <div class="coin-symbol">${hotList[i]["symbol"]}</div>
+    hotHTML += `
+      <div class="hot-list list">
+        <div class="coin-left">
+          <div class="coin-rank">${hotList.indexOf(hotList[i]) + 1}</div>
+          <div class="coin-names">
+            <div class="coin-name">
+              <img class="coin-img-size"
+              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${hotList[i]["id"]}.png'>
+              </img>
+              <span>${hotList[i]["name"]}</span>
+            </div>
+            <div class="coin-symbol">${hotList[i]["symbol"]}</div>
+          </div>
         </div>
+        <div class="coin-24h">${
+          hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+        }</div>
       </div>
-      <div class="coin-24h">${
-        hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-      }</div>
-    </div>`;
+    `;
   }
-  document.getElementById("hot-container").innerHTML = hotHTML;
+  document.getElementById("hotChart").innerHTML = hotHTML;
 
   // cold top3
-  const coldList = coinList.slice(-3);
+  const coldList = coinList
+  .sort((a, b) => a.quote.USD.percent_change_24h - b.quote.USD.percent_change_24h)
+  .slice(0, 3);
   console.log("coldList: " + coldList);
   let coldHTML = "";
 
   for (i = 0; i < coldList.length; i++) {
-    coldHTML += `<div class="hot-list list">
-      <div class="coin-left">
-        <div class="coin-rank">${coldList.indexOf(coldList[i]) + 1}</div>
-        <div class="coin-names">
-          <div class="coin-name">${coldList[i]["name"]}</div>
-          <div class="coin-symbol">${coldList[i]["symbol"]}</div>
+    coldHTML += `
+      <div class="hot-list list">
+        <div class="coin-left">
+          <div class="coin-rank">${coldList.indexOf(coldList[i]) + 1}</div>
+          <div class="coin-names">
+            <div class="coin-name">
+              <img class="coin-img-size"
+              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coldList[i]["id"]}.png'>
+              </img>
+              <span>${coldList[i]["name"]}</span>
+            </div>
+            <div class="coin-symbol">${coldList[i]["symbol"]}</div>
+          </div>
         </div>
+        <div class="coin-24h">${
+          coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+        }</div>
       </div>
-      <div class="coin-24h">${
-        coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-      }</div>
-    </div>`;
+    `;
   }
-  document.getElementById("cold-container").innerHTML = coldHTML;
+  document.getElementById("coldChart").innerHTML = coldHTML;
 };
 
-const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
+//const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinListItems = []; // 코인 정보를 담을 배열
 
 const inputBox = document.querySelector(".input-box");

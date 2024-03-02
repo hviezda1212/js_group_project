@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Document</title>
+    <link rel="icon" href="/assets/images/logo-icon.png" type="image/x-icon" />
+    <title>누나코인::로그인</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,30 +15,46 @@
   </head>
   <body>
     <main class="container">
-      <h1>NUNA COIN</h1>
+      <div class="logo-area">
+        <div class="logo"><img src="/assets/images/logo.svg" alt="logo" /></div>
+        <p>코인 알려주는 누나와 함께하는 쉬운 코인 생활</p>
+      </div>
+
       <div class="login-wrapper">
-        <div class="id-wrapper">
-          <input type="text" id="id-box" placeholder="Username" />
-        </div>
-        <div class="password-wrapper">
-          <input type="password" id="ps-box" placeholder="password" />
+        <div class="input-container">
+          <div class="id-wrapper input-wrapper">
+            <h4>이메일 주소</h4>
+            <input
+              type="text"
+              id="id-box"
+              placeholder="이메일 주소 입력하세요"
+            />
+          </div>
+          <div class="password-wrapper input-wrapper">
+            <h4>비밀번호</h4>
+            <input
+              type="password"
+              id="ps-box"
+              placeholder="비밀번호를 입력하세요"
+            />
+          </div>
         </div>
 
         <div class="info-container">
           <div class="remember-box">
             <input id="ramember" type="checkbox" />
-            <label for="ramember">Remember me</label>
+            <label for="ramember">아이디 기억하기</label>
           </div>
 
           <div class="forgot-ps">
-            <a href="#">Forgot Password?</a>
+            <a href="#">비밀번호 찾기</a>
           </div>
         </div>
         <div class="btn-container">
-          <button type="submit" class="login-btn">LOGIN</button>
+          <button type="submit" class="login-btn">로그인</button>
         </div>
         <div class="btn-container">
-          <button type="submit" class="login-btn">Sign Up</button>
+          <button type="submit" class="login-btn">회원가입</button>
         </div>
       </div>
     </main>
