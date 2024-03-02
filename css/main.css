@@ -769,4 +769,28 @@ footer{
 
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
+
+
+  /* footer */
+  .footer-container{
+    padding: 50px 20px;
+  }
+  .footer-top{
+    flex-flow: column;
+  }
+  .footer-logo{
+    margin-bottom: 40px;
+  }
+  .footer-menu-area{
+    flex-flow: column;
+  }
+  .footer-menu-group{
+    display: flex;
+  }
+  .footer-menu-group:first-child{
+    margin-bottom: 50px;
+  }
+  .footer-menu-third{
+    margin-right: 117px;
+  }
 }
