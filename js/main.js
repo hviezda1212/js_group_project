@@ -1,14 +1,14 @@
-// const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
+// const apiKey = "d4f4b633-09ba-41d3-9798-46f9e123938a";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
 const url =
-  "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
+  "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=4000";
 const mode = "no-cors";
 let coinList = [];
 let prevPriceList = {};
 let totalResult = 0;
 let page = 1;
 const pageSize = 100;
-const groupSize = 5;
+const groupSize = 10;
 let currentPrice = 0;
 
 const initializePrevPriceList = async () => {
@@ -51,14 +51,17 @@ const getData = async () => {
         tempCoinSymbol = coinList[i]["symbol"];
         tempCoinPrice = coinList[i]["quote"].USD["price"];
         prevPriceList[tempCoinSymbol].push(tempCoinPrice);
+        // console.log(prevPriceList)
       }
     } else {
-      for (i = page * 100 - 99; i < pageSize * page + 1; i++) {
-        coinList.push(data.data[i]);
+      for (i=0, j = page * 100 - 99; j < pageSize * page + 1; i++, j++) {
+        coinList.push(data.data[j]);
+        // console.log("ccc",coinList)
         // prevPriceList에 코인 가격 정보를 쌓는다
         tempCoinSymbol = coinList[i]["symbol"];
         tempCoinPrice = coinList[i]["quote"].USD["price"];
         prevPriceList[tempCoinSymbol].push(tempCoinPrice);
+        console.log(prevPriceList)
       }
     }
     totalResult = data.data.length;
@@ -78,90 +81,37 @@ const render = () => {
     const coin = coinList[i];
     const coinSymbol = coin["symbol"];
     const coinPrice = coin["quote"].USD["price"];
+    const hourPercentage = coin["quote"].USD["percent_change_1h"];
+    const dayPercentage = coin["quote"].USD["percent_change_24h"];
+    const weekPercentage = coin["quote"].USD["percent_change_7d"];
     tableHTML += `            
         <tr>
-            <td id="favorite"><button class="fav-button" onclick="redirectToWatchList(${i})"><i class="fa-regular fa-star"></i></button></td>
-            <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-            <td id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coin["id"]}.png'></img><span>${coin["name"]}</span></td>
-            <td id="symbol">${coin["symbol"]}</td>
-            <td id="price">${"$" + coin["quote"].USD["price"].toLocaleString('en-US', { maximumFractionDigits: 2 })}</td>
-            <td id="1h">${coin["quote"].USD["percent_change_1h"].toFixed(2) + "%"}</td>
-            <td id="24h">${coin["quote"].USD["percent_change_24h"].toFixed(2) + "%"}</td>
-            <td id="7d">${coin["quote"].USD["percent_change_7d"].toFixed(2) + "%"}</td>
-            <td id="market-cap">${"$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()}</td>
-            <td id="volume">${"$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()}</td>
-            <td id="circulating-supply">${Math.floor(coin["circulating_supply"]).toLocaleString() + " " + coin["symbol"]}</td>
+            <td class="priority-1" id="favorite"><button class="fav-button" onclick="redirectToWatchList(${i})"><img src = "../assets/images/Star.svg"></img></button></td>
+            <td class="priority-1" id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+            <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+              coin["id"]
+            }.png'></img><span>${coin["name"]}</span></td>
+            <td class="priority-1" id="symbol">${coin["symbol"]}</td>
+            <td class="priority-1" id="price">${checkPriceChange(coinPrice, coinSymbol)}</td>
+            <td class="priority-1" id="1h">${checkPercentageChange(hourPercentage)}</td>
+            <td class="priority-2" id="24h">${checkPercentageChange(dayPercentage)}</td>
+            <td class="priority-2" id="7d">${checkPercentageChange(weekPercentage)}</td>
+            <td class="priority-2" id="market-cap">${
+              "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
+            }</td>
+            <td class="priority-2" id="volume">${
+              "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
+            }</td>
+            <td class="priority-2" id="circulating-supply">${
+              Math.floor(coin["circulating_supply"]).toLocaleString() +
+              " " +
+              coin["symbol"]
+            }</td>
         </tr>`;
     currentPrice = coin["quote"].USD["price"];
   }
   document.getElementById("table-data").innerHTML = tableHTML;
 };
-
-// const render = () => {
-//   let tableHTML = "";
-//   for (let i = 0; i < coinList.length; i++) {
-//     coinSymbol = coinList[i]["symbol"];
-//     coinPrice = coinList[i]["quote"].USD["price"];
-//     tableHTML += `            
-//         <tr>
-//             <td id="favorite"><button class="fav-button"><i class="fa-regular fa-star"></i></button></td>
-//             <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-//             <td id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coinList[i]["id"]}.png'></img><span>${coinList[i]["name"]}</span></td>
-//             <td id="symbol">${coinList[i]["symbol"]}</td>
-//             <td id="price">${checkPriceChange(coinPrice, coinSymbol)}</td>
-//             <td id="1h">${coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"}</td>
-//             <td id="24h">${coinList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"}</td>
-//             <td id="7d">${coinList[i]["quote"].USD["percent_change_7d"].toFixed(2) + "%"}</td>
-//             <td id="market-cap">${"$" + Math.floor(coinList[i]["quote"].USD["market_cap"]).toLocaleString()}</td>
-//             <td id="volume">${"$" + Math.floor(coinList[i]["quote"].USD["volume_24h"]).toLocaleString()}</td>
-//             <td id="circulating-supply">${Math.floor(coinList[i]["circulating_supply"]).toLocaleString() + " " + coinList[i]["symbol"]}</td>
-//         </tr>`;
-//     currentPrice = coinList[i]["quote"].USD["price"];
-//   }
-//   document.getElementById("table-data").innerHTML = tableHTML;
-// };
-
-// const render = () => {
-//   let tableHTML = "";
-//   for (i = 0; i < coinList.length; i++) {
-//     coinSymbol = coinList[i]["symbol"];
-//     coinPrice = coinList[i]["quote"].USD["price"];
-//     tableHTML += `            <tr>
-//         <td id = "favorite"><button class = "fav-button"><i class="fa-regular fa-star"></i></button></td>
-//         <td id = "rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-//         <td id = "name"><img class = "coin-img-size" src ='https://s2.coinmarketcap.com/static/img/coins/64x64/${
-//           coinList[i]["id"]
-//         }.png'></img><span>${coinList[i]["name"]}</span></td>
-//         <td id = "symbol">${coinList[i]["symbol"]}</td>
-//         <td id = "price">${checkPriceChange(coinPrice, coinSymbol)}</td>
-//         <td id = "1h">${
-//           coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"
-//         }</td>
-//         <td id = "24h">${
-//           coinList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-//         }</td>
-//         <td id = "7d">${
-//           coinList[i]["quote"].USD["percent_change_7d"].toFixed(2) + "%"
-//         }</td>
-//         <td id = "market-cap">${
-//           "$" +
-//           Math.floor(coinList[i]["quote"].USD["market_cap"]).toLocaleString()
-//         }</td>
-//         <td id = "volume">${
-//           "$" +
-//           Math.floor(coinList[i]["quote"].USD["volume_24h"]).toLocaleString()
-//         }</td>
-//         <td id = "circulating-supply">${
-//           Math.floor(coinList[i]["circulating_supply"]).toLocaleString() +
-//           " " +
-//           coinList[i]["symbol"]
-//         }</td>
-//     </tr>`;
-//     currentPrice = coinList[i]["quote"].USD["price"];
-//   }
-//   document.getElementById("table-data").innerHTML = tableHTML;
-//   // console.log(tableHTML);
-// };
 
 function redirectToWatchList(index) {
   const clickedCoin = coinList[index];
@@ -205,6 +155,19 @@ const checkPriceChange = (price, symbol) => {
   // -1인덱스가격 (최신가격)이 -2인덱스가격 (전가격)보다 높으면 초록색, 낮으면 빨간색, 같으면 검은색으로 표시한다
 };
 
+const checkPercentageChange = (percentage) => {
+  if (percentage > 0) {
+    //초록색
+    return `<span style = "color:green">${percentage.toFixed(2) + "%"}</span>`;
+  } else if (percentage < 0) {
+    //빨간색
+    return `<span style = "color:red">${percentage.toFixed(2) + "%"}</span>`;
+  } else {
+    //검은색
+    return `<span style = "color:black">${percentage.toFixed(2) + "%"}</span>`;
+  }
+};
+
 const paginationRender = () => {
   //total result
   //page
@@ -214,38 +177,43 @@ const paginationRender = () => {
   const totalPages = Math.ceil(totalResult / pageSize);
   //pagegroup
   const pageGroup = Math.ceil(page / groupSize);
+  // console.log("pagegroup", pageGroup)
   //lastpage
   let lastPage = pageGroup * groupSize;
   if (lastPage > totalPages) {
     lastPage = totalPages;
   }
-  console.log("last", totalPages);
+  // console.log("last", lastPage);
   //firstpage
   const firstPage =
     lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
+  // console.log("firstpage", firstPage)
   let paginationHTML = "";
-  if (page === firstPage) {
+  if (page === 1) {
+    //1페이지면 <<와 Previous를 그리지 않는다
     ("");
   } else {
-    paginationHTML += `<a class="page-link" onclick="moveToPage(${firstPage})" aria-label="Previous">
-      <span aria-hidden="true">&laquo;</span>
+    paginationHTML += `<a class="page-link" onclick="moveToPage(${1})" aria-label="Previous">
+      <span  aria-hidden="true">&laquo;</span>
   </a>`;
     paginationHTML += `<li class="page-item" onclick="moveToPage(${
       page - 1
     })"><a class="page-link">Previous</a></li>`;
   }
-  for (let i = firstPage; i < lastPage; i++) {
+  ///페이지 그룹을 그린다
+  for (let i = firstPage; i <= lastPage; i++) {
     paginationHTML += `<li class="page-item ${
       i === page ? "active" : ""
     }"onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`;
   }
-  if (page === lastPage) {
+  //제일 마지막 페이지에 있으면 >>와 next를 그리지 않는다
+  if (page === totalPages) {
     ("");
   } else {
     paginationHTML += `<li class="page-item" onclick="moveToPage(${
       page + 1
     })"><a class="page-link">Next</a></li>`;
-    paginationHTML += `<a class="page-link" onclick="moveToPage(${totalPages})" aria-label="Next">
+    paginationHTML += `<a class="page-link page-item" onclick="moveToPage(${totalPages-1})" aria-label="Next">
       <span aria-hidden="true">&raquo;</span>
     </a>`;
   }
@@ -253,8 +221,8 @@ const paginationRender = () => {
 };
 
 const moveToPage = (pageNum) => {
-  getData();
   page = pageNum;
+  getData();
 };
 
 function Main(delay) {
