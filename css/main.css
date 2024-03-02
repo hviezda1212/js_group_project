@@ -835,71 +835,6 @@ footer{
   color: rgb(128, 126, 126);
 }
 
-/* 모바일 버전 */
-@media screen and (max-width: 48rem) {
-  #dark-toggle {
-    display: none;
-  }
-
-  #menu-bars {
-    display: block;
-    font-size: 2rem;
-    margin-right: 1em;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  #mobile-search {
-    display: block;
-  }
-
-  .input-box {
-    display: none;
-  }
-
-  .navbar-wrapper ul {
-    display: none;
-  }
-
-  .input-container {
-    display: flex;
-    align-items: center;
-  }
-
-  .login-btn,
-  .resister-btn {
-    display: none;
-  }
-  label {
-    display: none;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .highlights {
-    display: grid;
-    grid-gap: 30px;
-    flex-direction: column;
-    align-items: center;
-  }
-  .section-title {
-    font-size: 1.0625rem;
-    font-weight: 900;
-  }
-
-  .priority-2 {
-    display:none;
-  }
-
-  .coin-chart {
-    width:100vw;
-  }
-}
-
 /* footer */
 footer{
   margin-top: 100px;
@@ -966,9 +901,94 @@ footer{
   color: rgb(128, 126, 126);
 }
 
+
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
+  /* header */
+  #dark-toggle {
+    display: none;
+  }
 
+  #menu-bars {
+    display: block;
+    font-size: 2rem;
+    margin-right: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  #mobile-search {
+    display: block;
+  }
+
+  .input-box {
+    display: none;
+  }
+
+  .navbar-wrapper ul {
+    display: none;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .login-btn,
+  .resister-btn {
+    display: none;
+  }
+  label {
+    display: none;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* highlights */
+  .highlights {
+    display: grid;
+    /* grid-gap: 30px; */
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-title {
+    font-size: 20px;
+  }
+  .highlight-areas{
+    flex-flow: column;
+  }
+  .highlights .highlight-area{
+    width: 352px;
+    height: 229px;
+    margin-bottom: 20px;
+  }
+  .area-title{
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .topChart{
+    font-size: 13px;
+  }
+  .coin-name .coin-img-size{
+    width: 28px;
+    height: 28px;
+  }
+  .slide-dot{
+    width: 6px;
+    height: 6px;
+  }
+
+  .priority-2 {
+    display:none;
+  }
+
+  .coin-chart {
+    width:100vw;
+  }
 
   /* footer */
   .footer-container{
