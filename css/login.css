@@ -2,7 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgb(180, 180, 180);
+  /* background-color: rgb(180, 180, 180); */
+}
+
+input::placeholder {
+  font-size: 16px; 
+}
+
+input:focus-visible::placeholder {
+  font-size: 10px; 
+  margin: 100px 20px;
+}
+
+input:focus-visible{
+  outline: none; /* 기본 아웃라인 제거 */
+  box-shadow: 0 0 5px 2px rgba(115, 50, 236, 0.5); 
 }
 
 input::placeholder {
@@ -42,12 +56,6 @@ input:focus-visible{
   width: 500px;
 }
 
-/* h1 {
-  text-align: center;
-  font-size: 5rem;
-  margin-right: 20%;
-  color: rgb(0, 0, 0);
-} */
 .login-wrapper {
   padding: 5em;
 }
