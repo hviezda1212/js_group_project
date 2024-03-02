@@ -220,8 +220,16 @@
           </thead>
           <tbody id="table-data">
             <tr>
-              <td class="favorite-icon" onclick="redirectToWatchList(`${i}`)">
-                <i class="fa-regular fa-star"></i>
+              <td id="favorite">
+                <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
+                  <img
+                    src="../assets/images/star.png"
+                    width="20"
+                    height="19"
+                    alt=""
+                    class="star-img"
+                  />
+                </button>
               </td>
             </tr>
           </tbody>
@@ -231,7 +239,7 @@
         <ul class="pagination"></ul>
       </nav>
       <!-- 스크롤 : 김미주 -->
-      <div class="scroll-to-top" id="scrollToTop">
+      <div class="scroll-to-top" id="scrollToTop" style="display: none;">
         <a class="icon-up"> </a>
       </div>
     </main>
