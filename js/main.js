@@ -364,15 +364,15 @@ const rendering = () => {
 };
 
 //검색된 코인이 없을때
-let noList = (keyword) => {
-    let resultHTML = ``;
-    coinListItems.forEach((item) => {
-        item.symbol.includes(keyword) ||
-            item.name.toUpperCase().includes(keyword);
-        if (!coinListItems) {
-        }
-    });
-};
+// let noList = (keyword) => {
+//     let resultHTML = ``;
+//     coinListItems.forEach((item) => {
+//         item.symbol.includes(keyword) ||
+//             item.name.toUpperCase().includes(keyword);
+//         if (!coinListItems || ) {
+//         }
+//     });
+// };
 getlist();
 
 //region NEWS
@@ -648,10 +648,19 @@ showSlide(0);
 //모바일버전에서 메뉴 버튼 클릭시 메뉴 리스트
 
 function toggleMenu() {
-    let listItems = document.querySelector(".list-items");
+    let listItems = document.querySelector(".mobile-container");
+    let header = document.querySelector("header");
     if (listItems.style.display === "none") {
         listItems.style.display = "block";
+        header.style.display = "none";
     } else {
         listItems.style.display = "none";
     }
 }
+
+//x버튼 클릭시 메뉴창 사라지고 원래 이미지 노출
+
+let closeBtn = document.querySelector(".close-btn");
+closeBtn.addEventListener("click", () => {
+    console.log("ggg");
+});
