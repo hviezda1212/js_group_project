@@ -53,11 +53,39 @@
               alt=""
               class="star-img"
             />
-            <button id="watch-list-btn">관심 목록</button>
-          </label>
-          <button class="login-btn">로그인</button>
-          <button class="resister-btn">회원가입</button>
+            <a href="#" id="dark-toggle"
+              ><img src="../assets/images/moon.png" alt="" />
+            </a>
+            <label>
+              <img
+                src="../assets/images/star.png"
+                width="20"
+                height="19"
+                alt=""
+                class="star-img"
+              />
+              <button id="watch-list-btn">관심 목록</button>
+            </label>
+            <button class="login-btn">로그인</button>
+            <button class="resister-btn">회원가입</button>
+          </div>
         </div>
+      </header>
+      <!--모바일-->
+      <div class="mobile-container">
+        <div class="close-btn-container">
+          <button class="close-btn">X</button>
+        </div>
+        <div class="input-wrapper">
+          <input type="text" name="" placeholder="SEARCH" id="mobile-input-box" />
+          <button class="mobile-input-btn">GO</button>
+        </div>
+        <ul class="mobile-list-items">
+          <li class="mobile-item">로그인</li>
+          <li class="mobile-item">관심목록</li>
+          <li class="mobile-item">가상자산</li>
+          <li class="mobile-item">뉴스룸</li>
+        </ul>
       </div>
     </header>
 <!--모바일-->
@@ -105,73 +133,188 @@
                               <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
                               <span>Bittensor</span>
                             </div>
-                            <div class="coin-symbol">BTC</div>
                           </div>
+                          <div class="coin-24h">0.85%</div>
                         </div>
-                        <div class="coin-24h">0.85%</div>
-                      </div>
-                      <div class="hot-list list">
-                        <div class="coin-left">
-                          <div class="coin-rank">1</div>
-                          <div class="coin-names">
-                            <div class="coin-name">
-                              <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
-                              <span>Worldcoin</span>
+                        <div class="hot-list list">
+                          <div class="coin-left">
+                            <div class="coin-rank">1</div>
+                            <div class="coin-names">
+                              <div class="coin-name">
+                                <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
+                                <span>Worldcoin</span>
+                              </div>
+                              <div class="coin-symbol">BTC</div>
                             </div>
-                            <div class="coin-symbol">BTC</div>
                           </div>
+                          <div class="coin-24h">0.85%</div>
                         </div>
-                        <div class="coin-24h">0.85%</div>
-                      </div>
-                      <div class="hot-list list">
-                        <div class="coin-left">
-                          <div class="coin-rank">1</div>
-                          <div class="coin-names">
-                            <div class="coin-name">
-                              <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
-                              <span>Shiba Inu</span>
+                        <div class="hot-list list">
+                          <div class="coin-left">
+                            <div class="coin-rank">1</div>
+                            <div class="coin-names">
+                              <div class="coin-name">
+                                <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
+                                <span>Shiba Inu</span>
+                              </div>
+                              <div class="coin-symbol">BTC</div>
                             </div>
-                            <div class="coin-symbol">BTC</div>
                           </div>
+                          <div class="coin-24h">0.85%</div>
                         </div>
-                        <div class="coin-24h">0.85%</div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    id="hot-container"
-                    class="topcoin-container slide-content"
-                  >
-                    <div class="area-title hot-title">
-                      🔥 지금, 가장 뜨거운 코인 TOP 3
+                    <div
+                      id="hot-container"
+                      class="topcoin-container slide-content"
+                    >
+                      <div class="area-title hot-title">
+                        🔥 지금, 가장 뜨거운 코인 TOP 3
+                      </div>
+                      <div id="hotChart" class="topChart"></div>
                     </div>
-                    <div id="hotChart" class="topChart"></div>
-                  </div>
-                  <div
-                    id="cold-container"
-                    class="topcoin-container slide-content"
-                  >
-                    <div class="area-title cold-title">
-                      🥶 지금, 가장 차가운 코인 TOP 3
+                    <div
+                      id="cold-container"
+                      class="topcoin-container slide-content"
+                    >
+                      <div class="area-title cold-title">
+                        🥶 지금, 가장 차가운 코인 TOP 3
+                      </div>
+                      <div id="coldChart" class="topChart"></div>
                     </div>
-                    <div id="coldChart" class="topChart"></div>
                   </div>
                 </div>
+                <div class="slide-pagination">
+                  <div class="slide-dot"></div>
+                  <div class="slide-dot"></div>
+                  <div class="slide-dot"></div>
+                </div>
               </div>
-              <div class="slide-pagination">
-                <div class="slide-dot"></div>
-                <div class="slide-dot"></div>
-                <div class="slide-dot"></div>
+              <!-- 뉴스 : 김미주 -->
+              <div class="news-area highlight-area">
+                <div class="area-title hot-title">
+                  🧐 놓치지 말아야 할 코인 뉴스
+                  <div class="more">더보기 ></div>
+                </div>
+                <div class="news_slide-container top">
+                  <div id="news-board" class="news_slide-wrapper"></div>
+                </div>
+                <div class="news_slide-pagination">
+                  <div class="news_slide-dot"></div>
+                  <div class="news_slide-dot"></div>
+                  <div class="news_slide-dot"></div>
+                </div>
               </div>
+              <!-- 탐욕지수 : 손응수 -->
+              <div class="greed-chart-area highlight-area greed-title-box">
+                <div class="area-title greed-title">공포탐욕지수</div>
+                <div class="area-wrapper">
+                    <div class="area-box">
+                        <img
+                            class="greed-img"
+                            src="../assets/images/feargreed.svg"
+                            alt=""
+                        />
+                        <div class="feargreed-result-box">
+                            <div class="feargreed-num"></div>
+                            <div class="feargreed-result">극도의 탐욕</div>
+                            <div class="indicator"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- 뉴스 : 김미주 -->
-            <div class="news-area highlight-area">
-              <div class="area-title hot-title">
-                🧐 놓치지 말아야 할 코인 뉴스
-                <div class="more">더보기 ></div>
+        </section>
+        <!-- 코인차트 : 박종석 -->
+        <div class="section-title">오늘의 시가총액별 상위 100개의 가상 자산</div>
+        <section class="coin-chart">
+          <table class="content-table">
+            <thead>
+              <tr class="">
+                <th></th>
+                <th>#</th>
+                <th>코인명</th>
+                <th>심볼</th>
+                <th id="price">가격</th>
+                <th>1h %</th>
+                <th>24h %</th>
+                <th>7d %</th>
+                <th>시가총액</th>
+                <th>거래량(24h)</th>
+                <th>유통량</th>
+              </tr>
+            </thead>
+            <tbody id="table-data">
+              <tr>
+                <td class="favorite-icon" onclick="redirectToWatchList(`${i}`)">
+                  <i class="fa-regular fa-star"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination"></ul>
+        </nav>
+        <!-- 스크롤 : 김미주 -->
+        <div class="scroll-to-top" id="scrollToTop">
+          <a class="icon-up"> </a>
+        </div>
+      </main>
+      <!-- footer -->
+      <footer>
+        <div class="footer-container">
+          <div class="footer-top">
+            <div class="footer-logo"><a href="/html/main.html"><img src="/assets/images/logo.svg" alt="logo"></a></div>
+            <div class="footer-menu-area">
+              <div class="footer-menu-group">
+                <div class="footer-menu">
+                  <h5 class="menu-title">서비스</h5>
+                  <ul class="menu-list">
+                    <li class="menu-item">CN Labs</li>
+                    <li class="menu-item">ChatGPT Plugin</li>
+                    <li class="menu-item">가상자산 API</li>
+                    <li class="menu-item">가상자산 지수</li>
+                    <li class="menu-item">Doodles</li>
+                    <li class="menu-item">사이트맵</li>
+                    <li class="menu-item">광고</li>
+                  </ul>
+                </div>
+                <div class="footer-menu">
+                  <h5 class="menu-title">회사</h5>
+                  <ul class="menu-list">
+                    <li class="menu-item">우리에 대하여</li>
+                    <li class="menu-item">이용 약관</li>
+                    <li class="menu-item">개인 정보 보호 정책</li>
+                    <li class="menu-item">Cookie preferences</li>
+                    <li class="menu-item">쿠키 정책</li>
+                    <li class="menu-item">커뮤니티 규칙</li>
+                    <li class="menu-item">고지사항</li>
+                    <li class="menu-item">방법론</li>
+                    <li class="menu-item">직업</li>
+                  </ul>
+                </div>
               </div>
-              <div class="news_slide-container top">
-                <div id="news-board" class="news_slide-wrapper"></div>
+              <div class="footer-menu-group">
+                <div class="footer-menu footer-menu-third">
+                  <h5 class="menu-title">지원</h5>
+                  <ul class="menu-list">
+                    <li class="menu-item">신청 양식</li>
+                    <li class="menu-item">고객 지원</li>
+                    <li class="menu-item">FAQ</li>
+                    <li class="menu-item">용어집</li>
+                  </ul>
+                </div>
+                <div class="footer-menu">
+                  <h5 class="menu-title">소셜 미디어</h5>
+                  <ul class="menu-list">
+                    <li class="menu-item">X (Twitter)</li>
+                    <li class="menu-item">Telegram</li>
+                    <li class="menu-item">Instagram</li>
+                    <li class="menu-item">Facebook</li>
+                    <li class="menu-item">레딧</li>
+                    <li class="menu-item">LikedIn</li>
+                  </ul>
+                </div>
               </div>
               <div class="news_slide-pagination">
                 <div class="news_slide-dot active"></div>
@@ -179,23 +322,6 @@
                 <div class="news_slide-dot"></div>
               </div>
             </div>
-            <!-- 탐욕지수 : 손응수 -->
-            <div class="greed-chart-area highlight-area greed-title-box">
-              <div class="area-title greed-title">공포탐욕지수</div>
-              <div class="area-wrapper">
-                  <div class="area-box">
-                      <img
-                          class="greed-img"
-                          src="../assets/images/feargreed.svg"
-                          alt=""
-                      />
-                      <div class="feargreed-result-box">
-                          <div class="feargreed-num"></div>
-                          <div class="feargreed-result">극도의 탐욕</div>
-                          <div class="indicator"></div>
-                      </div>
-                  </div>
-              </div>
           </div>
       </section>
       <!-- 코인차트 : 박종석 -->
@@ -302,9 +428,8 @@
             </div>
           </div>
         </div>
-        <div class="copyright">©2024 CoinNoona. All rights reserved</div>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
   </div>
     <script
