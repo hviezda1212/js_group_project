@@ -278,23 +278,27 @@ const topCoinRender = () => {
   let hotHTML = "";
 
   for (i = 0; i < hotList.length; i++) {
-    hotHTML += `<div class="hot-list list">
-      <div class="coin-left">
-        <div class="coin-rank">${hotList.indexOf(hotList[i]) + 1}</div>
-        <div class="coin-names">
-          <div class="coin-name">
-            <img class="coin-img-size" 
-            src='https://s2.coinmarketcap.com/static/img/coins/64x64/${hotList[i]["id"]}.png'>
-            </img>
-            <span>${hotList[i]["name"]}</span>
+    hotHTML += `
+    <div class="topChart">
+      <div class="hot-list list">
+        <div class="coin-left">
+          <div class="coin-rank">${hotList.indexOf(hotList[i]) + 1}</div>
+          <div class="coin-names">
+            <div class="coin-name">
+              <img class="coin-img-size"
+              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${hotList[i]["id"]}.png'>
+              </img>
+              <span>${hotList[i]["name"]}</span>
+            </div>
+            <div class="coin-symbol">${hotList[i]["symbol"]}</div>
           </div>
-          <div class="coin-symbol">${hotList[i]["symbol"]}</div>
         </div>
+        <div class="coin-24h">${
+          hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+        }</div>
       </div>
-      <div class="coin-24h">${
-        hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-      }</div>
-    </div>`;
+    </div>
+    `;
   }
   document.getElementById("hot-container").innerHTML = hotHTML;
 
@@ -306,23 +310,27 @@ const topCoinRender = () => {
   let coldHTML = "";
 
   for (i = 0; i < coldList.length; i++) {
-    coldHTML += `<div class="hot-list list">
-      <div class="coin-left">
-        <div class="coin-rank">${coldList.indexOf(coldList[i]) + 1}</div>
-        <div class="coin-names">
-          <div class="coin-name">
-            <img class="coin-img-size" 
-            src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coldList[i]["id"]}.png'>
-            </img>
-            <span>${coldList[i]["name"]}</span>
+    coldHTML += `
+    <div class="topChart">
+      <div class="hot-list list">
+        <div class="coin-left">
+          <div class="coin-rank">${coldList.indexOf(coldList[i]) + 1}</div>
+          <div class="coin-names">
+            <div class="coin-name">
+              <img class="coin-img-size"
+              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coldList[i]["id"]}.png'>
+              </img>
+              <span>${coldList[i]["name"]}</span>
+            </div>
+            <div class="coin-symbol">${coldList[i]["symbol"]}</div>
           </div>
-          <div class="coin-symbol">${coldList[i]["symbol"]}</div>
         </div>
+        <div class="coin-24h">${
+          coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+        }</div>
       </div>
-      <div class="coin-24h">${
-        coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-      }</div>
-    </div>`;
+    </div>
+    `;
   }
   document.getElementById("cold-container").innerHTML = coldHTML;
 };
@@ -640,24 +648,24 @@ document.querySelector(".toggleSwitch").addEventListener(
 //regionend TOGGLE
 
 // 슬라이드 기능
-const swiper = document.querySelector(".slide-wrapper");
-const bullets = document.querySelectorAll(".slide-dot");
+// const swiper = document.querySelector(".slide-wrapper");
+// const bullets = document.querySelectorAll(".slide-dot");
 
-let currentSlide = 0;
+// let currentSlide = 0;
 
-const showSlide = (slideIndex) => {
-  const slideWidth = document.querySelector(".slide-content").offsetWidth;
-  swiper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
-  currentSlide = slideIndex;
+// const showSlide = (slideIndex) => {
+//   const slideWidth = document.querySelector(".slide-content").offsetWidth;
+//   swiper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+//   currentSlide = slideIndex;
 
-  bullets.forEach((bullet, index) => {
-    if (index === currentSlide) {
-      bullet.classList.add("active");
-    } else {
-      bullet.classList.remove("active");
-    }
-  });
-};
+//   bullets.forEach((bullet, index) => {
+//     if (index === currentSlide) {
+//       bullet.classList.add("active");
+//     } else {
+//       bullet.classList.remove("active");
+//     }
+//   });
+// };
 
 bullets.forEach((bullet, index) => {
   bullet.addEventListener("click", () => {
@@ -665,16 +673,16 @@ bullets.forEach((bullet, index) => {
   });
 });
 
-// // 오토 슬라이드
-const intervalDuration = 5000;
+// // // 오토 슬라이드
+// const intervalDuration = 5000;
 
-// // 슬라이드 변경 함수
-const autoSlide = () => {
-  const nextSlide = (currentSlide + 1) % bullets.length;
-  showSlide(nextSlide);
-};
+// // // 슬라이드 변경 함수
+// const autoSlide = () => {
+//   const nextSlide = (currentSlide + 1) % bullets.length;
+//   showSlide(nextSlide);
+// };
 
-// // 자동 슬라이드 설정(
-const autoSlideInterval = setInterval(autoSlide, intervalDuration);
+// // // 자동 슬라이드 설정(
+// const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
-showSlide(0);
+// showSlide(0);

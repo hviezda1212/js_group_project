@@ -35,26 +35,29 @@ ul {
 }
 
 .highlights .highlight-area {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
   width: 474px;
   height: 294px;
   margin-right: 5px;
   border-radius: 10px;
-  padding: 30px;
+  padding: 30px 30px 20px 30px;;
   box-sizing: border-box;
   box-shadow: 0 2px 8px #38556450;
   overflow: hidden;
 }
 
 .area-title {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 20px;
   font-weight: 700;
 }
 
 /* 공통 슬라이더 속성 */
 .slide-container {
-  height: 170px;
-  border: 1px solid blue;
+  height: 100%;
+  /* border: 1px solid blue; */
   overflow: hidden;
 }
 
@@ -72,7 +75,6 @@ ul {
 .slide-pagination {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
 }
 
 .slide-dot {
@@ -93,44 +95,61 @@ ul {
 }
 
 .topcoin-container {
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .list {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.topChart{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .coin-left {
-  width: 40%;
+  width: 80%;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  align-items: center;
 }
 
 .coin-names {
-  width: 80%;
   display: flex;
+  align-items: center;
 }
 
 .coin-rank {
+  margin-right: 25px;
   font-size: 16px;
   font-weight: 500;
   color: #8b8b8b;
 }
 
 .coin-name {
-  margin-right: 14px;
+  margin-right: 12px;
   font-weight: 700;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   display: inline-block;
   max-width: 100%;
+}
+
+.coin-name .coin-img-size {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  margin-right: 5px;
 }
 
 .coin-symbol {
@@ -143,14 +162,16 @@ ul {
 }
 
 #hot-container {
-  background-color: pink;
+  background-color: rgba(255, 192, 203, 0.178);
 }
 
 #cold-container {
-  background-color: skyblue;
+  background-color: rgba(135, 207, 235, 0.192);
 }
 #third-container {
-  background-color: lemonchiffon;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 250, 205, 0.151);
 }
 
 /* 코인 시황 */
