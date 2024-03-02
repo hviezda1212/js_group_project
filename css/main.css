@@ -942,6 +942,7 @@ footer{
     width: 352px;
     height: 229px;
     margin-bottom: 20px;
+    margin-right: 0;
   }
   .area-title{
     font-size: 16px;
@@ -991,6 +992,11 @@ footer{
 
   .scroll-to-top {
     right: 300px;
+  }
+
+  /* 탐욕 지수 */
+  .area-box{
+    margin-top: 0;
   }
 
   /* footer */
