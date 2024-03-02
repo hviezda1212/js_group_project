@@ -1,58 +1,20 @@
 * {
   margin: 0;
 }
-header {
-  min-height: 134px;
-  border-bottom: 1px solid rgb(179, 179, 179);
-  margin-bottom: 100px;
-  /* display: none; */
-}
-
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-
-ul, li{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* header*/
-#menu-bars {
-  display: none;
-}
-
-.navbar-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 2em;
+header {
+  min-height: 134px;
+  border: 1px solid gray;
+  margin-bottom: 100px;
 }
 
 #dark-toggle {
   position: relative;
-  right: -22em;
-  top: 0em;
-  z-index: 9999;
-}
-.navbar-wrapper {
-  display: flex;
-}
-.btn-items {
-  margin: 0 10em;
-}
-
-.login-btn,
-.resister-btn {
-  width: 80px;
-  height: 37px;
-  margin-left: 1em;
-  border: 1px solid #793aff;
-  border-radius: 10px;
-  color: #793aff;
+  right: 5em;
   cursor: pointer;
 }
 
@@ -64,68 +26,6 @@ ul {
   list-style-type: none;
 }
 
-#mobile-input-box {
-  margin: 0px;
-  padding: 1px 40px 0px 10px;
-  vertical-align: middle;
-  width: 100%;
-  border: 1px solid rgb(120, 120, 120);
-  box-sizing: border-box;
-  color: rgb(102, 102, 102);
-  font-size: 1rem;
-  font-family: nyt-franklin, helvetica, arial, sans-serif;
-  font-weight: normal;
-  height: 35px;
-  letter-spacing: 0.5px;
-  line-height: 16px;
-  padding: 1px 40px 0px 10p;
-  vertical-align: middle;
-  border-radius: 3px;
-  margin-right: 1em;
-}
-.mobile-input-btn {
-  width: 35px;
-  height: 35px;
-  color: white;
-  font-size: 11px;
-  background-color: rgb(86, 123, 149);
-  border: rgb(50, 104, 145);
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: center;
-  padding-block: 1px;
-  padding-inline: 6px;
-  transition: all 0.6s ease 0s;
-  border-radius: 3px;
-}
-.mobile-list-items {
-  list-style: none;
-  padding: 0;
-}
-
-.mobile-item {
-  color: black;
-  padding: 24px 0;
-  cursor: pointer;
-  &:hover {
-    background-color: burlywood;
-  }
-}
-
-/*toggle-section*/
-.toggle-section {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.toggle-text {
-  color:gray;
-  margin-right:10px;
-  font-weight: 600;
-}
-
 /* 오늘의 하이라이트 */
 .highlights {
   width: 100%;
@@ -135,9 +35,6 @@ ul {
 }
 
 .highlights .highlight-area {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
   width: 474px;
   height: 294px;
   margin-right: 5px;
@@ -146,19 +43,6 @@ ul {
   box-sizing: border-box;
   box-shadow: 0 2px 8px #38556450;
   overflow: hidden;
-}
-
-.section-title{
-  width: 100%;
-  display: inline-flex;
-  justify-content: flex-start;
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.highlight-areas{
-  display: inline-flex;
 }
 
 .area-title {
@@ -203,49 +87,6 @@ ul {
 
 .slide-dot.active {
   background-color: #793aff;
-}
-
-.slide-dot:hover {
-  background-color: gray;
-}
-
-.news_slide-container {
-  height: 170px;
-  overflow: hidden;
-}
-
-.news_slide-wrapper {
-  width: 100%;
-  display: flex;
-  transition: transform 1s;
-}
-
-.news_slide-content {
-  width: 100%;
-  flex: 0 0 100%;
-}
-
-.news_slide-pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.news_slide-dot {
-  width: 9px;
-  height: 9px;
-  margin-right: 5px;
-  border-radius: 50px;
-  background-color: #cccccc;
-  cursor: pointer;
-}
-
-.news_slide-dot.active {
-  background-color: #793aff;
-}
-
-.news_slide-dot:hover {
-  background-color: gray;
 }
 
 /* 지금, 가장 뜨거운 코인, 차가운 코인 top3 */
@@ -340,6 +181,7 @@ ul {
 
 .coin-chart {
   width: 1414px;
+  /* border: 1px solid gray; */
 }
 
 .content-table {
@@ -381,9 +223,11 @@ ul {
   border-bottom: 2px solid #dddddd;
 }
 
-.fav-star-img{
-  background-color: none;
-  background: none;
+.coin-img-size {
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  margin-right: 5px;
 }
 
 .fav-star-img{
@@ -584,12 +428,71 @@ ul {
 
 .fav-button {
   border: none;
-  background-color: white;
-  background:none;
+  background-color: none;
+  background: none;
 }
 
-.page-item .page-link:hover {
+.page-item:hover {
   cursor: pointer;
+}
+
+.page-link:hover {
+  cursor: pointer;
+}
+
+.input-container {
+  display: flex;
+  position: relative;
+  margin-top: 1em;
+  margin-left: 50em;
+}
+
+.search-icon {
+  position: absolute;
+  right: 39em;
+  top: 0.8em;
+}
+
+.watch-list-btn {
+  border: none;
+  outline: none;
+  margin-right: 1em;
+}
+
+.login-btn,
+.resister-btn {
+  width: 80px;
+  height: 37px;
+  margin-left: 1em;
+  border: 1px solid #793aff;
+  border-radius: 10px;
+  color: #793aff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #793aff;
+    color: white;
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+.input-box {
+  width: 373px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 0 1em;
+  background-color: #eeeeee;
+
+  &::placeholder {
+    text-align: center;
+  }
+}
+.btn-items {
+  display: flex;
+  align-items: center;
 }
 
 .indicator {
@@ -833,156 +736,10 @@ input[type="radio"]:hover {
 }
 
 
-.higher {
-  color: green;
-}
-
-.lower {
-  color: red;
-}
-
-.same {
-  color: black;
-}
-
-/* footer */
-footer{
-  margin-top: 100px;
-  background-color: rgba(241, 241, 241, 0.541);
-  /* border-top: 1px solid #c0c0c0; */
-}
-
-.footer-container{
-  padding: 70px 160px 60px 130px;
-}
-
-.footer-top{
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer-logo img{
-  width: 200px;
-}
-
-.footer-menu-area{
-  display: flex;
-  margin-top: 15px;
-}
-
-.footer-menu-group{
-  display: flex;
-}
-
-.footer-menu-group:first-child{
-  display: flex;
-  margin-right: 70px;
-}
-
-.footer-menu{
-  margin-right: 70px;
-}
-
-.footer-menu:last-child{
-  margin-right: 0;
-}
-
-.menu-title{
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.menu-item{
-  margin-bottom: 13px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgb(153, 153, 153);
-  cursor: pointer;
-}
-.menu-item:hover{
-  color: rgb(83, 83, 83);
-}
-
-.copyright{
-  margin-top: 100px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgb(128, 126, 126);
-}
-
-/* footer */
-footer{
-  margin-top: 100px;
-  background-color: rgba(241, 241, 241, 0.541);
-  /* border-top: 1px solid #c0c0c0; */
-}
-
-.footer-container{
-  padding: 70px 160px 60px 130px;
-}
-
-.footer-top{
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer-logo img{
-  width: 200px;
-}
-
-.footer-menu-area{
-  display: flex;
-  margin-top: 15px;
-}
-
-.footer-menu-group{
-  display: flex;
-}
-
-.footer-menu-group:first-child{
-  display: flex;
-  margin-right: 70px;
-}
-
-.footer-menu{
-  margin-right: 70px;
-}
-
-.footer-menu:last-child{
-  margin-right: 0;
-}
-
-.menu-title{
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.menu-item{
-  margin-bottom: 13px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgb(153, 153, 153);
-  cursor: pointer;
-}
-.menu-item:hover{
-  color: rgb(83, 83, 83);
-}
-
-.copyright{
-  margin-top: 100px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgb(128, 126, 126);
-}
-
-
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
-  /* header */
-  #dark-toggle {
-    display: none;
+  .priority-2{
+    display:none;
   }
 
   .coin-chart {
@@ -990,115 +747,5 @@ footer{
     /* border: 1px solid gray; */
   }
 
-  #mobile-search {
-    display: block;
-  }
 
-  .input-box {
-    display: none;
-  }
-
-  .navbar-wrapper ul {
-    display: none;
-  }
-
-  .input-container {
-    display: flex;
-    align-items: center;
-  }
-
-  .login-btn,
-  .resister-btn {
-    display: none;
-  }
-  label {
-    display: none;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* highlights */
-  .highlights {
-    display: grid;
-    /* grid-gap: 30px; */
-    flex-direction: column;
-    align-items: center;
-  }
-  .section-title {
-    font-size: 20px;
-  }
-  .highlight-areas{
-    flex-flow: column;
-  }
-  .highlights .highlight-area{
-    width: 352px;
-    height: 229px;
-    margin-bottom: 20px;
-  }
-  .area-title{
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  .toggle-section{
-    padding-right: 25px;
-  }
-  .toggleSwitch{
-    width: 50px;
-    height: 25px;
-  }
-  .toggleSwitch .toggleButton{
-    width: 20px;
-    height: 20px;
-  }
-  .toggle-text{
-    font-size: 14px;
-  }
-
-
-  /* 뜨거운 코인 차트 */
-  .topChart{
-    font-size: 13px;
-  }
-  .coin-name .coin-img-size{
-    width: 28px;
-    height: 28px;
-  }
-  .slide-dot{
-    width: 6px;
-    height: 6px;
-  }
-
-  .priority-2 {
-    display:none;
-  }
-
-  .coin-chart {
-    width:100vw;
-  }
-
-  /* footer */
-  .footer-container{
-    padding: 50px 20px;
-  }
-  .footer-top{
-    flex-flow: column;
-  }
-  .footer-logo{
-    margin-bottom: 40px;
-  }
-  .footer-menu-area{
-    flex-flow: column;
-  }
-  .footer-menu-group{
-    display: flex;
-  }
-  .footer-menu-group:first-child{
-    margin-bottom: 50px;
-  }
-  .footer-menu-third{
-    margin-right: 117px;
-  }
 }

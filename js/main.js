@@ -54,14 +54,14 @@ const getData = async () => {
         // console.log(prevPriceList)
       }
     } else {
-      for (i = 0, j = page * 100 - 99; j < pageSize * page + 1; i++, j++) {
+      for (i=0, j = page * 100 - 99; j < pageSize * page + 1; i++, j++) {
         coinList.push(data.data[j]);
         // console.log("ccc",coinList)
         // prevPriceList에 코인 가격 정보를 쌓는다
         tempCoinSymbol = coinList[i]["symbol"];
         tempCoinPrice = coinList[i]["quote"].USD["price"];
         prevPriceList[tempCoinSymbol].push(tempCoinPrice);
-        console.log(prevPriceList);
+        console.log(prevPriceList)
       }
     }
     totalResult = data.data.length;
@@ -86,126 +86,33 @@ const render = () => {
     const dayPercentage = coin["quote"].USD["percent_change_24h"];
     const weekPercentage = coin["quote"].USD["percent_change_7d"];
     tableHTML += `            
-      <tr>
-        <td class="priority-1" id="favorite">
-          <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
-            <img
-              src="../assets/images/star.png"
-              width="20"
-              height="19"
-              alt=""
-              class="star-img"
-            />
-          </button>
-        </td>
-        <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-        <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
-          coin["id"]
-        }.png'></img><span>${coin["name"]}</span></td>
-        <td class="priority-1" id="symbol">${coin["symbol"]}</td>
-        <td class="priority-1" id="price">${checkPriceChange(
-          coinPrice,
-          coinSymbol
-        )}</td>
-        <td class="priority-1" id="1h">${checkPercentageChange(
-          hourPercentage
-        )}</td>
-        <td class="priority-2" id="24h">${checkPercentageChange(
-          dayPercentage
-        )}</td>
-        <td class="priority-2" id="7d">${checkPercentageChange(
-          weekPercentage
-        )}</td>
-        <td class="priority-2" id="market-cap">${
-          "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
-        }</td>
-        <td class="priority-2" id="volume">${
-          "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
-        }</td>
-        <td class="priority-2" id="circulating-supply">${
-          Math.floor(coin["circulating_supply"]).toLocaleString() +
-          " " +
-          coin["symbol"]
-        }</td>
-      </tr>`;
+        <tr>
+            <td class="priority-1" id="favorite"><button class="fav-button" onclick="redirectToWatchList(${i})"><img src = "../assets/images/Star.svg"></img></button></td>
+            <td class="priority-1" id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+            <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+              coin["id"]
+            }.png'></img><span>${coin["name"]}</span></td>
+            <td class="priority-1" id="symbol">${coin["symbol"]}</td>
+            <td class="priority-1" id="price">${checkPriceChange(coinPrice, coinSymbol)}</td>
+            <td class="priority-1" id="1h">${checkPercentageChange(hourPercentage)}</td>
+            <td class="priority-2" id="24h">${checkPercentageChange(dayPercentage)}</td>
+            <td class="priority-2" id="7d">${checkPercentageChange(weekPercentage)}</td>
+            <td class="priority-2" id="market-cap">${
+              "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
+            }</td>
+            <td class="priority-2" id="volume">${
+              "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
+            }</td>
+            <td class="priority-2" id="circulating-supply">${
+              Math.floor(coin["circulating_supply"]).toLocaleString() +
+              " " +
+              coin["symbol"]
+            }</td>
+        </tr>`;
     currentPrice = coin["quote"].USD["price"];
   }
   document.getElementById("table-data").innerHTML = tableHTML;
 };
-
-function toggleStar(img) {
-  if (img.src.includes("star.png")) {
-    img.src = "../assets/images/star-active.png"; // Change to yellow star image path
-  } else {
-    img.src = "../assets/images/star.png"; // Change to default star image path
-  }
-}
-
-// const render = () => {
-//   let tableHTML = "";
-//   for (let i = 0; i < coinList.length; i++) {
-//     coinSymbol = coinList[i]["symbol"];
-//     coinPrice = coinList[i]["quote"].USD["price"];
-//     tableHTML += `
-//         <tr>
-//             <td id="favorite"><button class="fav-button"><i class="fa-regular fa-star"></i></button></td>
-//             <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-//             <td id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coinList[i]["id"]}.png'></img><span>${coinList[i]["name"]}</span></td>
-//             <td id="symbol">${coinList[i]["symbol"]}</td>
-//             <td id="price">${checkPriceChange(coinPrice, coinSymbol)}</td>
-//             <td id="1h">${coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"}</td>
-//             <td id="24h">${coinList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"}</td>
-//             <td id="7d">${coinList[i]["quote"].USD["percent_change_7d"].toFixed(2) + "%"}</td>
-//             <td id="market-cap">${"$" + Math.floor(coinList[i]["quote"].USD["market_cap"]).toLocaleString()}</td>
-//             <td id="volume">${"$" + Math.floor(coinList[i]["quote"].USD["volume_24h"]).toLocaleString()}</td>
-//             <td id="circulating-supply">${Math.floor(coinList[i]["circulating_supply"]).toLocaleString() + " " + coinList[i]["symbol"]}</td>
-//         </tr>`;
-//     currentPrice = coinList[i]["quote"].USD["price"];
-//   }
-//   document.getElementById("table-data").innerHTML = tableHTML;
-// };
-
-// const render = () => {
-//   let tableHTML = "";
-//   for (i = 0; i < coinList.length; i++) {
-//     coinSymbol = coinList[i]["symbol"];
-//     coinPrice = coinList[i]["quote"].USD["price"];
-//     tableHTML += `            <tr>
-//         <td id = "favorite"><button class = "fav-button"><i class="fa-regular fa-star"></i></button></td>
-//         <td id = "rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-//         <td id = "name"><img class = "coin-img-size" src ='https://s2.coinmarketcap.com/static/img/coins/64x64/${
-//           coinList[i]["id"]
-//         }.png'></img><span>${coinList[i]["name"]}</span></td>
-//         <td id = "symbol">${coinList[i]["symbol"]}</td>
-//         <td id = "price">${checkPriceChange(coinPrice, coinSymbol)}</td>
-//         <td id = "1h">${
-//           coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"
-//         }</td>
-//         <td id = "24h">${
-//           coinList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-//         }</td>
-//         <td id = "7d">${
-//           coinList[i]["quote"].USD["percent_change_7d"].toFixed(2) + "%"
-//         }</td>
-//         <td id = "market-cap">${
-//           "$" +
-//           Math.floor(coinList[i]["quote"].USD["market_cap"]).toLocaleString()
-//         }</td>
-//         <td id = "volume">${
-//           "$" +
-//           Math.floor(coinList[i]["quote"].USD["volume_24h"]).toLocaleString()
-//         }</td>
-//         <td id = "circulating-supply">${
-//           Math.floor(coinList[i]["circulating_supply"]).toLocaleString() +
-//           " " +
-//           coinList[i]["symbol"]
-//         }</td>
-//     </tr>`;
-//     currentPrice = coinList[i]["quote"].USD["price"];
-//   }
-//   document.getElementById("table-data").innerHTML = tableHTML;
-//   // console.log(tableHTML);
-// };
 
 function redirectToWatchList(index) {
   const clickedCoin = coinList[index];
@@ -307,9 +214,7 @@ const paginationRender = () => {
     paginationHTML += `<li class="page-item" onclick="moveToPage(${
       page + 1
     })"><a class="page-link"><i class="fa-solid fa-angle-right"></i></a></li>`;
-    paginationHTML += `<a class="page-link page-item" onclick="moveToPage(${
-      totalPages - 1
-    })" aria-label="Next">
+    paginationHTML += `<a class="page-link page-item" onclick="moveToPage(${totalPages-1})" aria-label="Next">
     <i class="fa-solid fa-angles-right"></i>
     </a>`;
   }
@@ -561,31 +466,32 @@ const getLatestNews = async () => {
 };
 
 const news_render = () => {
-  let newsHTML = ``;
-  for (let i = 0; i <= NEWS_PAGE_SIZE - 1; i++) {
-    newsHTML += `<div class="news news_slide-content">
-      <div class="img-area">
-        <img class="news-img" src=${news_List[i].urlToImage} />
-      </div>
-      <div class="text-area">
-        <div class="news-title">${
-          news_List[i].title == null || news_List[i].title == ""
-            ? "내용없음"
-            : news_List[i].title.length > 33
-            ? news_List[i].title.substring(0, 33)
-            : news_List[i].title
-        }</div>
-        <p>${
-          news_List[i].description == null || news_List[i].description == ""
-            ? "내용없음"
-            : news_List[i].description.length > 40
-            ? news_List[i].description.substring(0, 40) + "..."
-            : news_List[i].description
-        }</p>
-        <div>${news_List[i].source.name}${news_List[i].publishedAt}</div>
-      </div>
-    </div>`;
-  }
+  const newsHTML = news_List
+    .map(
+      (news) => `        <div class="news">
+  <div class="img-area">
+    <img class="news-img" src=${news.urlToImage} />
+  </div>
+  <div class="text-area">
+    <div class="news-title">${
+      news.title == null || news.title == ""
+        ? "내용없음"
+        : news.title.length > 33
+        ? news.title.substring(0, 33)
+        : news.title
+    }</div>
+    <p>${
+      news.description == null || news.description == ""
+        ? "내용없음"
+        : news.description.length > 40
+        ? news.description.substring(0, 40) + "..."
+        : news.description
+    }</p>
+    <div>${news.source.name}${news.publishedAt}</div>
+  </div>
+</div>`
+    )
+    .join("");
 
   document.getElementById("news-board").innerHTML = newsHTML;
 };
@@ -653,25 +559,6 @@ window.onscroll = function () {
 };
 
 //regionend SCROLL
-//로고 이미지시 해당 메인페이지로 이동
-let logoClick = document.querySelector(".logo-img");
-logoClick.addEventListener("click", () => {
-  window.location.href = "../html/main.html";
-});
-
-//즐겨찾기 마우스 hover했을 때, 노란색 이미지로 변경
-//즐겨찾기 마우스 out 할 때, 본 이미지로 변경
-const starImg = document.querySelector(".star-img");
-
-starImg.addEventListener("mouseover", toggleStarImage);
-starImg.addEventListener("mouseout", toggleStarImage);
-
-function toggleStarImage() {
-  const imageName = this.src.includes("star-active.png")
-    ? "star.png"
-    : "star-active.png";
-  this.src = `../assets/images/${imageName}`;
-}
 
 //region DARK
 let darkToggle = document.querySelector("#dark-toggle");
@@ -686,8 +573,6 @@ darkToggle.addEventListener(
     if (body.classList.contains("dark-mode")) {
       document.body.classList.remove("dark-mode");
       switchImg.src = "../assets/images/moon.png";
-      watchListBtn.style.backgroundColor = "white";
-      watchListBtn.style.color = "black";
       logoImg.src = "../assets/images/logo.svg";
     } else {
       body.classList.add("dark-mode");
@@ -772,63 +657,3 @@ const autoSlide = () => {
 const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
 showSlide(0);
-
-//뉴스 슬라이드 기능
-const news_swiper = document.querySelector(".news_slide-wrapper");
-const news_bullets = document.querySelectorAll(".news_slide-dot");
-
-let news_currentSlide = 0;
-
-const news_showSlide = (slideIndex) => {
-  const news_slideWidth = document.querySelector(
-    ".news_slide-content"
-  ).offsetWidth;
-  news_swiper.style.transform = `translateX(-${
-    slideIndex * news_slideWidth
-  }px)`;
-  news_currentSlide = slideIndex;
-
-  news_bullets.forEach((bullet, index) => {
-    if (index === news_currentSlide) {
-      bullet.classList.add("active");
-    } else {
-      bullet.classList.remove("active");
-    }
-  });
-};
-
-news_bullets.forEach((bullet, index) => {
-  bullet.addEventListener("click", () => {
-    news_showSlide(index);
-  });
-});
-
-// // 슬라이드 변경 함수
-const news_autoSlide = () => {
-  const news_nextSlide = (news_currentSlide + 1) % news_bullets.length;
-  news_showSlide(news_nextSlide);
-};
-
-// // 자동 슬라이드 설정(
-const news_autoSlideInterval = setInterval(news_autoSlide, intervalDuration);
-
-news_showSlide(0);
-
-//모바일버전에서 메뉴 버튼 클릭시 메뉴 리스트
-
-//x버튼 클릭시 메뉴창 사라지고 원래 이미지 노출
-
-let listItems = document.querySelector(".mobile-container");
-let header = document.querySelector("header");
-
-function toggleMenu() {
-  listItems.style.display === "none"
-    ? ((listItems.style.display = "block"), (header.style.display = "none"))
-    : (listItems.style.display = "none");
-}
-
-let closeBtn = document.querySelector(".close-btn");
-closeBtn.addEventListener("click", () => {
-  listItems.style.display = "none";
-  header.style.display = "block";
-});
