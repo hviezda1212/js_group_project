@@ -159,11 +159,18 @@ a {
 }
 
 /* 오늘의 하이라이트 */
-.highlights {
+.highlight-section {
   width: 100%;
   display: flex;
+  flex-flow: column;
   justify-content: center;
+  align-items: center;
   margin-bottom: 100px;
+}
+
+.highlights{
+  display: flex;
+  flex-flow: column;
 }
 
 .highlights .highlight-area {
@@ -177,11 +184,23 @@ a {
   overflow: hidden;
 }
 
+.section-title{
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.highlight-areas{
+  display: inline-flex;
+}
+
 .area-title {
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 700;
-  display: flex;
 }
 
 /* 공통 슬라이더 속성 */
@@ -613,7 +632,6 @@ input[type="radio"]:hover {
 
 .toggleSwitch {
   width: 100px;
-  margin: 30px;
   height: 50px;
   display: block;
   position: relative;
