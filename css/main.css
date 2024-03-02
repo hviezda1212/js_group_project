@@ -265,7 +265,6 @@ a {
 
 .news_slide-container {
   height: 170px;
-  border: 1px solid blue;
   overflow: hidden;
 }
 
@@ -582,6 +581,7 @@ a {
 .news-img {
   width: 165px;
   height: 115px;
+  margin-right:10px;
 }
 
 .news-pagination-nav {

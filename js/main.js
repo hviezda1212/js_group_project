@@ -673,12 +673,12 @@ const news_bullets = document.querySelectorAll(".news_slide-dot");
 let news_currentSlide = 0;
 
 const news_showSlide = (slideIndex) => {
-  const slideWidth = document.querySelector(".slide-content").offsetWidth;
-  swiper.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
-  currentSlide = slideIndex;
+  const news_slideWidth = document.querySelector(".news_slide-content").offsetWidth;
+  news_swiper.style.transform = `translateX(-${slideIndex * news_slideWidth}px)`;
+  news_currentSlide = slideIndex;
 
-  bullets.forEach((bullet, index) => {
-    if (index === currentSlide) {
+  news_bullets.forEach((bullet, index) => {
+    if (index === news_currentSlide) {
       bullet.classList.add("active");
     } else {
       bullet.classList.remove("active");
@@ -686,25 +686,22 @@ const news_showSlide = (slideIndex) => {
   });
 };
 
-bullets.forEach((bullet, index) => {
+news_bullets.forEach((bullet, index) => {
   bullet.addEventListener("click", () => {
-    showSlide(index);
+    news_showSlide(index);
   });
 });
 
-// // 오토 슬라이드
-const intervalDuration = 5000;
-
 // // 슬라이드 변경 함수
-const autoSlide = () => {
-  const nextSlide = (currentSlide + 1) % bullets.length;
-  showSlide(nextSlide);
+const news_autoSlide = () => {
+  const news_nextSlide = (news_currentSlide + 1) % news_bullets.length;
+  news_showSlide(news_nextSlide);
 };
 
 // // 자동 슬라이드 설정(
-const autoSlideInterval = setInterval(autoSlide, intervalDuration);
+const news_autoSlideInterval = setInterval(news_autoSlide, intervalDuration);
 
-showSlide(0);
+news_showSlide(0);
 
 //모바일버전에서 메뉴 버튼 클릭시 메뉴 리스트
 
