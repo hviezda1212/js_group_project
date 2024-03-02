@@ -1,6 +1,6 @@
 // // const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
 // // const  apiKey= "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
-//const apiKey="80c825a1-4e89-4d63-b2db-81486a36d7f7";
+//const apiKey ="80c825a1-4e89-4d63-b2db-81486a36d7f7";
 const url =
     "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
@@ -290,15 +290,15 @@ async function mobileSearch(event) {
     searchRender();
 }
 
-// 검색 버튼 이벤트
+// 검색 버튼 이벤트(나중에..)
 async function clickSearch(event) {}
 
 // 키워드 검색
 const getlist = async (keyword) => {
     try {
-        const url = new URL(
-            `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
-        );
+        // const url = new URL(
+        //     `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
+        // );
 
         const res = await fetch(url, {
             headers: {
@@ -314,6 +314,67 @@ const getlist = async (keyword) => {
     } catch (error) {
         console.error("error message", error);
     }
+};
+
+// 검색 결과 화면
+const searchRender = () => {
+  document.querySelector(".highlights").style.display = "none";
+  if (coinListItems.length <= 0) {
+      document.querySelector(".search-page").style.display = "block";
+      document.querySelector("main").style.display = "none";
+      return;
+  } else {
+      document.querySelector(".search-page").style.display = "none";
+      document.querySelector("main").style.display = "block";
+  }
+
+  let resultHTML = `<thead>
+  <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Symbol</th>
+      <th>Price</th>
+      <th>1h %</th>
+      <th>24h %</th>
+      <th>7dh %</th>
+      <th>Market Cap</th>
+      <th>Volume(24h)</th>
+      <th>Circulating Supply</th>
+  </tr>
+</thead>`;
+
+  // coinList 배열을 순회하면서 각 코인 정보를 테이블에 추가
+  coinListItems.forEach((coin, index) => {
+      resultHTML += `
+      <tr>
+        <td id = "favorite"><button class = "fav-button"><i class="fa-regular fa-star"></i></button></td>
+        <td id = "rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+        <td id = "name"><img class = "coin-img-size" src ='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+            coinList[i]["id"]
+        }.png'></img><span>${coinList[i]["name"]}</span></td>
+        <td id = "symbol">${coinList[i]["symbol"]}</td>
+        <td id = "price">${checkPriceChange(coinPrice, coinSymbol)}</td>
+        <td id = "1h">${
+            coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"
+        }</td>
+      </tr>`;
+  });
+/*
+  <td>${index + 1}</td>
+  <td>${coin.name}</td>
+  <td>${coin.symbol}</td>
+  <td>${coin.quote.KRW.price}</td>
+  <td>${coin.quote.KRW.percent_change_1h}</td>
+  <td>${coin.quote.KRW.percent_change_24h}</td>
+  <td>${coin.quote.KRW.percent_change_7d}</td>
+  <td>${coin.quote.KRW.market_cap}</td>
+  <td>${coin.quote.KRW.volume_24h}</td>
+  <td></td>*/
+
+  resultHTML += `</tbody>`;
+
+  // HTML에 결과 테이블을 추가
+  document.querySelector("#table-data").innerHTML = resultHTML;
 };
 
 // (async () => {
@@ -348,55 +409,7 @@ const fearGreedRender = async () => {
 };
 fearGreedRender();
 
-const searchRender = () => {
-    document.querySelector(".highlights").style.display = "none";
-    if (coinListItems.length <= 0) {
-        document.querySelector(".search-page").style.display = "block";
-        document.querySelector("main").style.display = "none";
-        return;
-    } else {
-        document.querySelector(".search-page").style.display = "none";
-        document.querySelector("main").style.display = "block";
-    }
 
-    let resultHTML = `<thead>
-    <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Symbol</th>
-        <th>Price</th>
-        <th>1h %</th>
-        <th>24h %</th>
-        <th>7dh %</th>
-        <th>Market Cap</th>
-        <th>Volume(24h)</th>
-        <th>Circulating Supply</th>
-    </tr>
-</thead>`;
-
-    // coinList 배열을 순회하면서 각 코인 정보를 테이블에 추가
-    coinListItems.forEach((coin, index) => {
-        resultHTML += `
-        <tr>
-
-            <td>${index + 1}</td>
-            <td>${coin.name}</td>
-            <td>${coin.symbol}</td>
-            <td>${coin.quote.KRW.price}</td>
-            <td>${coin.quote.KRW.percent_change_1h}</td>
-            <td>${coin.quote.KRW.percent_change_24h}</td>
-            <td>${coin.quote.KRW.percent_change_7d}</td>
-            <td>${coin.quote.KRW.market_cap}</td>
-            <td>${coin.quote.KRW.volume_24h}</td>
-            <td></td>
-            </tr>`;
-    });
-
-    resultHTML += `</tbody>`;
-
-    // HTML에 결과 테이블을 추가
-    document.querySelector("#table-data").innerHTML = resultHTML;
-};
 
 //region NEWS
 let news_List = [];
