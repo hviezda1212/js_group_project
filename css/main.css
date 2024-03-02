@@ -462,9 +462,46 @@ a {
   justify-content: center;
 }
 
+.pagination > li > a,
+.pagination>a
+{
+    background-color: white;
+    color: black;
+}
+
+.pagination>a:hover{
+  color: #793aff;
+  background-color: #eee;
+  border-color: #ddd;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #793aff;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #793aff;
+    border: solid 1px #793aff;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #793aff;
+    border: solid 1px #793aff;
+}
+
 .fav-button {
   border: none;
   background-color: white;
+  background:none;
 }
 
 .page-item .page-link:hover {
@@ -839,6 +876,14 @@ footer{
   .section-title {
     font-size: 1.0625rem;
     font-weight: 900;
+  }
+
+  .priority-2 {
+    display:none;
+  }
+
+  .coin-chart {
+    width:100vw;
   }
 }
 
