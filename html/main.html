@@ -20,10 +20,13 @@
         <!-- 검색창 : 손응수 -->
         <header>
             <div class="navbar-container">
-                <a href="#" class="logo"
-                    ><img src="../assets/images/logo.svg" alt=""
-                /></a>
-                <div class="list-items-container">
+                <div class="navbar-wrapper">
+                    <img
+                        src="../assets/images/logo.svg"
+                        class="moon-img"
+                        alt=""
+                    />
+
                     <ul class="list-items">
                         <li class="list-item">가상자산</li>
                         <li class="news-item">뉴스룸</li>
@@ -39,8 +42,16 @@
                     <a href="#" id="dark-toggle"
                         ><img src="../assets/images/moon.png" alt="" />
                     </a>
-
-                    <button class="watch-list-btn">관심 목록</button>
+                    <label>
+                        <img
+                            src="../assets/images/star.png"
+                            width="20"
+                            height="19"
+                            alt=""
+                            class="star-img"
+                        />
+                        <button id="watch-list-btn">관심 목록</button>
+                    </label>
                     <button class="login-btn">로그인</button>
                     <button class="resister-btn">회원가입</button>
                 </div>
