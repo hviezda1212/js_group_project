@@ -5,6 +5,7 @@ header {
     min-height: 134px;
     border: 1px solid gray;
     margin-bottom: 100px;
+    display: none;
 }
 body {
     padding: 0;
@@ -19,12 +20,11 @@ body {
     align-items: center;
     margin-top: 2em;
 }
-.moon-img {
+.logo-img {
     cursor: pointer;
 }
 
 .input-box {
-    position: relative;
     width: 373px;
     height: 41px;
     border-radius: 10px;
@@ -36,9 +36,9 @@ body {
     }
 }
 .search-icon {
-    position: absolute;
-    right: 34em;
-    top: 3.5em;
+    position: relative;
+    right: -22em;
+    top: 0em;
     z-index: 9999;
 }
 .navbar-wrapper {
@@ -46,6 +46,9 @@ body {
 }
 .btn-items {
     margin: 0 10em;
+}
+#meun-bars {
+    display: none;
 }
 
 .login-btn,
@@ -68,11 +71,93 @@ body {
     outline: none;
     margin-right: 1em;
 }
+#dark-toggle {
+    cursor: pointer;
+}
 .star-img {
     cursor: pointer;
 }
 a {
     text-decoration: none;
+}
+
+/*mobile*/
+.mobile-container {
+    margin: 2em 1em;
+    display: flex;
+    flex-direction: column;
+}
+.input-wrapper {
+    display: flex;
+    /* height: 100vh; */
+}
+
+.close-btn-container {
+    margin-bottom: 2em;
+}
+.close-btn {
+    width: 16px;
+    height: 16px;
+    border: none;
+    font-size: 100%;
+    line-height: normal;
+    cursor: pointer;
+    color: black;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+#mobile-input-box {
+    margin: 0px;
+    padding: 1px 40px 0px 10px;
+    vertical-align: middle;
+    width: 100%;
+    border: 1px solid rgb(120, 120, 120);
+    box-sizing: border-box;
+    color: rgb(102, 102, 102);
+    font-size: 1rem;
+    font-family: nyt-franklin, helvetica, arial, sans-serif;
+    font-weight: normal;
+    height: 35px;
+    letter-spacing: 0.5px;
+    line-height: 16px;
+    padding: 1px 40px 0px 10p;
+    vertical-align: middle;
+    border-radius: 3px;
+    margin-right: 1em;
+}
+.mobile-input-btn {
+    width: 35px;
+    height: 35px;
+    color: white;
+    font-size: 11px;
+    background-color: rgb(86, 123, 149);
+    border: rgb(50, 104, 145);
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    padding-block: 1px;
+    padding-inline: 6px;
+    transition: all 0.6s ease 0s;
+    border-radius: 3px;
+}
+.mobile-list-items {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-item {
+    color: black;
+    padding: 24px 0;
+    cursor: pointer;
+    &:hover {
+        background-color: burlywood;
+    }
 }
 /* */
 .highlights {
@@ -142,6 +227,7 @@ a {
 .greed-img {
     width: 278px;
     height: 140px;
+    /* position: fixed; */
 }
 .feargreed-result-box {
     position: absolute;
@@ -373,4 +459,63 @@ a {
 
 .same {
     color: black;
+}
+
+@media screen and (max-width: 48rem) {
+    #dark-toggle {
+        display: none;
+    }
+
+    #meun-bars {
+        display: block;
+        font-size: 2rem;
+        margin-right: 1em;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .search-icon {
+        position: relative;
+        top: 100;
+        display: block;
+    }
+
+    .navbar-wrapper ul {
+        display: none;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+    }
+    .input-box {
+        display: none;
+    }
+    .login-btn,
+    .resister-btn {
+        display: none;
+    }
+    label {
+        display: none;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .highlights {
+        display: grid;
+        grid-gap: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .section-title {
+        font-size: 1.0625rem;
+        font-weight: 900;
+    }
+    .mobile-list-items {
+        display: block;
+        list-style: none;
+    }
 }

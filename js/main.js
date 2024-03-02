@@ -362,6 +362,17 @@ const rendering = () => {
     // HTML에 결과 테이블을 추가
     document.querySelector("#table-data").innerHTML = resultHTML;
 };
+
+//검색된 코인이 없을때
+let noList = (keyword) => {
+    let resultHTML = ``;
+    coinListItems.forEach((item) => {
+        item.symbol.includes(keyword) ||
+            item.name.toUpperCase().includes(keyword);
+        if (!coinListItems) {
+        }
+    });
+};
 getlist();
 
 //region NEWS
@@ -513,7 +524,7 @@ window.onscroll = function () {
 
 //regionend SCROLL
 //로고 이미지시 해당 메인페이지로 이동
-let logoClick = document.querySelector(".moon-img");
+let logoClick = document.querySelector(".logo-img");
 logoClick.addEventListener("click", () => {
     window.location.href = "../html/main.html";
 });
@@ -535,7 +546,7 @@ function toggleStarImage() {
 //region DARK
 let darkToggle = document.querySelector("#dark-toggle");
 let switchImg = document.querySelector("#dark-toggle img");
-let logoImg = document.querySelector(".logo img");
+let logoImg = document.querySelector(".logo-img");
 let body = document.querySelector("body");
 let watchListBtn = document.querySelector("#watch-list-btn");
 
@@ -546,8 +557,7 @@ darkToggle.addEventListener(
             document.body.classList.remove("dark-mode");
             switchImg.src = "../assets/images/moon.png";
             watchListBtn.style.backgroundColor = "#white";
-            watchListBtn.style.backgroundImage = "none";
-            watchListBtn.style.Color = "black";
+            watchListBtn.style.color = "black";
             logoImg.src = "../assets/images/logo.svg";
         } else {
             body.classList.add("dark-mode");
@@ -634,3 +644,14 @@ const autoSlide = () => {
 const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
 showSlide(0);
+
+//모바일버전에서 메뉴 버튼 클릭시 메뉴 리스트
+
+function toggleMenu() {
+    let listItems = document.querySelector(".list-items");
+    if (listItems.style.display === "none") {
+        listItems.style.display = "block";
+    } else {
+        listItems.style.display = "none";
+    }
+}
