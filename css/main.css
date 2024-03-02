@@ -7,10 +7,17 @@ header {
   margin-bottom: 100px;
   /* display: none; */
 }
+
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+ul, li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* header*/
