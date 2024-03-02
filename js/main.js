@@ -1,5 +1,6 @@
 // const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+//const apiKey = "12379dbf-30e0-4b89-92d0-b369a074adc1"
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
@@ -277,19 +278,17 @@ const topCoinRender = () => {
   let hotHTML = "";
 
   for (i = 0; i < hotList.length; i++) {
-    hotHTML += `
-      <div class="hot-list list">
-        <div class="coin-left">
-          <div class="coin-rank">${hotList.indexOf(hotList[i]) + 1}</div>
-          <div class="coin-names">
-            <div class="coin-name">
-              <img class="coin-img-size"
-              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${hotList[i]["id"]}.png'>
-              </img>
-              <span>${hotList[i]["name"]}</span>
-            </div>
-            <div class="coin-symbol">${hotList[i]["symbol"]}</div>
+    hotHTML += `<div class="hot-list list">
+      <div class="coin-left">
+        <div class="coin-rank">${hotList.indexOf(hotList[i]) + 1}</div>
+        <div class="coin-names">
+          <div class="coin-name">
+            <img class="coin-img-size" 
+            src='https://s2.coinmarketcap.com/static/img/coins/64x64/${hotList[i]["id"]}.png'>
+            </img>
+            <span>${hotList[i]["name"]}</span>
           </div>
+          <div class="coin-symbol">${hotList[i]["symbol"]}</div>
         </div>
         <div class="coin-24h">${
           hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
@@ -307,19 +306,17 @@ const topCoinRender = () => {
   let coldHTML = "";
 
   for (i = 0; i < coldList.length; i++) {
-    coldHTML += `
-      <div class="hot-list list">
-        <div class="coin-left">
-          <div class="coin-rank">${coldList.indexOf(coldList[i]) + 1}</div>
-          <div class="coin-names">
-            <div class="coin-name">
-              <img class="coin-img-size"
-              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coldList[i]["id"]}.png'>
-              </img>
-              <span>${coldList[i]["name"]}</span>
-            </div>
-            <div class="coin-symbol">${coldList[i]["symbol"]}</div>
+    coldHTML += `<div class="hot-list list">
+      <div class="coin-left">
+        <div class="coin-rank">${coldList.indexOf(coldList[i]) + 1}</div>
+        <div class="coin-names">
+          <div class="coin-name">
+            <img class="coin-img-size" 
+            src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coldList[i]["id"]}.png'>
+            </img>
+            <span>${coldList[i]["name"]}</span>
           </div>
+          <div class="coin-symbol">${coldList[i]["symbol"]}</div>
         </div>
         <div class="coin-24h">${
           coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
