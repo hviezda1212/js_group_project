@@ -27,11 +27,18 @@ ul {
 }
 
 /* 오늘의 하이라이트 */
-.highlights {
+.highlight-section {
   width: 100%;
   display: flex;
+  flex-flow: column;
   justify-content: center;
+  align-items: center;
   margin-bottom: 100px;
+}
+
+.highlights{
+  display: flex;
+  flex-flow: column;
 }
 
 .highlights .highlight-area {
@@ -46,6 +53,19 @@ ul {
   box-sizing: border-box;
   box-shadow: 0 2px 8px #38556450;
   overflow: hidden;
+}
+
+.section-title{
+  width: 100%;
+  display: inline-flex;
+  justify-content: flex-start;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.highlight-areas{
+  display: inline-flex;
 }
 
 .area-title {
