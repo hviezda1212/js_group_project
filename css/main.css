@@ -962,6 +962,11 @@ footer{
     font-size: 14px;
   }
 
+  /* news */
+  .news_slide-dot{
+    width: 6px;
+    height: 6px;
+  }
 
   /* 뜨거운 코인 차트 */
   .topChart{
