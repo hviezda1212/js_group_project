@@ -961,6 +961,10 @@ footer{
     display: flex;
     flex-direction: column;
   }
+
+  #mobile-search{
+    display: none;
+  }
   
   /* highlights */
   .highlights {
