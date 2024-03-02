@@ -736,6 +736,15 @@ footer{
   margin-top: 15px;
 }
 
+.footer-menu-group{
+  display: flex;
+}
+
+.footer-menu-group:first-child{
+  display: flex;
+  margin-right: 70px;
+}
+
 .footer-menu{
   margin-right: 70px;
 }
