@@ -707,37 +707,16 @@ const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
 showSlide(0);
 
-// 뉴스 슬라이드 기능
+//뉴스 슬라이드 기능
 const news_swiper = document.querySelector(".news_slide-wrapper");
 const news_bullets = document.querySelectorAll(".news_slide-dot");
-const news_nextSlide = (currentSlide + 1) % news_bullets.length;
-let sliderClone = news_swiper.firstElementChild.cloneNode(true);
-let sliderInterval = 2000;  
-const news_slideWidth = document.querySelector(".news_slide-content").offsetWidth;
 
-let news_currentIndex = 0;
 let news_currentSlide = 0;
 
-news_swiper.appendChild(sliderClone);
-
-    function sliderEffect(){
-      news_currentIndex++;
-
-      news_swiper.style.transition = "all 0.6s";
-        news_swiper.style.transform = `translateX(-${news_slideWidth * news_currentIndex}px)`;
-
-        // 마지막 이미지에 위치했을 때 
-        if(news_currentIndex == news_nextSlide){
-            setTimeout(() => {
-              news_swiper.style.transition = "0s";
-              news_swiper.style.transform = `translateX(0px)`;
-            }, 700);
-            news_currentIndex = 0;
-        }
-    };
-
-    setInterval(sliderEffect, sliderInterval);
-
+const news_showSlide = (slideIndex) => {
+  const news_slideWidth = document.querySelector(".news_slide-content").offsetWidth;
+  news_swiper.style.transform = `translateX(-${slideIndex * news_slideWidth}px)`;
+  news_currentSlide = slideIndex;
 
   news_bullets.forEach((bullet, index) => {
     if (index === news_currentSlide) {
@@ -746,7 +725,7 @@ news_swiper.appendChild(sliderClone);
       bullet.classList.remove("active");
     }
   });
-
+};
 
 news_bullets.forEach((bullet, index) => {
   bullet.addEventListener("click", () => {
@@ -754,7 +733,14 @@ news_bullets.forEach((bullet, index) => {
   });
 });
 
-sliderEffect();
+// // 슬라이드 변경 함수
+const news_autoSlide = () => {
+  const news_nextSlide = (news_currentSlide + 1) % news_bullets.length;
+  news_showSlide(news_nextSlide);
+};
+
+// // 자동 슬라이드 설정(
+const news_autoSlideInterval = setInterval(news_autoSlide, intervalDuration);
 
 news_showSlide(0);
 

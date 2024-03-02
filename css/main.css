@@ -166,6 +166,19 @@ a {
   }
 }
 
+/*toggle-section*/
+.toggle-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.toggle-text {
+  color:gray;
+  margin-right:10px;
+  font-weight: 600;
+}
+
 /* 오늘의 하이라이트 */
 .highlight-section {
   width: 100%;
@@ -212,6 +225,9 @@ a {
   margin-bottom: 30px;
   font-size: 20px;
   font-weight: 700;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* 공통 슬라이더 속성 */
@@ -256,7 +272,6 @@ a {
 
 .news_slide-container {
   height: 170px;
-  border: 1px solid blue;
   overflow: hidden;
 }
 
@@ -589,10 +604,6 @@ a {
   border-radius: 10px;
 }
 
-.more {
-  color: #793aff;
-}
-
 .news {
   display: flex;
 }
@@ -604,15 +615,17 @@ a {
   font-weight: 700;
 }
 
-.news-title .more {
+.more {
   color: #793aff;
   font-weight: 800;
   cursor: pointer;
+  font-size:small;
 }
 
 .news-img {
   width: 165px;
   height: 115px;
+  margin-right:10px;
 }
 
 .news-pagination-nav {
