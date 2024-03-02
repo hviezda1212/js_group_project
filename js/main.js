@@ -733,7 +733,8 @@ const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
 showSlide(0);
 
-//뉴스 슬라이드 기능
+// 뉴스 슬라이드 기능
+/*
 const news_swiper = document.querySelector(".news_slide-wrapper");
 const news_bullets = document.querySelectorAll(".news_slide-dot");
 
@@ -769,10 +770,7 @@ const news_autoSlide = () => {
   news_showSlide(news_nextSlide);
 };
 
-// // 자동 슬라이드 설정(
-const news_autoSlideInterval = setInterval(news_autoSlide, intervalDuration);
-
-news_showSlide(0);
+news_showSlide(0);*/
 
 //모바일버전에서 메뉴 버튼 클릭시 메뉴 리스트
 

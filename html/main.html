@@ -19,39 +19,26 @@
   </head>
   <body>
     <div class="total-container">
-    <!-- 검색창 : 손응수 -->
-    <header>
-      <div class="navbar-container">
-        <div class="navbar-wrapper">
-          <img src="../assets/images/logo.svg" class="logo-img" alt="" />
-
-          <ul class="list-items">
-            <li class="list-item">가상자산</li>
-            <li class="news-item">뉴스룸</li>
-          </ul>
-        </div>
-
-        <div class="input-container">
-          <i
-                        class="fa-solid fa-magnifying-glass search-icon"
-                        id="mobile-search"
-                    ></i>
-          <i class="fa-solid fa-bars" id="menu-bars" onclick="toggleMenu()"></i>
-          <input
-            type="text"
-            class="input-box"
-            placeholder="코인명을 입력해주세요."
-          />
-          <a href="#" id="dark-toggle"
-            ><img src="../assets/images/moon.png" alt="" />
-          </a>
-          <label>
-            <img
-              src="../assets/images/star.png"
-              width="20"
-              height="19"
-              alt=""
-              class="star-img"
+      <!-- 검색창 : 손응수 -->
+      <header>
+        <div class="navbar-container">
+          <div class="navbar-wrapper">
+            <img src="../assets/images/logo.svg" class="logo-img" alt="" />
+            <ul class="list-items">
+              <li class="list-item">가상자산</li>
+              <li class="news-item">뉴스룸</li>
+            </ul>
+          </div>
+          <div class="input-container">
+            <i
+                          class="fa-solid fa-magnifying-glass search-icon"
+                          id="mobile-search"
+                      ></i>
+            <i class="fa-solid fa-bars" id="menu-bars" onclick="toggleMenu()"></i>
+            <input
+              type="text"
+              class="input-box"
+              placeholder="코인명을 입력해주세요."
             />
             <a href="#" id="dark-toggle"
               ><img src="../assets/images/moon.png" alt="" />
@@ -87,51 +74,29 @@
           <li class="mobile-item">뉴스룸</li>
         </ul>
       </div>
-    </header>
-<!--모바일-->
-    <div class="mobile-container">
-      <div class="close-btn-container">
-        <button class="close-btn">X</button>
-      </div>
-      <div class="input-wrapper">
-        <input type="text" name="" placeholder="SEARCH" id="mobile-input-box" />
-        <button class="mobile-input-btn">GO</button>
-      </div>
-      <ul class="mobile-list-items">
-        <li class="mobile-item">로그인</li>
-        <li class="mobile-item">관심목록</li>
-        <li class="mobile-item">가상자산</li>
-        <li class="mobile-item">뉴스룸</li>
-      </ul>
-    </div>
-
-    <main>
-      <section class="toggle-section">
-        <div class="toggle-text">하이라이트 숨기기</div>
-        <label for="toggle" class="toggleSwitch">
-          <span class="toggleButton"></span>
-        </label>
-      </section>
-      <section class="highlight-section">
-        <div class="highlights">
-          <div class="section-title">오늘의 하이라이트</div>
-          <div class="highlight-areas">
-            <!-- 가장 뜨거운 코인 top3 : 최주연 -->
-            <div class="topcoin-area highlight-area">
-              <div class="slide-container top">
-                <div class="slide-wrapper topcoin-wrapper">
-                  <div id="third-container" class="topcoin-container slide-content">
-                    <div class="area-title third-title">
-                      ✅ 지금, 테스트용 코인 TOP 3
-                    </div>
-                    <div class="topChart third-chart">
-                      <div class="hot-list list">
-                        <div class="coin-left">
-                          <div class="coin-rank">1</div>
-                          <div class="coin-names">
-                            <div class="coin-name">
-                              <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
-                              <span>Bittensor</span>
+      <main>
+        <section class="highlight-section">
+          <div class="highlights">
+            <div class="section-title">오늘의 하이라이트</div>
+            <div class="highlight-areas">
+              <!-- 가장 뜨거운 코인 top3 : 최주연 -->
+              <div class="topcoin-area highlight-area">
+                <div class="slide-container top">
+                  <div class="slide-wrapper topcoin-wrapper">
+                    <div id="third-container" class="topcoin-container slide-content">
+                      <div class="area-title third-title">
+                        ✅ 지금, 테스트용 코인 TOP 3
+                      </div>
+                      <div class="topChart third-chart">
+                        <div class="hot-list list">
+                          <div class="coin-left">
+                            <div class="coin-rank">1</div>
+                            <div class="coin-names">
+                              <div class="coin-name">
+                                <img class="coin-img-size" src="/assets/images/bitcoin.png" alt="coin-img">
+                                <span>Bittensor</span>
+                              </div>
+                              <div class="coin-symbol">BTC</div>
                             </div>
                           </div>
                           <div class="coin-24h">0.85%</div>
@@ -316,117 +281,9 @@
                   </ul>
                 </div>
               </div>
-              <div class="news_slide-pagination">
-                <div class="news_slide-dot active"></div>
-                <div class="news_slide-dot"></div>
-                <div class="news_slide-dot"></div>
-              </div>
             </div>
           </div>
-      </section>
-      <!-- 코인차트 : 박종석 -->
-      <div class="section-title">오늘의 시가총액별 상위 100개의 가상 자산</div>
-
-      <section class="coin-chart">
-        <table class="content-table table-container">
-          <thead>
-            <tr class="">
-              <th class="priority-1" ></th>
-              <th class="priority-1">#</th>
-              <th class="priority-1">코인명</th>
-              <th class="priority-1">심볼</th>
-              <th class="priority-1"id="price">가격</th>
-              <th class="priority-1">1h %</th>
-              <th class="priority-2">24h %</th>
-              <th class="priority-2">7d %</th>
-              <th class="priority-2">시가총액</th>
-              <th class="priority-2">거래량(24h)</th>
-              <th class="priority-2">유통량</th>
-            </tr>
-          </thead>
-          <tbody id="table-data">
-            <tr>
-              <td id="favorite">
-                <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
-                  <img
-                    src="../assets/images/star.png"
-                    width="20"
-                    height="19"
-                    alt=""
-                    class="star-img"
-                  />
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination"></ul>
-      </nav>
-      <!-- 스크롤 : 김미주 -->
-      <div class="scroll-to-top" id="scrollToTop" style="display: none;">
-        <a class="icon-up"> </a>
-      </div>
-    </main>
-
-    <!-- footer -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-top">
-          <div class="footer-logo"><a href="/html/main.html"><img src="/assets/images/logo.svg" alt="logo"></a></div>
-          <div class="footer-menu-area">
-            <div class="footer-menu-group">
-              <div class="footer-menu">
-                <h5 class="menu-title">서비스</h5>
-                <ul class="menu-list">
-                  <li class="menu-item">CN Labs</li>
-                  <li class="menu-item">ChatGPT Plugin</li>
-                  <li class="menu-item">가상자산 API</li>
-                  <li class="menu-item">가상자산 지수</li>
-                  <li class="menu-item">Doodles</li>
-                  <li class="menu-item">사이트맵</li>
-                  <li class="menu-item">광고</li>
-                </ul>
-              </div>
-              <div class="footer-menu">
-                <h5 class="menu-title">회사</h5>
-                <ul class="menu-list">
-                  <li class="menu-item">우리에 대하여</li>
-                  <li class="menu-item">이용 약관</li>
-                  <li class="menu-item">개인 정보 보호 정책</li>
-                  <li class="menu-item">Cookie preferences</li>
-                  <li class="menu-item">쿠키 정책</li>
-                  <li class="menu-item">커뮤니티 규칙</li>
-                  <li class="menu-item">고지사항</li>
-                  <li class="menu-item">방법론</li>
-                  <li class="menu-item">직업</li>
-                </ul>
-              </div>
-            </div>
-            <div class="footer-menu-group">
-              <div class="footer-menu footer-menu-third">
-                <h5 class="menu-title">지원</h5>
-                <ul class="menu-list">
-                  <li class="menu-item">신청 양식</li>
-                  <li class="menu-item">고객 지원</li>
-                  <li class="menu-item">FAQ</li>
-                  <li class="menu-item">용어집</li>
-                </ul>
-              </div>
-              <div class="footer-menu">
-                <h5 class="menu-title">소셜 미디어</h5>
-                <ul class="menu-list">
-                  <li class="menu-item">X (Twitter)</li>
-                  <li class="menu-item">Telegram</li>
-                  <li class="menu-item">Instagram</li>
-                  <li class="menu-item">Facebook</li>
-                  <li class="menu-item">레딧</li>
-                  <li class="menu-item">LikedIn</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <div class="copyright">©2024 CoinNoona. All rights reserved</div>
         </div>
       </footer>
     </div>
