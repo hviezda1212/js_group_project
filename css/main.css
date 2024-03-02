@@ -911,6 +911,19 @@ footer{
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
 
+  .coin-chart, header{
+    display: none;
+  }
+
+  /* highlights */
+  .highlight-areas{
+    flex-flow: column;
+  }
+  .highlights .highlight-area{
+    width: 352px;
+    height: 229px;
+    margin-bottom: 20px;
+  }
 
   /* footer */
   .footer-container{
