@@ -1,5 +1,6 @@
 // const apiKey = "b1b9c007-5f07-4d7c-b26f-948e542b8144";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+//const apiKey = "12379dbf-30e0-4b89-92d0-b369a074adc1"
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000";
 const mode = "no-cors";
@@ -65,6 +66,7 @@ const getData = async () => {
     // console.log("ttt", coinList.length);
     render();
     paginationRender();
+    topCoinRender();
     // console.log("priceis", prevPriceList["BTC"][prevPriceList["BTC"].length-1])
     // console.log("prevpriceis", prevPriceList["BTC"][prevPriceList["BTC"].length-2])
   } catch (error) {
@@ -269,7 +271,9 @@ Main(30000);
 // 가장 뜨거운 코인, 가장 차가운 코인 top3
 const topCoinRender = () => {
   // hot top3
-  const hotList = coinList.slice(0, 3);
+  const hotList = coinList
+  .sort((a, b) => b.quote.USD.percent_change_24h - a.quote.USD.percent_change_24h)
+  .slice(0, 3);
   console.log("hotList: " + hotList);
   let hotHTML = "";
 
@@ -278,7 +282,12 @@ const topCoinRender = () => {
       <div class="coin-left">
         <div class="coin-rank">${hotList.indexOf(hotList[i]) + 1}</div>
         <div class="coin-names">
-          <div class="coin-name">${hotList[i]["name"]}</div>
+          <div class="coin-name">
+            <img class="coin-img-size" 
+            src='https://s2.coinmarketcap.com/static/img/coins/64x64/${hotList[i]["id"]}.png'>
+            </img>
+            <span>${hotList[i]["name"]}</span>
+          </div>
           <div class="coin-symbol">${hotList[i]["symbol"]}</div>
         </div>
       </div>
@@ -290,7 +299,9 @@ const topCoinRender = () => {
   document.getElementById("hot-container").innerHTML = hotHTML;
 
   // cold top3
-  const coldList = coinList.slice(-3);
+  const coldList = coinList
+  .sort((a, b) => a.quote.USD.percent_change_24h - b.quote.USD.percent_change_24h)
+  .slice(0, 3);
   console.log("coldList: " + coldList);
   let coldHTML = "";
 
@@ -299,7 +310,12 @@ const topCoinRender = () => {
       <div class="coin-left">
         <div class="coin-rank">${coldList.indexOf(coldList[i]) + 1}</div>
         <div class="coin-names">
-          <div class="coin-name">${coldList[i]["name"]}</div>
+          <div class="coin-name">
+            <img class="coin-img-size" 
+            src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coldList[i]["id"]}.png'>
+            </img>
+            <span>${coldList[i]["name"]}</span>
+          </div>
           <div class="coin-symbol">${coldList[i]["symbol"]}</div>
         </div>
       </div>
@@ -311,7 +327,7 @@ const topCoinRender = () => {
   document.getElementById("cold-container").innerHTML = coldHTML;
 };
 
-const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
+//const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinListItems = []; // 코인 정보를 담을 배열
 
 const inputBox = document.querySelector(".input-box");
