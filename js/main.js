@@ -391,10 +391,7 @@ getlist();
 let news_List = [];
 let articles = [];
 let news_page = 1;
-let news_totalPage = 1;
-let news_totalResult = 0;
-const NEWS_PAGE_SIZE = 1;
-const news_groupSize = 3;
+const NEWS_PAGE_SIZE = 3;
 
 let news_url = new URL(`https://noonanewsapi.netlify.app/top-headlines?`);
 
@@ -407,64 +404,55 @@ const getNews = async () => {
     if (response.status === 200) {
       if (data.articles.length == 0) {
         news_page = 0;
-        news_totalPage = 0;
-        news_paginationRender();
         throw new Error("No result for this search");
       }
       news_List = data.articles;
       news_totalPage = 3;
-      news_totalResult = data.totalResults;
       news_render();
-      news_paginationRender();
     } else {
       news_page = 0;
-      news_totalPage = 0;
-      news_paginationRender();
       throw new Error(data.message);
     }
   } catch (error) {
     console.log("error", error.message);
     news_page = 0;
-    news_totalPage = 0;
-    news_paginationRender();
     errorRender(error.message);
   }
 };
 
 const getLatestNews = async () => {
   news_url = new URL(
-    `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=1`
+    `https://noonanewsapi.netlify.app/top-headlines?q=코인&page=1&pageSize=${NEWS_PAGE_SIZE}`
   );
   getNews();
 };
 
 const news_render = () => {
-  const newsHTML = news_List
-    .map(
-      (news) => `        <div class="news">
-  <div class="img-area">
-    <img class="news-img" src=${news.urlToImage} />
-  </div>
-  <div class="text-area">
-    <div class="news-title">${
-      news.title == null || news.title == ""
-        ? "내용없음"
-        : news.title.length > 33
-        ? news.title.substring(0, 33)
-        : news.title
-    }</div>
-    <p>${
-      news.description == null || news.description == ""
-        ? "내용없음"
-        : news.description.length > 40
-        ? news.description.substring(0, 40) + "..."
-        : news.description
-    }</p>
-    <div>${news.source.name}${news.publishedAt}</div>
-  </div>
-</div>`
-    )
-    .join("");
+  let newsHTML = ``;
+    for (let i = 0; i <= NEWS_PAGE_SIZE - 1; i++) {
+      newsHTML += `<div class="news news_slide-content">
+      <div class="img-area">
+        <img class="news-img" src=${news_List[i].urlToImage} />
+      </div>
+      <div class="text-area">
+        <div class="news-title">${
+          news_List[i].title == null || news_List[i].title == ""
+            ? "내용없음"
+            : news_List[i].title.length > 33
+            ? news_List[i].title.substring(0, 33)
+            : news_List[i].title
+        }</div>
+        <p>${
+          news_List[i].description == null || news_List[i].description == ""
+            ? "내용없음"
+            : news_List[i].description.length > 40
+            ? news_List[i].description.substring(0, 40) + "..."
+            : news_List[i].description
+        }</p>
+        <div>${news_List[i].source.name}${news_List[i].publishedAt}</div>
+      </div>
+    </div>`;
+    }
 
   document.getElementById("news-board").innerHTML = newsHTML;
 };
@@ -475,35 +463,6 @@ const errorRender = (errorMessage) => {
   </div>`;
 
   document.getElementById("news-board").innerHTML = errorHTML;
-};
-
-const news_paginationRender = () => {
-  let news_paginationHTML = ``;
-  let news_pageGroup = Math.ceil(news_page / news_groupSize);
-  let news_lastPage = news_pageGroup * news_groupSize;
-
-  if (news_lastPage > news_totalPage) {
-    news_lastPage = news_totalPage;
-  }
-  let news_firstPage =
-    news_lastPage - (news_groupSize - 1) <= 0
-      ? 1
-      : news_lastPage - (news_groupSize - 1);
-  for (let i = news_firstPage; i <= news_lastPage; i++) {
-    news_paginationHTML += `<li class="page-item">
-                        <input class="page-link" type="radio" onclick="news_moveToPage(${i})" ${
-      i == news_page ? "checked" : ""
-    } ></input>
-                       </li>`;
-  }
-
-  document.querySelector(".news-pagination").innerHTML = news_paginationHTML;
-};
-
-const news_moveToPage = (pageNum) => {
-  news_page = pageNum;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  getNews();
 };
 
 getLatestNews();
@@ -523,22 +482,44 @@ document.getElementById("scrollToTop").addEventListener("click", function () {
 
 // 스크롤 위치에 따라 스크롤 최상단 버튼 표시/숨김
 window.onscroll = function () {
-  var scrollButton = document.getElementById("scrollToTop");
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    scrollButton.style.display = "flex";
-  } else {
-    scrollButton.style.display = "none";
-  }
+    var scrollButton = document.getElementById("scrollToTop");
+    if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+    ) {
+        scrollButton.style.display = "flex";
+    } else {
+        scrollButton.style.display = "none";
+    }
 };
 
 //regionend SCROLL
+//로고 이미지시 해당 메인페이지로 이동
+let logoClick = document.querySelector(".logo-img");
+logoClick.addEventListener("click", () => {
+    window.location.href = "../html/main.html";
+});
+
+//즐겨찾기 마우스 hover했을 때, 노란색 이미지로 변경
+//즐겨찾기 마우스 out 할 때, 본 이미지로 변경
+const starImg = document.querySelector(".star-img");
+
+starImg.addEventListener("mouseover", toggleStarImage);
+starImg.addEventListener("mouseout", toggleStarImage);
+
+function toggleStarImage() {
+    const imageName = this.src.includes("star-active.png")
+        ? "star.png"
+        : "star-active.png";
+    this.src = `../assets/images/${imageName}`;
+}
 
 //region DARK
 let darkToggle = document.querySelector("#dark-toggle");
 let switchImg = document.querySelector("#dark-toggle img");
-let logoImg = document.querySelector(".logo img");
+let logoImg = document.querySelector(".logo-img");
 let body = document.querySelector("body");
-let watchListBtn = document.querySelector(".watch-list-btn");
+let watchListBtn = document.querySelector("#watch-list-btn");
 
 darkToggle.addEventListener(
   "click",
@@ -546,6 +527,8 @@ darkToggle.addEventListener(
     if (body.classList.contains("dark-mode")) {
       document.body.classList.remove("dark-mode");
       switchImg.src = "../assets/images/moon.png";
+            watchListBtn.style.backgroundColor = "#white";
+            watchListBtn.style.color = "black";
       logoImg.src = "../assets/images/logo.svg";
     } else {
       body.classList.add("dark-mode");
@@ -630,3 +613,74 @@ const autoSlide = () => {
 const autoSlideInterval = setInterval(autoSlide, intervalDuration);
 
 showSlide(0);
+
+// 뉴스 슬라이드 기능
+const news_swiper = document.querySelector(".news_slide-wrapper");
+const news_bullets = document.querySelectorAll(".news_slide-dot");
+const news_nextSlide = (currentSlide + 1) % news_bullets.length;
+let sliderClone = news_swiper.firstElementChild.cloneNode(true);
+let sliderInterval = 2000;  
+const news_slideWidth = document.querySelector(".news_slide-content").offsetWidth;
+
+let news_currentIndex = 0;
+let news_currentSlide = 0;
+
+news_swiper.appendChild(sliderClone);
+
+    function sliderEffect(){
+      news_currentIndex++;
+
+      news_swiper.style.transition = "all 0.6s";
+        news_swiper.style.transform = `translateX(-${news_slideWidth * news_currentIndex}px)`;
+
+        // 마지막 이미지에 위치했을 때 
+        if(news_currentIndex == news_nextSlide){
+            setTimeout(() => {
+              news_swiper.style.transition = "0s";
+              news_swiper.style.transform = `translateX(0px)`;
+            }, 700);
+            news_currentIndex = 0;
+        }
+    };
+
+    setInterval(sliderEffect, sliderInterval);
+
+
+  news_bullets.forEach((bullet, index) => {
+    if (index === news_currentSlide) {
+      bullet.classList.add("active");
+    } else {
+      bullet.classList.remove("active");
+    }
+  });
+
+
+news_bullets.forEach((bullet, index) => {
+  bullet.addEventListener("click", () => {
+    news_showSlide(index);
+  });
+});
+
+sliderEffect();
+
+news_showSlide(0);
+
+//모바일버전에서 메뉴 버튼 클릭시 메뉴 리스트
+
+function toggleMenu() {
+    let listItems = document.querySelector(".mobile-container");
+    let header = document.querySelector("header");
+    if (listItems.style.display === "none") {
+        listItems.style.display = "block";
+        header.style.display = "none";
+    } else {
+        listItems.style.display = "none";
+    }
+}
+
+//x버튼 클릭시 메뉴창 사라지고 원래 이미지 노출
+
+let closeBtn = document.querySelector(".close-btn");
+closeBtn.addEventListener("click", () => {
+    console.log("ggg");
+});
