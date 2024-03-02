@@ -1,4 +1,4 @@
-// const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
+ const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=4000";
@@ -54,14 +54,14 @@ const getData = async () => {
         // console.log(prevPriceList)
       }
     } else {
-      for (i=0, j = page * 100 - 99; j < pageSize * page + 1; i++, j++) {
+      for (i = 0, j = page * 100 - 99; j < pageSize * page + 1; i++, j++) {
         coinList.push(data.data[j]);
         // console.log("ccc",coinList)
         // prevPriceList에 코인 가격 정보를 쌓는다
         tempCoinSymbol = coinList[i]["symbol"];
         tempCoinPrice = coinList[i]["quote"].USD["price"];
         prevPriceList[tempCoinSymbol].push(tempCoinPrice);
-        console.log(prevPriceList)
+        console.log(prevPriceList);
       }
     }
     totalResult = data.data.length;
@@ -82,9 +82,12 @@ const render = () => {
     const coin = coinList[i];
     const coinSymbol = coin["symbol"];
     const coinPrice = coin["quote"].USD["price"];
+    const hourPercentage = coin["quote"].USD["percent_change_1h"];
+    const dayPercentage = coin["quote"].USD["percent_change_24h"];
+    const weekPercentage = coin["quote"].USD["percent_change_7d"];
     tableHTML += `            
       <tr>
-        <td id="favorite">
+        <td class="priority-1" id="favorite">
           <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
             <img
               src="../assets/images/star.png"
@@ -96,18 +99,34 @@ const render = () => {
           </button>
         </td>
         <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-        <td id="name">
-          <img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coin["id"]}.png'></img>
-          <span>${coin["name"]}</span>
-        </td>
-        <td id="symbol">${coin["symbol"]}</td>
-        <td id="price">${"$" + coin["quote"].USD["price"].toLocaleString('en-US', { maximumFractionDigits: 2 })}</td>
-        <td id="1h">${coin["quote"].USD["percent_change_1h"].toFixed(2) + "%"}</td>
-        <td id="24h">${coin["quote"].USD["percent_change_24h"].toFixed(2) + "%"}</td>
-        <td id="7d">${coin["quote"].USD["percent_change_7d"].toFixed(2) + "%"}</td>
-        <td id="market-cap">${"$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()}</td>
-        <td id="volume">${"$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()}</td>
-        <td id="circulating-supply">${Math.floor(coin["circulating_supply"]).toLocaleString() + " " + coin["symbol"]}</td>
+        <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+          coin["id"]
+        }.png'></img><span>${coin["name"]}</span></td>
+        <td class="priority-1" id="symbol">${coin["symbol"]}</td>
+        <td class="priority-1" id="price">${checkPriceChange(
+          coinPrice,
+          coinSymbol
+        )}</td>
+        <td class="priority-1" id="1h">${checkPercentageChange(
+          hourPercentage
+        )}</td>
+        <td class="priority-2" id="24h">${checkPercentageChange(
+          dayPercentage
+        )}</td>
+        <td class="priority-2" id="7d">${checkPercentageChange(
+          weekPercentage
+        )}</td>
+        <td class="priority-2" id="market-cap">${
+          "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
+        }</td>
+        <td class="priority-2" id="volume">${
+          "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
+        }</td>
+        <td class="priority-2" id="circulating-supply">${
+          Math.floor(coin["circulating_supply"]).toLocaleString() +
+          " " +
+          coin["symbol"]
+        }</td>
       </tr>`;
     currentPrice = coin["quote"].USD["price"];
   }
@@ -115,7 +134,7 @@ const render = () => {
 };
 
 function toggleStar(img) {
-  if (img.src.includes('star.png')) {
+  if (img.src.includes("star.png")) {
     img.src = "../assets/images/star-active.png"; // Change to yellow star image path
   } else {
     img.src = "../assets/images/star.png"; // Change to default star image path
@@ -127,7 +146,7 @@ function toggleStar(img) {
 //   for (let i = 0; i < coinList.length; i++) {
 //     coinSymbol = coinList[i]["symbol"];
 //     coinPrice = coinList[i]["quote"].USD["price"];
-//     tableHTML += `            
+//     tableHTML += `
 //         <tr>
 //             <td id="favorite"><button class="fav-button"><i class="fa-regular fa-star"></i></button></td>
 //             <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
@@ -190,11 +209,11 @@ function toggleStar(img) {
 
 function redirectToWatchList(index) {
   const clickedCoin = coinList[index];
-  let clickedCoins = JSON.parse(localStorage.getItem('clickedCoins')) || [];
+  let clickedCoins = JSON.parse(localStorage.getItem("clickedCoins")) || [];
   clickedCoins.push(clickedCoin);
-  localStorage.setItem('clickedCoins', JSON.stringify(clickedCoins));
+  localStorage.setItem("clickedCoins", JSON.stringify(clickedCoins));
   console.log("clickedCoins", clickedCoins);
-  window.location.href = 'watchList.html';
+  window.location.href = "watchList.html";
 }
 
 const checkPriceChange = (price, symbol) => {
@@ -288,7 +307,9 @@ const paginationRender = () => {
     paginationHTML += `<li class="page-item" onclick="moveToPage(${
       page + 1
     })"><a class="page-link"><i class="fa-solid fa-angle-right"></i></a></li>`;
-    paginationHTML += `<a class="page-link page-item" onclick="moveToPage(${totalPages-1})" aria-label="Next">
+    paginationHTML += `<a class="page-link page-item" onclick="moveToPage(${
+      totalPages - 1
+    })" aria-label="Next">
     <i class="fa-solid fa-angles-right"></i>
     </a>`;
   }
@@ -313,8 +334,10 @@ Main(30000);
 const topCoinRender = () => {
   // hot top3
   const hotList = coinList
-  .sort((a, b) => b.quote.USD.percent_change_24h - a.quote.USD.percent_change_24h)
-  .slice(0, 3);
+    .sort(
+      (a, b) => b.quote.USD.percent_change_24h - a.quote.USD.percent_change_24h
+    )
+    .slice(0, 3);
   console.log("hotList: " + hotList);
   let hotHTML = "";
 
@@ -326,7 +349,9 @@ const topCoinRender = () => {
           <div class="coin-names">
             <div class="coin-name">
               <img class="coin-img-size"
-              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${hotList[i]["id"]}.png'>
+              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+                hotList[i]["id"]
+              }.png'>
               </img>
               <span>${hotList[i]["name"]}</span>
             </div>
@@ -343,8 +368,10 @@ const topCoinRender = () => {
 
   // cold top3
   const coldList = coinList
-  .sort((a, b) => a.quote.USD.percent_change_24h - b.quote.USD.percent_change_24h)
-  .slice(0, 3);
+    .sort(
+      (a, b) => a.quote.USD.percent_change_24h - b.quote.USD.percent_change_24h
+    )
+    .slice(0, 3);
   console.log("coldList: " + coldList);
   let coldHTML = "";
 
@@ -356,7 +383,9 @@ const topCoinRender = () => {
           <div class="coin-names">
             <div class="coin-name">
               <img class="coin-img-size"
-              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coldList[i]["id"]}.png'>
+              src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+                coldList[i]["id"]
+              }.png'>
               </img>
               <span>${coldList[i]["name"]}</span>
             </div>
@@ -522,8 +551,8 @@ const getLatestNews = async () => {
 
 const news_render = () => {
   let newsHTML = ``;
-    for (let i = 0; i <= NEWS_PAGE_SIZE - 1; i++) {
-      newsHTML += `<div class="news news_slide-content">
+  for (let i = 0; i <= NEWS_PAGE_SIZE - 1; i++) {
+    newsHTML += `<div class="news news_slide-content">
       <div class="img-area">
         <img class="news-img" src=${news_List[i].urlToImage} />
       </div>
@@ -545,7 +574,7 @@ const news_render = () => {
         <div>${news_List[i].source.name}${news_List[i].publishedAt}</div>
       </div>
     </div>`;
-    }
+  }
 
   document.getElementById("news-board").innerHTML = newsHTML;
 };
@@ -575,22 +604,19 @@ document.getElementById("scrollToTop").addEventListener("click", function () {
 
 // 스크롤 위치에 따라 스크롤 최상단 버튼 표시/숨김
 window.onscroll = function () {
-    var scrollButton = document.getElementById("scrollToTop");
-    if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
-    ) {
-        scrollButton.style.display = "flex";
-    } else {
-        scrollButton.style.display = "none";
-    }
+  var scrollButton = document.getElementById("scrollToTop");
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollButton.style.display = "flex";
+  } else {
+    scrollButton.style.display = "none";
+  }
 };
 
 //regionend SCROLL
 //로고 이미지시 해당 메인페이지로 이동
 let logoClick = document.querySelector(".logo-img");
 logoClick.addEventListener("click", () => {
-    window.location.href = "../html/main.html";
+  window.location.href = "../html/main.html";
 });
 
 //즐겨찾기 마우스 hover했을 때, 노란색 이미지로 변경
@@ -601,10 +627,10 @@ starImg.addEventListener("mouseover", toggleStarImage);
 starImg.addEventListener("mouseout", toggleStarImage);
 
 function toggleStarImage() {
-    const imageName = this.src.includes("star-active.png")
-        ? "star.png"
-        : "star-active.png";
-    this.src = `../assets/images/${imageName}`;
+  const imageName = this.src.includes("star-active.png")
+    ? "star.png"
+    : "star-active.png";
+  this.src = `../assets/images/${imageName}`;
 }
 
 //region DARK
@@ -620,8 +646,8 @@ darkToggle.addEventListener(
     if (body.classList.contains("dark-mode")) {
       document.body.classList.remove("dark-mode");
       switchImg.src = "../assets/images/moon.png";
-            watchListBtn.style.backgroundColor = "white";
-            watchListBtn.style.color = "black";
+      watchListBtn.style.backgroundColor = "white";
+      watchListBtn.style.color = "black";
       logoImg.src = "../assets/images/logo.svg";
     } else {
       body.classList.add("dark-mode");
@@ -714,8 +740,12 @@ const news_bullets = document.querySelectorAll(".news_slide-dot");
 let news_currentSlide = 0;
 
 const news_showSlide = (slideIndex) => {
-  const news_slideWidth = document.querySelector(".news_slide-content").offsetWidth;
-  news_swiper.style.transform = `translateX(-${slideIndex * news_slideWidth}px)`;
+  const news_slideWidth = document.querySelector(
+    ".news_slide-content"
+  ).offsetWidth;
+  news_swiper.style.transform = `translateX(-${
+    slideIndex * news_slideWidth
+  }px)`;
   news_currentSlide = slideIndex;
 
   news_bullets.forEach((bullet, index) => {
@@ -753,8 +783,8 @@ let header = document.querySelector("header");
 
 function toggleMenu() {
   listItems.style.display === "none"
-  ? ((listItems.style.display = "block"), (header.style.display = "none"))
-  : (listItems.style.display = "none");
+    ? ((listItems.style.display = "block"), (header.style.display = "none"))
+    : (listItems.style.display = "none");
 }
 
 let closeBtn = document.querySelector(".close-btn");
