@@ -395,6 +395,10 @@ a {
 }
 
 /* 코인 시황 */
+.table-container{
+  width: 100%;
+}
+
 .coin-chart {
   width: 1414px;
   border: 1px solid gray;
@@ -408,8 +412,8 @@ a {
 }
 
 .content-table thead tr {
-  background-color: #009879;
-  color: white;
+  background-color: none;
+  color: text;
   text-align: left;
   font-weight: bold;
 }
@@ -420,16 +424,27 @@ a {
   text-align: right;
 }
 
+.content-table td:nth-child(3),
+.content-table th:nth-child(3) {
+  text-align: left;
+}
+
+
 .content-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
 .content-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: none;
 }
 
 .content-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #dddddd;
+}
+
+.fav-star-img{
+  background-color: none;
+  background: none;
 }
 
 /* 공포 탐욕 지수*/
