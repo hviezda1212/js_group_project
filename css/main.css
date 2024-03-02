@@ -764,12 +764,6 @@ input[type="radio"]:hover {
   display: none;
 }
 
-.coin-img-size {
-  height: 24px;
-  width: 24px;
-  border-radius: 12px;
-  margin-right: 5px;
-}
 
 .higher {
   color: green;
