@@ -79,3 +79,8 @@ img,
 svg {
   vertical-align: middle;
 }
+
+/* header */
+.input-box{
+  padding: 0;
+}
