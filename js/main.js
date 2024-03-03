@@ -152,13 +152,14 @@ let coinListt =[
 ]
 
 let resultList = [];
+let keyword = "";
 
 // 검색창 기능 시작(주연)
 
 // 검색창에 입력한 값(키워드) 가져오기
 const searchCoins = () => {
     const searchInput = document.getElementById("input-search");
-    let keyword = searchInput.value.toLowerCase();
+    keyword = searchInput.value.toLowerCase();
     console.log(keyword)
 
     resultList = findCoinByKeyword(keyword, coinList);
@@ -183,7 +184,7 @@ const findCoinByKeyword = (keyword, coinList) => {
     return resultList;
 }
 
-// 결과 화면
+// 검색결과 화면
 const resultRender = () => {
     console.log("result:" + resultList)
     let resultHTML = "";
@@ -195,52 +196,99 @@ const resultRender = () => {
         dayPercentage = coin["quote"].USD["percent_change_24h"];
         weekPercentage = coin["quote"].USD["percent_change_7d"];
     resultHTML += `
-    <tr>
-        <td class="priority-1" id="favorite">
-          <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
-            <img
-              src="../assets/images/star.png"
-              width="20"
-              height="19"
-              alt=""
-              class="star-img"
-            />
-          </button>
-        </td>
-        <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-        <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
-          coin["id"]
-        }.png'></img><span>${coin["name"]}</span></td>
-        <td class="priority-1" id="symbol">${coin["symbol"]}</td>
-        <td class="priority-1" id="price">${checkPriceChange(
-          coinPrice,
-          coinSymbol
-        )}</td>
-        <td class="priority-1" id="1h">${checkPercentageChange(
-          hourPercentage
-        )}</td>
-        <td class="priority-2" id="24h">${checkPercentageChange(
-          dayPercentage
-        )}</td>
-        <td class="priority-2" id="7d">${checkPercentageChange(
-          weekPercentage
-        )}</td>
-        <td class="priority-2" id="market-cap">${
-          "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
-        }</td>
-        <td class="priority-2" id="volume">${
-          "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
-        }</td>
-        <td class="priority-2" id="circulating-supply">${
-          Math.floor(coin["circulating_supply"]).toLocaleString() +
-          " " +
-          coin["symbol"]
-        }</td>
-      </tr>  
+    <section class="coin-chart">
+          <div class="section-title" id="section-title">
+          "${keyword}" 에 대한 검색 결과
+          </div>
+          <table class="content-table table-container">
+            <thead>
+              <tr class="">
+                <th class="priority-1"></th>
+                <th class="priority-1">#</th>
+                <th class="priority-1">코인명</th>
+                <th class="priority-1">심볼</th>
+                <th class="priority-1" id="price">가격</th>
+                <th class="priority-1">1h %</th>
+                <th class="priority-2">24h %</th>
+                <th class="priority-2">7d %</th>
+                <th class="priority-2">시가총액</th>
+                <th class="priority-2">거래량(24h)</th>
+                <th class="priority-2">유통량</th>
+              </tr>
+            </thead>
+            <tbody id="table-data">
+              <tr>
+                <td id="favorite">
+                  <button
+                    class="fav-button"
+                    onclick="toggleStar(this.querySelector('img'))"
+                  >
+                    <img
+                      src="../assets/images/star.png"
+                      width="20"
+                      height="19"
+                      alt=""
+                      class="star-img"
+                    />
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <tr>
+            <td class="priority-1" id="favorite">
+              <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
+                <img
+                  src="../assets/images/star.png"
+                  width="20"
+                  height="19"
+                  alt=""
+                  class="star-img"
+                />
+              </button>
+            </td>
+            <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+            <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+              coin["id"]
+            }.png'></img><span>${coin["name"]}</span></td>
+            <td class="priority-1" id="symbol">${coin["symbol"]}</td>
+            <td class="priority-1" id="price">${checkPriceChange(
+              coinPrice,
+              coinSymbol
+            )}</td>
+            <td class="priority-1" id="1h">${checkPercentageChange(
+              hourPercentage
+            )}</td>
+            <td class="priority-2" id="24h">${checkPercentageChange(
+              dayPercentage
+            )}</td>
+            <td class="priority-2" id="7d">${checkPercentageChange(
+              weekPercentage
+            )}</td>
+            <td class="priority-2" id="market-cap">${
+              "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
+            }</td>
+            <td class="priority-2" id="volume">${
+              "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
+            }</td>
+            <td class="priority-2" id="circulating-supply">${
+              Math.floor(coin["circulating_supply"]).toLocaleString() +
+              " " +
+              coin["symbol"]
+            }</td>
+          </tr>  
+          </table>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination"></ul>
+          </nav>
+        </section>
+   
     `
     currentPrice = coin["quote"].USD["price"];
 }
-document.getElementById("table-data").innerHTML = resultHTML;
+document.getElementById("total-container").style.display = "none";
+document.getElementById("main-container").innerHTML = resultHTML;
+// document.getElementById("search-title").innerText = `"${keyword}" 에 대한 검색 결과`;
+
 }
 
 /*
