@@ -143,6 +143,7 @@ function toggleStar(img) {
   }
 }
 
+//예제
 let coinListt =[
     { name: 'Bitcoin', symbol: 'BTC' },
     { name: 'SHIba', symbol: 'BTC' },
@@ -150,6 +151,7 @@ let coinListt =[
     { name: 'Ripple', symbol: 'XRP' },
 ]
 
+let resultList = [];
 
 // 검색창 기능 시작(주연)
 const searchCoins = () => {
@@ -157,15 +159,17 @@ const searchCoins = () => {
     let keyword = searchInput.value.toLowerCase();
     console.log(keyword)
 
-    const result = findCoinByKeyword(keyword, coinListt);
-    console.log(result)
+    resultList = findCoinByKeyword(keyword, coinListt);
+    console.log(resultList)
+    resultRender()
 }
 
 const findCoinByKeyword = (keyword, coinListt) => {
     // 키워드를 소문자로 변환하여 대소문자 구분 없이 검색할 수 있도록 함
     const lowerKeyword = keyword.toLowerCase();
+
     // coinList 배열을 순회하면서 검색
-    const result = coinListt.filter(coin => {
+    resultList = coinListt.filter(coin => {
         const lowerName = coin.name.toLowerCase();
         const lowerSymbol = coin.symbol.toLowerCase();
 
@@ -173,10 +177,26 @@ const findCoinByKeyword = (keyword, coinListt) => {
         return lowerName.includes(lowerKeyword) || lowerSymbol.includes(lowerKeyword);
     });
 
-    return result;
+    return resultList;
+}
+
+const resultRender = () => {
+    console.log("result:" + resultList)
+    const resultHTML = resultList.map(
+        (results) =>
+        `
+        <tr>
+            <td id="name">${results.name}</td>
+            <td id="name">${results.symbol}</td>
+        </tr>
+        `
+    ).join('');
+    document.getElementById("table-data").innerHTML = resultHTML;
 }
 
 // 검색창 기능 끝(주연)
+
+
 
 // const render = () => {
 //   let tableHTML = "";
