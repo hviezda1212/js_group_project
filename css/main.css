@@ -614,7 +614,7 @@ li {
   transform-origin: 140px;
   transform: rotate(150deg);
   position: relative;
-  left: -104px;
+  left: -113px;
   top: 1px;
   display: none;
 }
@@ -1219,7 +1219,7 @@ footer {
   .indicator {
     width: 14px;
     height: 14px;
-    left: -129px;
+    left: -137px;
   }
 
   /* 코인 시황 */
