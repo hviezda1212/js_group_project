@@ -1,6 +1,6 @@
 // const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
-const apiKey="f4c149c4-502c-4323-aaa3-8ffc48511db7";
+//const apiKey="7dde76c0-b878-4056-8bc1-02c3f4846ab3";
 
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=4000";
@@ -488,7 +488,8 @@ Main(30000);
 // 가장 뜨거운 코인, 가장 차가운 코인 top3
 const topCoinRender = () => {
   // hot top3
-  const hotList = coinList
+  let hotTempList = coinList;
+  const hotList = hotTempList
     .sort(
       (a, b) => b.quote.USD.percent_change_24h - a.quote.USD.percent_change_24h
     )
@@ -522,7 +523,9 @@ const topCoinRender = () => {
   document.getElementById("hotChart").innerHTML = hotHTML;
 
   // cold top3
-  const coldList = coinList
+  // const coldList = coinList
+  let coldTempList = coinList;
+  const coldList = coldTempList
     .sort(
       (a, b) => a.quote.USD.percent_change_24h - b.quote.USD.percent_change_24h
     )
