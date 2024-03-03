@@ -1,6 +1,6 @@
 // const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
-//const apiKey="7dde76c0-b878-4056-8bc1-02c3f4846ab3";
+const apiKey="7dde76c0-b878-4056-8bc1-02c3f4846ab3";
 
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=4000";
@@ -364,12 +364,31 @@ const resultRender = () => {
 
 function redirectToWatchList(index) {
   const clickedCoin = coinList[index];
+  if (!clickedCoin || typeof clickedCoin !== 'object' || !clickedCoin.hasOwnProperty('id')) {
+  console.error("Invalid coin object at index", index);
+  return;
+  }
+  
   let clickedCoins = JSON.parse(localStorage.getItem("clickedCoins")) || [];
+  
+  // const isCoinAlreadySaved = clickedCoins.some(coin => coin.id === clickedCoin.id);
+  // if (isCoinAlreadySaved) {
+  // alert("관심목록에 이미 추가되었습니다!");
+  // return;
+  // }
+  
   clickedCoins.push(clickedCoin);
   localStorage.setItem("clickedCoins", JSON.stringify(clickedCoins));
   console.log("clickedCoins", clickedCoins);
-  // window.location.href = "watchList.html";
-}
+  alert("관심목록에 추가되었습니다!");
+  
+  const starButton = document.querySelector(`#table-data tr:nth-child(${index + 1}) .fav-button img`);
+  if (starButton) {
+  toggleStar(starButton, index);
+  const isStarActive = starButton.src.includes("star-active.png");
+  localStorage.setItem(`starState_${index}`, isStarActive ? 'active' : 'inactive');
+  }
+  }
 
 const checkPriceChange = (price, symbol) => {
   if (price > prevPriceList[symbol][prevPriceList[symbol].length - 2]) {
