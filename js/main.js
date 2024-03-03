@@ -154,6 +154,8 @@ let coinListt =[
 let resultList = [];
 
 // 검색창 기능 시작(주연)
+
+// 검색창에 입력한 값(키워드) 가져오기
 const searchCoins = () => {
     const searchInput = document.getElementById("input-search");
     let keyword = searchInput.value.toLowerCase();
@@ -164,6 +166,7 @@ const searchCoins = () => {
     resultRender()
 }
 
+// 코인 리스트와 키워드 비교
 const findCoinByKeyword = (keyword, coinList) => {
     // 키워드를 소문자로 변환하여 대소문자 구분 없이 검색할 수 있도록 함
     const lowerKeyword = keyword.toLowerCase();
@@ -180,19 +183,65 @@ const findCoinByKeyword = (keyword, coinList) => {
     return resultList;
 }
 
+// 결과 화면
 const resultRender = () => {
     console.log("result:" + resultList)
-    const resultHTML = resultList.map(
-        (results) =>
-        `
-        <tr>
-           
-        </tr>
-        `
-    ).join('');
-    document.getElementById("table-data").innerHTML = resultHTML;
+    let resultHTML = "";
+    for (let i = 0; i < coinList.length; i++) {
+        coin = coinList[i];
+        coinSymbol = coin["symbol"];
+        coinPrice = coin["quote"].USD["price"];
+        hourPercentage = coin["quote"].USD["percent_change_1h"];
+        dayPercentage = coin["quote"].USD["percent_change_24h"];
+        weekPercentage = coin["quote"].USD["percent_change_7d"];
+    resultHTML += `
+    <tr>
+        <td class="priority-1" id="favorite">
+          <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
+            <img
+              src="../assets/images/star.png"
+              width="20"
+              height="19"
+              alt=""
+              class="star-img"
+            />
+          </button>
+        </td>
+        <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+        <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+          coin["id"]
+        }.png'></img><span>${coin["name"]}</span></td>
+        <td class="priority-1" id="symbol">${coin["symbol"]}</td>
+        <td class="priority-1" id="price">${checkPriceChange(
+          coinPrice,
+          coinSymbol
+        )}</td>
+        <td class="priority-1" id="1h">${checkPercentageChange(
+          hourPercentage
+        )}</td>
+        <td class="priority-2" id="24h">${checkPercentageChange(
+          dayPercentage
+        )}</td>
+        <td class="priority-2" id="7d">${checkPercentageChange(
+          weekPercentage
+        )}</td>
+        <td class="priority-2" id="market-cap">${
+          "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
+        }</td>
+        <td class="priority-2" id="volume">${
+          "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
+        }</td>
+        <td class="priority-2" id="circulating-supply">${
+          Math.floor(coin["circulating_supply"]).toLocaleString() +
+          " " +
+          coin["symbol"]
+        }</td>
+      </tr>  
+    `
+    currentPrice = coin["quote"].USD["price"];
 }
-
+document.getElementById("table-data").innerHTML = resultHTML;
+}
 
 /*
 const resultRender = () => {
