@@ -654,7 +654,6 @@ darkToggle.addEventListener(
     if (body.classList.contains("dark-mode")) {
       document.body.classList.remove("dark-mode");
       switchImg.src = "../assets/images/moon.png";
-      watchListBtn.style.backgroundColor = "white";
       watchListBtn.style.color = "black";
       logoImg.src = "../assets/images/logo.svg";
       footerImg.src = "../assets/images/logo.svg";
@@ -663,7 +662,6 @@ darkToggle.addEventListener(
       switchImg.src = "../assets/images/sun.png";
       logoImg.src = "../assets/images/logo-dark.svg";
       footerImg.src = "../assets/images/logo-dark.svg";
-      watchListBtn.style.backgroundColor = "#0d1421";
       watchListBtn.style.color = "white";
     }
   },

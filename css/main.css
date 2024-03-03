@@ -149,9 +149,6 @@ li {
 .watchist-btn:hover {
   background-color: rgba(238, 236, 240, 0.616);
 }
-#watch-list-btn:hover {
-  background-color: rgba(238, 236, 240, 0.616) !important;
-}
 
 .watchist-btn p {
   margin-left: 4px;
