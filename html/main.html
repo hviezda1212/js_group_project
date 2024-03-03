@@ -67,11 +67,24 @@
             </div>
           </div>
         </div>
-        <i class="fa-solid fa-bars" id="menu-bars" onclick="toggleMenu()"></i>
+        <i class="fa-solid fa-bars" id="menu-bars" onclick="openNav()"></i>
       </div>
     </header>
     <!--모바일-->
-    <div class="mobile-container">
+    <div id="side-nav" class="side-nav">
+      <button class="close-btn" onclick="closeNav()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <a href="#">Business</a>
+      <a href="#">Entertainment</a>
+      <a href="#">Sports</a>
+      <a href="#">General</a>
+      <a href="#">health</a>
+      <a href="#">Science</a>
+      <a href="#">Technology</a>
+    </div>
+
+    <!-- <div class="mobile-container">
       <div class="close-btn-container">
         <button class="close-btn">X</button>
       </div>
@@ -85,7 +98,7 @@
         <li class="mobile-item">가상자산</li>
         <li class="mobile-item">뉴스룸</li>
       </ul>
-    </div>
+    </div> -->
     <main>
       <div class="total-container">
         <section class="toggle-section">
@@ -349,5 +362,15 @@
 
     <script src="../js/main.js"></script>
     <script type="module" src="../server/index.js"></script>
+    <script>
+      // 모바일 버전 사이드 메뉴
+      // 사이드 메뉴
+      let sideNav = document.getElementById("side-nav");
+      const openNav = () => {
+        console.log("click");
+        sideNav.style.width = "250px";
+      };
+      const closeNav = () => (sideNav.style.width = "0");
+    </script>
   </body>
 </html>
