@@ -998,6 +998,12 @@ footer{
   .area-box{
     margin-top: 0;
   }
+  .greed-img{
+    height: 110px;
+  }
+  .area-wrapper{
+    height: 100%;
+  }
 
   /* footer */
   .footer-container{
