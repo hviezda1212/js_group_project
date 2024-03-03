@@ -1222,6 +1222,22 @@ footer {
     left: -129px;
   }
 
+  /* 코인 시황 */
+  .content-table{
+	 display: block;
+ width: 352px;
+	 border-top: 1px solid rgb(202, 202, 202);
+		    overflow: scroll;
+		    border-collapse: collapse;
+		   margin: 25px 0;
+	font-size: 0.9em;
+	min-width: 400px;
+}
+
+.chart-title{
+  margin-left: 20px;
+}
+
   /* footer */
   .footer-container {
     padding: 50px 20px;
