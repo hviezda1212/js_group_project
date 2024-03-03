@@ -155,6 +155,10 @@ ul, li{
   margin-left: 4px;
 }
 
+.mobile-right{
+  display: none;
+}
+
 /*mobile*/
 /* .mobile-container {
   margin: 2em 1em;
