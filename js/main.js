@@ -187,8 +187,8 @@ const findCoinByKeyword = (keyword, coinList) => {
 const resultRender = () => {
     console.log("result:" + resultList)
     let resultHTML = "";
-    for (let i = 0; i < coinList.length; i++) {
-        coin = coinList[i];
+    for (let i = 0; i < resultList.length; i++) {
+        coin = resultList[i];
         coinSymbol = coin["symbol"];
         coinPrice = coin["quote"].USD["price"];
         hourPercentage = coin["quote"].USD["percent_change_1h"];
