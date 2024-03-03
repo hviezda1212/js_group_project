@@ -33,11 +33,13 @@
             <input
               type="text"
               class="input-box"
+              id="input-search"
               placeholder="코인명이나 심볼로 검색해주세요."
             />
             <i
               class="fa-solid fa-magnifying-glass search-icon"
               id="mobile-search"
+              onclick="getCoinByKeyword()"
             ></i>
           </div>
           <div class="right-area">
