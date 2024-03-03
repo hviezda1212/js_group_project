@@ -184,13 +184,28 @@ const resultRender = () => {
         (results) =>
         `
         <tr>
+           
+        </tr>
+        `
+    ).join('');
+    document.getElementById("table-data").innerHTML = resultHTML;
+}
+
+
+/*
+const resultRender = () => {
+    console.log("result:" + resultList)
+    const resultHTML = resultList.map(
+        (results) =>
+        `
+        <tr>
             <td id="name">${results.name}</td>
             <td id="name">${results.symbol}</td>
         </tr>
         `
     ).join('');
     document.getElementById("table-data").innerHTML = resultHTML;
-}
+}*/
 
 // 검색창 기능 끝(주연)
 
