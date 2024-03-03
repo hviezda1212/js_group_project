@@ -190,7 +190,7 @@ const resultRender = () => {
     let resultHTML = "";
     if(resultList <= 0){
         resultHTML += `
-            
+
         `
         document.getElementById("table-data").innerHTML = resultHTML;
         document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과가 없습니다.`;
