@@ -186,7 +186,7 @@ a {
 .toggle-text {
   color:gray;
   margin-right:10px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* 오늘의 하이라이트 */
@@ -689,8 +689,8 @@ input[type="radio"]:hover {
 }
 
 .toggleSwitch {
-  width: 100px;
-  height: 50px;
+  width: 48px;
+  height: 27px;
   display: block;
   position: relative;
   border-radius: 30px;
@@ -700,8 +700,8 @@ input[type="radio"]:hover {
 }
 
 .toggleSwitch .toggleButton {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   position: absolute;
   top: 50%;
   left: 4px;
@@ -715,7 +715,7 @@ input[type="radio"]:hover {
 }
 
 .toggleSwitch.active .toggleButton {
-  left: calc(100% - 44px);
+  left: calc(100% - 24px);
   background: #fff !important;
 }
 
