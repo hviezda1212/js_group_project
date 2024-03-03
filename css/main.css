@@ -62,7 +62,7 @@ ul, li{
   border-radius: 10px;
   border: none;
   margin-right: 20px;
-  padding: 0 1em;
+  padding: 0px 35px 0 16px;
   background-color: #eeedf0;
 
   &::placeholder {
