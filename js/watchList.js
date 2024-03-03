@@ -29,7 +29,7 @@ function renderWatchlist() {
             <td class="priority-1" id="favorite">
                 <button class="fav-button" onclick="removeFromWatchlist(${i})"> 
                 <img
-                src="../assets/images/star.png"
+                src="../assets/images/star-active.png"
                 width="20"
                 height="19"
                 alt=""
