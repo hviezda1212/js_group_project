@@ -426,7 +426,7 @@ const getlist = async (keyword) => {
 
     const res = await fetch(url, {
       headers: {
-        "X-CMC_PRO_API_KEY": APIKEY,
+        "X-CMC_PRO_API_KEY": apiKey,
       },
     });
     const data = await res.json();
