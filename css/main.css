@@ -460,13 +460,14 @@ a {
 .area-wrapper {
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 
 .area-box {
   display: flex;
   width: 177px;
   justify-content: center;
-  margin-top: 2em;
+  /* margin-top: 2em; */
   position: relative;
   cursor: pointer;
 }
@@ -548,15 +549,15 @@ a {
 }
 
 .indicator {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background: black;
   border-radius: 9999px;
   border: 2px solid white;
   transform-origin: 140px;
   transform: rotate(150deg);
   position: relative;
-  left: -100px;
+  left: -114px;
   top: 1px;
   display: none;
 }
