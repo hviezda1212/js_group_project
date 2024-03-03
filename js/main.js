@@ -571,7 +571,13 @@ const news_render = () => {
             ? news_List[i].description.substring(0, 40) + "..."
             : news_List[i].description
         }</p>
-        <div>${news_List[i].source.name}${news_List[i].publishedAt}</div>
+        <div class="news-date">${
+          news_List[i].publishedAt == null || news_List[i].publishedAt == ""
+          ? "내용없음"
+          : news_List[i].publishedAt.length > 10
+          ? news_List[i].publishedAt.substring(0, 10)
+          : news_List[i].publishedAt
+        }</div>
       </div>
     </div>`;
   }

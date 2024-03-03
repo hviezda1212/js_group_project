@@ -89,7 +89,7 @@ ul, li{
   align-items: center;
 }
 .right-area{
-  width: 330px;
+  /*width: 330px;*/
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -147,9 +147,10 @@ ul, li{
 .watchist-btn:hover{
   background-color: rgba(238, 236, 240, 0.616);
 }
-/* .watchist-btn:hover .star-img{
-  color: rgb(231, 168, 31);
-} */
+#watch-list-btn:hover {
+  background-color: rgba(238, 236, 240, 0.616) !important;
+}
+
 .watchist-btn p{
   margin-left: 4px;
 }
@@ -709,6 +710,16 @@ ul, li{
   font-weight: 700;
 }
 
+.text-area {
+  display:flex;
+  flex-flow:column;
+}
+
+.news-date {
+  text-align:end;
+  color:gray;
+}
+
 .more {
   color: #793aff;
   font-weight: 800;
@@ -720,6 +731,7 @@ ul, li{
   width: 165px;
   height: 115px;
   margin-right:10px;
+  border-radius:5px;
 }
 
 .news-pagination-nav {
@@ -1127,6 +1139,24 @@ footer{
     height: 6px;
   }
 
+  .news-img {
+    width: 150px;
+    height: 100px;
+    margin-right:10px;
+  }
+
+  .text-area .news-title {
+    margin-top:5px;
+    font-size:small;
+  }
+  .text-area .news-date {
+    margin-top:15px;
+    font-size:smaller;
+  }
+  .text-area p {
+    display:none;
+  }
+
   /* 뜨거운 코인 차트 */
   .topChart{
     font-size: 13px;
@@ -1149,7 +1179,7 @@ footer{
   }
 
   .scroll-to-top {
-    right: 300px;
+    right: 70px;
   }
 
   /* 탐욕 지수 */
