@@ -1,6 +1,6 @@
 // const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
-//const apiKey="80c825a1-4e89-4d63-b2db-81486a36d7f7";
+//const apiKey="f4c149c4-502c-4323-aaa3-8ffc48511db7";
 
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=4000";
@@ -143,18 +143,11 @@ function toggleStar(img) {
   }
 }
 
-//예제
-let coinListt =[
-    { name: 'Bitcoin', symbol: 'BTC' },
-    { name: 'SHIba', symbol: 'BTC' },
-    { name: 'Ethereum', symbol: 'ETH' },
-    { name: 'Ripple', symbol: 'XRP' },
-]
 
+
+// 🔎 검색창 기능 시작(주연)
 let resultList = [];
 let keyword = "";
-
-// 검색창 기능 시작(주연)
 
 // 검색창에 입력한 값(키워드) 가져오기
 const searchCoins = () => {
@@ -188,13 +181,15 @@ const findCoinByKeyword = (keyword, coinList) => {
 const resultRender = () => {
     console.log("result:" + resultList)
     let resultHTML = "";
+    // 검색결과가 없는 경우
     if(resultList <= 0){
         resultHTML += `
-
+        <div id="cover"><h2 id="no-result-title">"${keyword}" 에 대한 검색 결과가 없습니다.</h2></div>
         `
-        document.getElementById("table-data").innerHTML = resultHTML;
-        document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과가 없습니다.`;
+        document.getElementById("main-container").innerHTML = resultHTML;
+        // document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과가 없습니다.`;
     }else{
+        let resultHTML = "";
         for (let i = 0; i < resultList.length; i++) {
             coin = resultList[i];
             coinSymbol = coin["symbol"];
@@ -253,6 +248,7 @@ const resultRender = () => {
     
 //document.getElementById("total-container").style.display = "none";
 }
+// 🔎 검색창 기능 끝(주연)
 
 /*
 const resultRender = () => {
