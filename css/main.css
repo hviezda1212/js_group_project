@@ -79,23 +79,44 @@ ul, li{
   display: flex;
   align-items: center;
 }
+.right-area{
+  display: flex;
+  align-items: center;
+}
 .btn-items {
   margin: 0 10em;
 }
 
+.login-btn-area{}
+
 .login-btn,
 .resister-btn {
-  width: 80px;
-  height: 37px;
-  margin-left: 1em;
+  /* width: 80px;
+  height: 37px; */
+  /* margin-left: 1em; */
   border: 1px solid #793aff;
   border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0);
   color: #793aff;
   cursor: pointer;
-  &:hover {
-    background-color: #793aff;
-    color: white;
-  }
+  font-weight: 500;
+  padding: 10px 20px;
+}
+
+.login-btn{
+  margin-right: 5px;
+}
+
+.login-btn:hover{
+  background-color: rgb(236, 236, 236);
+}
+
+.resister-btn{
+  background-color: #793aff;
+  color: white;
+}
+.resister-btn:hover{
+  background-color: #6531d6;
 }
 
 #watch-list-btn {
