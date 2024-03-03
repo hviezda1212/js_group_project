@@ -135,13 +135,26 @@ const render = () => {
   document.getElementById("table-data").innerHTML = tableHTML;
 };
 
-function toggleStar(img) {
-  if (img.src.includes("star.png")) {
-    img.src = "../assets/images/star-active.png"; // Change to yellow star image path
-  } else {
-    img.src = "../assets/images/star.png"; // Change to default star image path
-  }
+// fix
+function toggleStar(img, index) {
+  // const isStarActive = img.src.includes("star-active.png");
+  // if (isStarActive) {
+  //   alert("관심목록에 이미 추가되었습니다!");
+  //   return;
+  // }
+  img.src = "../assets/images/star-active.png";
+  localStorage.setItem(`starState_${index}`, 'active');
+
+  // if (img.src.includes("star.png")) {
+  //   img.src = "../assets/images/star-active.png"; 
+  //   localStorage.setItem(`starState_${index}`, 'active');
+  // } else {
+  //   img.src = "../assets/images/star.png"; 
+  //   localStorage.setItem(`starState_${index}`, 'inactive');
+  // }
 }
+// fixed till here
+
 
 
 
@@ -389,6 +402,21 @@ function redirectToWatchList(index) {
   localStorage.setItem(`starState_${index}`, isStarActive ? 'active' : 'inactive');
   }
   }
+  
+document.addEventListener("DOMContentLoaded", function () {
+  const starState = localStorage.getItem('starState');
+  if (starState === 'active') {
+    for (let i = 0; i < coinList.length; i++) {
+      const starState = localStorage.getItem(`starState_${i}`);
+      if (starState === 'active') {
+        const starButton = document.querySelector(`#table-data tr:nth-child(${i + 1}) .fav-button img`);
+        if (starButton) {
+          toggleStar(starButton, i);
+        }
+      }
+    }
+  }
+});
 
 const checkPriceChange = (price, symbol) => {
   if (price > prevPriceList[symbol][prevPriceList[symbol].length - 2]) {
