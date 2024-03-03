@@ -248,6 +248,22 @@ const resultRender = () => {
 //document.getElementById("total-container").style.display = "none";
 }
 
+const inputSearch = document.getElementById("input-search");
+
+// 모바일 화면인지 체크
+const isMoblie = () => {
+    return window.innerWidth <= 768;
+}
+
+const updatePlaceholder = () => {
+    if(isMoblie()){
+        inputSearch.placeholder = "무엇을 찾으시나요?";
+    }else{
+        inputSearch.placeholder = "코인명이나 심볼로 검색해주세요.";
+    }
+}
+updatePlaceholder();
+
 // 모바일 버전 검색창 토글
 /*
 let searchInputBox = document.getElementById("input-container");
