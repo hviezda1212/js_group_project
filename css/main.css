@@ -2,10 +2,11 @@
   margin: 0;
 }
 header {
-  min-height: 134px;
+  /* min-height: 134px; */
+  display: flex;
+  justify-content: center;
   border-bottom: 1px solid rgb(179, 179, 179);
   margin-bottom: 80px;
-  /* display: none; */
 }
 
 body {
@@ -33,10 +34,12 @@ ul, li{
 }
 
 .navbar-container {
+  width: 1437px;
+  padding: 20px 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 2em;
+  /* margin-top: 2em; */
 }
 .logo-img {
   cursor: pointer;
