@@ -96,9 +96,6 @@ li {
   margin: 0 10em;
 }
 
-.login-btn-area {
-}
-
 .login-btn,
 .resister-btn {
   /* width: 80px;
@@ -845,6 +842,48 @@ input[type="radio"]:hover {
   font-weight: 400;
   color: rgb(128, 126, 126);
 }
+
+/*fix*/
+.fix-container {
+  display:flex;
+  flex-flow:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.fix-message-area {
+  display:flex;
+  flex-flow:column;
+  align-items:center;
+  margin-top:100px;
+}
+
+.fix-container .logo-area {
+  display:flex;
+  width:1470px;
+  justify-content:center;
+  border-bottom:1px solid rgb(223, 221, 221);;
+}
+
+.fix-container .logo-area img {
+  margin-top:50px;
+  margin-bottom:30px;
+  width:552px;
+  height:112px;
+}
+
+.fix-message-area h1 {
+  color:#3f3f3f;
+  margin-top:50px;
+  margin-bottom:10px;
+}
+
+.fix-message-area p {
+  font-weight: 550;
+  color:darkgray;
+  margin-bottom:150px;
+}
+
 
 /* footer */
 footer {
