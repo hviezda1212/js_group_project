@@ -614,7 +614,7 @@ li {
   transform-origin: 140px;
   transform: rotate(150deg);
   position: relative;
-  left: -114px;
+  left: -104px;
   top: 1px;
   display: none;
 }
@@ -1219,7 +1219,7 @@ footer {
   .indicator {
     width: 14px;
     height: 14px;
-    left: -137px;
+    left: -129px;
   }
 
   /* footer */
