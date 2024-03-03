@@ -17,30 +17,38 @@
     </header>
     <main>
       <div class="section-title">⭐️ 나의 코인 관심 목록</div>
-      <section class="watchlist">
-        <table class="content-table">
+      <section class="coin-chart">
+        <table class="content-table table-container">
           <thead>
-            <tr class="head-border">
-              <th class="border-none"></th>
-              <th class="border-none">#</th>
-              <th class="border-none">코인명</th>
-              <th class="border-none">심볼</th>
-              <th class="border-none">가격</th>
-              <th class="border-none">1h %</th>
-              <th class="border-none">24h %</th>
-              <th class="border-none">7d %</th>
-              <th class="border-none">시가총액</th>
-              <th class="border-none">거래량(24h)</th>
-              <th class="border-none">유통량</th>
+            <tr class="">
+              <th class="priority-1"></th>
+              <th class="priority-1">#</th>
+              <th class="priority-1">코인명</th>
+              <th class="priority-1">심볼</th>
+              <th class="priority-1" id="price">가격</th>
+              <th class="priority-1">1h %</th>
+              <th class="priority-1">24h %</th>
+              <th class="priority-1">7d %</th>
+              <th class="priority-1">시가총액</th>
+              <th class="priority-1">거래량(24h)</th>
+              <th class="priority-1">유통량</th>
             </tr>
           </thead>
-          <tbody id="watchlist-data">
-            <!-- Watchlist items will be dynamically inserted here -->
+          <!-- <tbody id="watchlist-data">
+       
+          </tbody> -->
+          <tbody id="table-data">
+            <tr>
+              <td class="favorite-icon" onclick=>
+                <i class="fa-regular fa-star"></i>
+              </td>
+            </tr>
           </tbody>
         </table>
       </section>
     </main>
-    <footer></footer>
+    <footer>
+    </footer>
 
     <script src="../js/watchList.js"></script>
   </body>

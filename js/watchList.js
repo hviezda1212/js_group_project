@@ -33,24 +33,37 @@ function renderWatchlist() {
       Math.floor(coin.circulating_supply).toLocaleString() + " " + coinSymbol;
 
     watchlistHTML += `
-            <tr>
-                <td id="favorite"><button class="fav-button" onclick="removeFromWatchlist(${i})"><i class="fa-regular fa-star"></i></button></td>
-                <td id="rank">${i + 1}</td>
-                <td id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+        <tr>
+            <td class="priority-1" id="favorite">
+                <button class="fav-button" onclick="removeFromWatchlist(${i})"> 
+                <img
+                src="../assets/images/star.png"
+                width="20"
+                height="19"
+                alt=""
+                class="star-img"
+              />
+                </button>
+            </td>
+            <td  id="rank">${i + 1}</td>
+            <td class="priority-1 coin-name-col" id="name">
+                <img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
                   coin.id
-                }.png'></img><span>${coin.name || "N/A"}</span></td>
-                <td id="symbol">${coinSymbol}</td>
-                <td id="price">${"$" + priceFormatted}</td>
-                <td id="1h">${percentChange1h}%</td>
-                <td id="24h">${percentChange24h}%</td>
-                <td id="7d">${percentChange7d}%</td>
-                <td id="market-cap">${marketCap}</td>
-                <td id="volume">${volume24h}</td>
-                <td id="circulating-supply">${circulatingSupply}</td>
-            </tr>`;
+                }.png' alt="">
+                <span>${coin.name || "N/A"}</span>
+            </td>
+            <td class="priority-1" id="symbol">${coinSymbol}</td>
+            <td class="priority-1" id="price">${"$" + priceFormatted}</td>
+            <td class="priority-1" id="1h">${percentChange1h}%</td>
+            <td class="priority-2" id="24h">${percentChange24h}%</td>
+            <td class="priority-2" id="7d">${percentChange7d}%</td>
+            <td class="priority-2" id="market-cap">${marketCap}</td>
+            <td class="priority-2" id="volume">${volume24h}</td>
+            <td class="priority-2" id="circulating-supply">${circulatingSupply}</td>
+        </tr>`;
   }
 
-  const watchlistTable = document.getElementById("watchlist-data");
+  const watchlistTable = document.getElementById("table-data");
   if (!watchlistTable) {
     console.error("Element with id 'watchlist-data' not found.");
     return;
@@ -75,10 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
   renderWatchlist();
 });
 
-function redirectToWatchList(index) {
-  // Your logic to toggle favorite icon color goes here
-  const favoriteIcon = document.querySelector(
-    `#watchlist-data tr:nth-child(${index + 1}) .favorite-icon`
-  );
-  favoriteIcon.classList.toggle("yellow");
-}
+// function redirectToWatchList(index) {
+//     // Your logic to toggle favorite icon color goes here
+//     const favoriteIcon = document.querySelector(`#watchlist-data tr:nth-child(${index + 1}) .favorite-icon`);
+//     favoriteIcon.classList.toggle("yellow");
+//   }

@@ -1,5 +1,6 @@
 // const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+// const apiKey="80c825a1-4e89-4d63-b2db-81486a36d7f7";
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=4000";
 const mode = "no-cors";
@@ -88,7 +89,7 @@ const render = () => {
     tableHTML += `            
       <tr>
         <td class="priority-1" id="favorite">
-          <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
+          <button class="fav-button" onclick="redirectToWatchList(${i})"> 
             <img
               src="../assets/images/star.png"
               width="20"
@@ -213,7 +214,7 @@ function redirectToWatchList(index) {
   clickedCoins.push(clickedCoin);
   localStorage.setItem("clickedCoins", JSON.stringify(clickedCoins));
   console.log("clickedCoins", clickedCoins);
-  window.location.href = "watchList.html";
+  // window.location.href = "watchList.html";
 }
 
 const checkPriceChange = (price, symbol) => {
@@ -573,10 +574,10 @@ const news_render = () => {
         }</p>
         <div class="news-date">${
           news_List[i].publishedAt == null || news_List[i].publishedAt == ""
-          ? "내용없음"
-          : news_List[i].publishedAt.length > 10
-          ? news_List[i].publishedAt.substring(0, 10)
-          : news_List[i].publishedAt
+            ? "내용없음"
+            : news_List[i].publishedAt.length > 10
+            ? news_List[i].publishedAt.substring(0, 10)
+            : news_List[i].publishedAt
         }</div>
       </div>
     </div>`;
@@ -801,4 +802,3 @@ closeBtn.addEventListener("click", () => {
   listItems.style.display = "none";
   header.style.display = "block";
 });
-

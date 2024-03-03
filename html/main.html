@@ -248,9 +248,7 @@
 
         <!-- 코인차트 : 박종석 -->
         <section class="coin-chart">
-          <div class="section-title">
-            오늘의 거래량 상위 100개의 가상 자산
-          </div>
+          <div class="section-title">오늘의 거래량 상위 100개의 가상 자산</div>
           <table class="content-table table-container">
             <thead>
               <tr class="">
@@ -269,19 +267,8 @@
             </thead>
             <tbody id="table-data">
               <tr>
-                <td id="favorite">
-                  <button
-                    class="fav-button"
-                    onclick="toggleStar(this.querySelector('img'))"
-                  >
-                    <img
-                      src="../assets/images/star.png"
-                      width="20"
-                      height="19"
-                      alt=""
-                      class="star-img"
-                    />
-                  </button>
+                <td class="favorite-icon" onclick="redirectToWatchList(`${i}`)">
+                  <i class="fa-regular fa-star"></i>
                 </td>
               </tr>
             </tbody>

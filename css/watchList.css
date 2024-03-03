@@ -1,0 +1,81 @@
+* {
+  font-family: nyt-franklin, helvetica, arial, sans-serif;
+}
+/* ���� ��Ȳ */
+.table-container {
+  width: 100%;
+}
+
+.coin-chart {
+  width: 1414px;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+}
+
+.content-table thead tr {
+  background-color: none;
+  color: text;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+  text-align: right;
+}
+
+.content-table td:nth-child(3),
+.content-table th:nth-child(3) {
+  text-align: left;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: none;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #dddddd;
+}
+
+.fav-star-img {
+  background-color: none;
+  background: none;
+}
+
+.fav-button {
+  border: none;
+  background-color: white;
+  background: none;
+}
+
+.section-title {
+  width: 100%;
+  display: inline-flex;
+  justify-content: flex-start;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.coin-img-size {
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  margin-right: 5px;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
