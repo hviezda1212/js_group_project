@@ -143,18 +143,11 @@ function toggleStar(img) {
   }
 }
 
-//예제
-let coinListt =[
-    { name: 'Bitcoin', symbol: 'BTC' },
-    { name: 'SHIba', symbol: 'BTC' },
-    { name: 'Ethereum', symbol: 'ETH' },
-    { name: 'Ripple', symbol: 'XRP' },
-]
 
+
+// 🔎 검색창 기능 시작(주연)
 let resultList = [];
 let keyword = "";
-
-// 검색창 기능 시작(주연)
 
 // 검색창에 입력한 값(키워드) 가져오기
 const searchCoins = () => {
@@ -188,13 +181,15 @@ const findCoinByKeyword = (keyword, coinList) => {
 const resultRender = () => {
     console.log("result:" + resultList)
     let resultHTML = "";
+    // 검색결과가 없는 경우
     if(resultList <= 0){
         resultHTML += `
-
+        <div id="cover"><h2 id="no-result-title">"${keyword}" 에 대한 검색 결과가 없습니다.</h2></div>
         `
-        document.getElementById("table-data").innerHTML = resultHTML;
-        document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과가 없습니다.`;
+        document.getElementById("main-container").innerHTML = resultHTML;
+        // document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과가 없습니다.`;
     }else{
+        let resultHTML = "";
         for (let i = 0; i < resultList.length; i++) {
             coin = resultList[i];
             coinSymbol = coin["symbol"];
@@ -253,6 +248,7 @@ const resultRender = () => {
     
 //document.getElementById("total-container").style.display = "none";
 }
+// 🔎 검색창 기능 끝(주연)
 
 /*
 const resultRender = () => {
