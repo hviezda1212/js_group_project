@@ -948,6 +948,13 @@ footer{
   color: rgb(128, 126, 126);
 }
 
+#mobile-search-icon{
+  display: none;
+}
+
+#side-nav{
+  display: none;
+}
 
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
@@ -963,7 +970,7 @@ footer{
     display: none;
   }
   .logo-img{
-    width: 160px;
+    width: 140px;
   }
   .right-area{
     width: fit-content;
@@ -976,15 +983,17 @@ footer{
   #menu-bars{
     display: block;
     margin: 0;
-    font-size: 2em;
+    font-size: 20px;
   }
+
 
   #dark-toggle {
     display: none;
   }
 
   /* side-nav */
-  .side-nav{
+  #side-nav{
+    display: flex;
     height: 100%;
     width: 0;
     position: fixed;
@@ -995,10 +1004,9 @@ footer{
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    display: flex;
     flex-flow: column;
     align-items: flex-end;
-}
+  }
 
 .side-nav a{
   display: flex;
@@ -1039,6 +1047,16 @@ footer{
     color: white;
   }
 
+  .mobile-right{
+    display: flex;
+    align-items: center;
+  }
+
+  #mobile-search-icon{
+    display: block;
+    width: 20px;
+    margin-right: 10px;
+  }
 
   #mobile-search {
     display: block;
