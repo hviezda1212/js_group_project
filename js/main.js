@@ -159,17 +159,17 @@ const searchCoins = () => {
     let keyword = searchInput.value.toLowerCase();
     console.log(keyword)
 
-    resultList = findCoinByKeyword(keyword, coinListt);
-    console.log(resultList)
+    resultList = findCoinByKeyword(keyword, coinList);
+    console.log("resultList: "+resultList)
     resultRender()
 }
 
-const findCoinByKeyword = (keyword, coinListt) => {
+const findCoinByKeyword = (keyword, coinList) => {
     // 키워드를 소문자로 변환하여 대소문자 구분 없이 검색할 수 있도록 함
     const lowerKeyword = keyword.toLowerCase();
 
     // coinList 배열을 순회하면서 검색
-    resultList = coinListt.filter(coin => {
+    resultList = coinList.filter(coin => {
         const lowerName = coin.name.toLowerCase();
         const lowerSymbol = coin.symbol.toLowerCase();
 
