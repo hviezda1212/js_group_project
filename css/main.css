@@ -80,6 +80,10 @@ li {
     text-align: center;
   }
 }
+
+#input-search:focus-visible{
+ outline: 1px solid #793aff;
+}
 .search-icon {
   position: absolute;
   right: 33px;
