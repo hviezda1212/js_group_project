@@ -1,5 +1,7 @@
 // const apiKey = "a0e85cdd-19e4-41c8-8cdf-5447a647ee47";
 // const apiKey = "a44490f9-d234-41d8-86da-9a3dcef3ca5d";
+//const apiKey="80c825a1-4e89-4d63-b2db-81486a36d7f7";
+
 const url =
   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=4000";
 const mode = "no-cors";
@@ -157,17 +159,17 @@ const searchCoins = () => {
     let keyword = searchInput.value.toLowerCase();
     console.log(keyword)
 
-    resultList = findCoinByKeyword(keyword, coinListt);
-    console.log(resultList)
+    resultList = findCoinByKeyword(keyword, coinList);
+    console.log("resultList: "+resultList)
     resultRender()
 }
 
-const findCoinByKeyword = (keyword, coinListt) => {
+const findCoinByKeyword = (keyword, coinList) => {
     // 키워드를 소문자로 변환하여 대소문자 구분 없이 검색할 수 있도록 함
     const lowerKeyword = keyword.toLowerCase();
 
     // coinList 배열을 순회하면서 검색
-    resultList = coinListt.filter(coin => {
+    resultList = coinList.filter(coin => {
         const lowerName = coin.name.toLowerCase();
         const lowerSymbol = coin.symbol.toLowerCase();
 
