@@ -952,18 +952,39 @@ footer{
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
   /* header */
+  .navbar-container{
+    width: 100%;
+    border: 3px solid pink;
+  }
+  .logo-img{
+    width: 190px;
+  }
+  .right-area{
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 2px solid red;
+  }
+
+  #menu-bars{
+    display: block;
+    margin: 0;
+    font-size: 2em;
+  }
+
   #dark-toggle {
     display: none;
   }
 
-  #menu-bars {
+  /* #menu-bars {
     display: block;
     font-size: 2rem;
     margin-right: 1em;
     &:hover {
       cursor: pointer;
     }
-  }
+  } */
 
   #mobile-search {
     display: block;
