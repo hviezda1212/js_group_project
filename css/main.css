@@ -9,6 +9,14 @@ header {
   margin-bottom: 80px;
 }
 
+p{
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -74,13 +82,16 @@ ul, li{
   right: 33px;
   top: 17px;
   z-index: 1;
+  cursor: pointer;
 }
 .navbar-wrapper {
   display: flex;
   align-items: center;
 }
 .right-area{
+  width: 330px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .btn-items {
@@ -136,11 +147,11 @@ ul, li{
 .watchist-btn:hover{
   background-color: rgba(238, 236, 240, 0.616);
 }
-.watchist-btn:hover .star-img{
+/* .watchist-btn:hover .star-img{
   color: rgb(231, 168, 31);
-}
+} */
 .watchist-btn p{
-  margin: 0;
+  margin-left: 4px;
 }
 
 /*mobile*/
@@ -658,11 +669,19 @@ ul, li{
 }
 
 .list-items li {
+
   font-size: 16px;
   margin-right: 35px;
   /* margin: 0 2em; */
   cursor: pointer;
   font-weight: 600;
+}
+.list-items a{
+  color: #1a1a1d;
+}
+
+.list-items a:hover{
+  color: #793aff;
 }
 
 .greed-title-box {
