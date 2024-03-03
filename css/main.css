@@ -1290,3 +1290,11 @@ footer {
 .dark-mode .toggleSwitch.active .toggleButton {
   background: #222531 !important;
 }
+
+.dark-mode .list-items a {
+  color :white;
+}
+
+.dark-mode .list-items a:hover{
+  color :#793aff;
+}
