@@ -952,12 +952,18 @@ footer{
 /* 모바일 버전 */
 @media screen and (max-width: 48rem) {
   /* header */
+  header{
+    margin-bottom: 36px;
+  }
   .navbar-container{
     width: 100%;
-    border: 3px solid pink;
+    padding: 17px 12px;
+  }
+  .input-container{
+    display: none;
   }
   .logo-img{
-    width: 190px;
+    width: 160px;
   }
   .right-area{
     width: fit-content;
@@ -1046,7 +1052,7 @@ footer{
     height: 20px;
   }
   .toggle-text{
-    font-size: 14px;
+    font-size: 12px;
   }
 
   /* news */
