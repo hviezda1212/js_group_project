@@ -141,12 +141,37 @@ function toggleStar(img) {
   }
 }
 
+let coinListt =[
+    { name: 'Bitcoin', symbol: 'BTC' },
+    { name: 'SHIba', symbol: 'BTC' },
+    { name: 'Ethereum', symbol: 'ETH' },
+    { name: 'Ripple', symbol: 'XRP' },
+]
+
+
 // 검색창 기능 시작(주연)
-const getCoinByKeyword =  () => {
+const searchCoins = () => {
     const searchInput = document.getElementById("input-search");
-    let keyword = searchInput.value;
+    let keyword = searchInput.value.toLowerCase();
     console.log(keyword)
 
+    const result = findCoinByKeyword(keyword, coinListt);
+    console.log(result)
+}
+
+const findCoinByKeyword = (keyword, coinListt) => {
+    // 키워드를 소문자로 변환하여 대소문자 구분 없이 검색할 수 있도록 함
+    const lowerKeyword = keyword.toLowerCase();
+    // coinList 배열을 순회하면서 검색
+    const result = coinListt.filter(coin => {
+        const lowerName = coin.name.toLowerCase();
+        const lowerSymbol = coin.symbol.toLowerCase();
+
+        // 이름 또는 심볼 중 하나라도 키워드를 포함하면 true 반환
+        return lowerName.includes(lowerKeyword) || lowerSymbol.includes(lowerKeyword);
+    });
+
+    return result;
 }
 
 // 검색창 기능 끝(주연)
