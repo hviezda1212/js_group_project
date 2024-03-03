@@ -48,8 +48,12 @@ ul, li{
   cursor: pointer;
 }
 
+.search-area{
+  position:relative;
+}
+
 .input-box {
-  position: relative;
+  /* position: relative; */
   width: 373px;
   height: 50px;
   border-radius: 10px;
@@ -63,10 +67,8 @@ ul, li{
 }
 .search-icon {
   position: absolute;
-  right: 358px;
-  top: 39px;
-  /* right: -22em;
-  top: 0em; */
+  right: 20px;
+  top: 17px;
   z-index: 1;
 }
 .navbar-wrapper {
