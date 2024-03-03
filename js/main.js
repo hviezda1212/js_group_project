@@ -247,6 +247,18 @@ const resultRender = () => {
     
 //document.getElementById("total-container").style.display = "none";
 }
+
+// 모바일 버전 검색창 토글
+/*
+let searchInputBox = document.getElementById("input-container");
+
+const toggleSearch = () => {
+    if(searchInputBox.style.display === "none"){
+        searchInputBox.style.display = "flex"
+    }else{
+        searchInputBox.style.display = "none"
+    }   
+}*/
 // 🔎 검색창 기능 끝(주연)
 
 /*

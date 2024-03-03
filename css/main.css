@@ -56,6 +56,7 @@ ul, li{
 .footer-img {
   cursor: pointer;
 }
+
 .input-container {
   display: flex;
   align-items: center;
@@ -968,8 +969,17 @@ footer{
     width: 100%;
     padding: 17px 12px;
   }
-  .input-container{
+  #input-container{
     display: none;
+  }
+  #input-search{
+    display: flex;
+    width: 100px;
+    height: 20px;
+    border-radius: 3px;
+  }
+  #input-search::placeholder{
+    font-size: 0.7em;
   }
   .logo-img{
     width: 140px;
@@ -979,7 +989,6 @@ footer{
     position: absolute;
     top: 0;
     right: 0;
-    border: 2px solid red;
   }
 
   #menu-bars{
@@ -988,6 +997,16 @@ footer{
     font-size: 20px;
   }
 
+  /* 검색창 */
+  .search-area{
+    
+  }
+
+ #input-search{
+    width: 8.5em;
+    height: 2.2em;
+    margin: 0;
+  }
 
   #dark-toggle {
     display: none;
@@ -1062,6 +1081,8 @@ footer{
 
   #mobile-search {
     display: block;
+    right: -22px;
+    top: 10px;
   }
 
   .input-box {
