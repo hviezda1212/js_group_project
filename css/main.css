@@ -54,10 +54,6 @@ li {
 .logo-img {
   cursor: pointer;
 }
-.footer-img {
-  cursor: pointer;
-}
-
 .input-container {
   display: flex;
   align-items: center;
