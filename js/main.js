@@ -188,62 +188,70 @@ const findCoinByKeyword = (keyword, coinList) => {
 const resultRender = () => {
     console.log("result:" + resultList)
     let resultHTML = "";
-    for (let i = 0; i < resultList.length; i++) {
-        coin = resultList[i];
-        coinSymbol = coin["symbol"];
-        coinPrice = coin["quote"].USD["price"];
-        hourPercentage = coin["quote"].USD["percent_change_1h"];
-        dayPercentage = coin["quote"].USD["percent_change_24h"];
-        weekPercentage = coin["quote"].USD["percent_change_7d"];
-    resultHTML += `
-        <tr>
-        <td class="priority-1" id="favorite">
-        <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
-            <img
-            src="../assets/images/star.png"
-            width="20"
-            height="19"
-            alt=""
-            class="star-img"
-            />
-        </button>
-        </td>
-        <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
-        <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
-        coin["id"]
-        }.png'></img><span>${coin["name"]}</span></td>
-        <td class="priority-1" id="symbol">${coin["symbol"]}</td>
-        <td class="priority-1" id="price">${checkPriceChange(
-        coinPrice,
-        coinSymbol
-        )}</td>
-        <td class="priority-1" id="1h">${checkPercentageChange(
-        hourPercentage
-        )}</td>
-        <td class="priority-2" id="24h">${checkPercentageChange(
-        dayPercentage
-        )}</td>
-        <td class="priority-2" id="7d">${checkPercentageChange(
-        weekPercentage
-        )}</td>
-        <td class="priority-2" id="market-cap">${
-        "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
-        }</td>
-        <td class="priority-2" id="volume">${
-        "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
-        }</td>
-        <td class="priority-2" id="circulating-supply">${
-        Math.floor(coin["circulating_supply"]).toLocaleString() +
-        " " +
-        coin["symbol"]
-        }</td>
-    </tr>`; 
-    currentPrice = coin["quote"].USD["price"];
-}
+    if(resultList <= 0){
+        resultHTML += `
+            
+        `
+        document.getElementById("table-data").innerHTML = resultHTML;
+        document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과가 없습니다.`;
+    }else{
+        for (let i = 0; i < resultList.length; i++) {
+            coin = resultList[i];
+            coinSymbol = coin["symbol"];
+            coinPrice = coin["quote"].USD["price"];
+            hourPercentage = coin["quote"].USD["percent_change_1h"];
+            dayPercentage = coin["quote"].USD["percent_change_24h"];
+            weekPercentage = coin["quote"].USD["percent_change_7d"];
+        resultHTML += `
+            <tr>
+            <td class="priority-1" id="favorite">
+            <button class="fav-button" onclick="toggleStar(this.querySelector('img'))"> 
+                <img
+                src="../assets/images/star.png"
+                width="20"
+                height="19"
+                alt=""
+                class="star-img"
+                />
+            </button>
+            </td>
+            <td id="rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+            <td class = "priority-1 coin-name-col" id="name"><img class="coin-img-size" src='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+            coin["id"]
+            }.png'></img><span>${coin["name"]}</span></td>
+            <td class="priority-1" id="symbol">${coin["symbol"]}</td>
+            <td class="priority-1" id="price">${checkPriceChange(
+            coinPrice,
+            coinSymbol
+            )}</td>
+            <td class="priority-1" id="1h">${checkPercentageChange(
+            hourPercentage
+            )}</td>
+            <td class="priority-2" id="24h">${checkPercentageChange(
+            dayPercentage
+            )}</td>
+            <td class="priority-2" id="7d">${checkPercentageChange(
+            weekPercentage
+            )}</td>
+            <td class="priority-2" id="market-cap">${
+            "$" + Math.floor(coin["quote"].USD["market_cap"]).toLocaleString()
+            }</td>
+            <td class="priority-2" id="volume">${
+            "$" + Math.floor(coin["quote"].USD["volume_24h"]).toLocaleString()
+            }</td>
+            <td class="priority-2" id="circulating-supply">${
+            Math.floor(coin["circulating_supply"]).toLocaleString() +
+            " " +
+            coin["symbol"]
+            }</td>
+        </tr>`; 
+        currentPrice = coin["quote"].USD["price"];
+        }
+    document.getElementById("table-data").innerHTML = resultHTML;
+    document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과`;
+    }
+    
 //document.getElementById("total-container").style.display = "none";
-document.getElementById("table-data").innerHTML = resultHTML;
-document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과`;
-
 }
 
 /*
