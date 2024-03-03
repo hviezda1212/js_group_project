@@ -401,74 +401,78 @@ const topCoinRender = () => {
   document.getElementById("coldChart").innerHTML = coldHTML;
 };
 
-//const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
+// const APIKEY = "80c825a1-4e89-4d63-b2db-81486a36d7f7";
 let coinListItems = []; // 코인 정보를 담을 배열
 
 const inputBox = document.querySelector(".input-box");
 const greedChartArea = document.querySelector(".greed-chart-area");
+const mobileInputBox = document.querySelector("#mobile-input-box");
+const mobileInputBtn = document.querySelector(".mobile-input-btn");
+
 inputBox.addEventListener("keydown", search);
 
+mobileInputBtn.addEventListener("click", mobileSearch);
+
+mobileInputBox.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") mobileSearch();
+});
+
+// 검색 기능
 async function search(event) {
-  if (event.key === "Enter") {
-    let searchCoin = inputBox.value.toUpperCase();
-    await getlist(searchCoin);
-    rendering();
-  }
+    // enter 이벤트시 검색
+    if (event.key === "Enter") {
+        let searchCoin = inputBox.value.toUpperCase();
+
+        await getlist(searchCoin);
+        searchRender();
+    }
 }
 
+// mobile search
+async function mobileSearch(event) {
+    let searchCoin = mobileInputBox.value.toUpperCase();
+    await getlist(searchCoin);
+    searchRender();
+}
+
+// 검색 버튼 이벤트(나중에..)
+async function clickSearch(event) {}
+
+// 키워드 검색
 const getlist = async (keyword) => {
-  try {
-    const url = new URL(
-      `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
-    );
+    try {
+        // const url = new URL(
+        //     `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5000&convert=KRW`
+        // );
 
-    const res = await fetch(url, {
-      headers: {
-        "X-CMC_PRO_API_KEY": APIKEY,
-      },
-    });
-    const data = await res.json();
-    coinListItems = data.data.filter(
-      (e) =>
-        e.symbol.includes(keyword) || e.name.toUpperCase().includes(keyword)
-    );
-  } catch (error) {
-    console.error("error message", error);
+        const res = await fetch(url, {
+            headers: {
+                "X-CMC_PRO_API_KEY": APIKEY,
+            },
+        });
+        const data = await res.json();
+        coinListItems = data.data.filter(
+            (e) =>
+                e.symbol.includes(keyword) ||
+                e.name.toUpperCase().includes(keyword)
+        );
+    } catch (error) {
+        console.error("error message", error);
+    }
+};
+
+// 검색 결과 화면
+const searchRender = () => {
+  document.querySelector(".highlights").style.display = "none";
+  if (coinListItems.length <= 0) {
+      document.querySelector(".search-page").style.display = "block";
+      document.querySelector("main").style.display = "none";
+      return;
+  } else {
+      document.querySelector(".search-page").style.display = "none";
+      document.querySelector("main").style.display = "block";
   }
-};
 
-// (async () => {
-//     await getlist("BT");
-//     console.log(coinList.map((e) => e.symbol));
-// })();
-
-const fearGreed = async () => {
-  let endTime = Math.floor(Date.now() / 1000);
-  let startTime = endTime - 604800;
-
-  const url = `https://api.coinmarketcap.com/data-api/v3/fear-greed/chart?start=${startTime}&end=${endTime}`;
-  // console.log(url);
-  const res = await fetch(url);
-  const data = await res.json();
-  console.log("data: ", data);
-
-  return data.data.dataList;
-};
-
-const fearGreedRender = async () => {
-  let dataList = await fearGreed();
-  let last = dataList[dataList.length - 1];
-  let indicator = document.querySelector(".indicator");
-  indicator.style.transform = `rotate(${(180 * last.score) / 100}deg)`;
-  indicator.style.display = "block";
-
-  let feargreedNum = document.querySelector(".feargreed-num");
-  feargreedNum.innerText = Math.floor(last.score);
-  console.log("feargreedNum.innerText: ", feargreedNum.innerText);
-};
-fearGreedRender();
-
-const rendering = () => {
   let resultHTML = `<thead>
     <tr>
         <th>#</th>
@@ -486,28 +490,71 @@ const rendering = () => {
 
   // coinList 배열을 순회하면서 각 코인 정보를 테이블에 추가
   coinListItems.forEach((coin, index) => {
-    resultHTML += `
-        <tr>
-
-            <td>${index + 1}</td>
-            <td>${coin.name}</td>
-            <td>${coin.symbol}</td>
-            <td>${coin.quote.KRW.price}</td>
-            <td>${coin.quote.KRW.percent_change_1h}</td>
-            <td>${coin.quote.KRW.percent_change_24h}</td>
-            <td>${coin.quote.KRW.percent_change_7d}</td>
-            <td>${coin.quote.KRW.market_cap}</td>
-            <td>${coin.quote.KRW.volume_24h}</td>
-            <td></td>
-            </tr>`;
+      resultHTML += `
+      <tr>
+        <td id = "favorite"><button class = "fav-button"><i class="fa-regular fa-star"></i></button></td>
+        <td id = "rank">${page === 1 ? i + 1 : page * 100 - 99 + i}</td>
+        <td id = "name"><img class = "coin-img-size" src ='https://s2.coinmarketcap.com/static/img/coins/64x64/${
+            coinList[i]["id"]
+        }.png'></img><span>${coinList[i]["name"]}</span></td>
+        <td id = "symbol">${coinList[i]["symbol"]}</td>
+        <td id = "price">${checkPriceChange(coinPrice, coinSymbol)}</td>
+        <td id = "1h">${
+            coinList[i]["quote"].USD["percent_change_1h"].toFixed(2) + "%"
+        }</td>
+      </tr>`;
   });
+/*
+  <td>${index + 1}</td>
+  <td>${coin.name}</td>
+  <td>${coin.symbol}</td>
+  <td>${coin.quote.KRW.price}</td>
+  <td>${coin.quote.KRW.percent_change_1h}</td>
+  <td>${coin.quote.KRW.percent_change_24h}</td>
+  <td>${coin.quote.KRW.percent_change_7d}</td>
+  <td>${coin.quote.KRW.market_cap}</td>
+  <td>${coin.quote.KRW.volume_24h}</td>
+  <td></td>*/
 
   resultHTML += `</tbody>`;
 
   // HTML에 결과 테이블을 추가
   document.querySelector("#table-data").innerHTML = resultHTML;
 };
-getlist();
+
+// (async () => {
+//     await getlist("BT");
+//     console.log(coinList.map((e) => e.symbol));
+// })();
+
+// 탐욕 지수
+const fearGreed = async () => {
+    let endTime = Math.floor(Date.now() / 1000);
+    let startTime = endTime - 604800;
+
+    const url = `https://api.coinmarketcap.com/data-api/v3/fear-greed/chart?start=${startTime}&end=${endTime}`;
+    // console.log(url);
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log("data: ", data);
+
+    return data.data.dataList;
+};
+
+const fearGreedRender = async () => {
+    let dataList = await fearGreed();
+    let last = dataList[dataList.length - 1];
+    let indicator = document.querySelector(".indicator");
+    indicator.style.transform = `rotate(${(180 * last.score) / 100}deg)`;
+    indicator.style.display = "block";
+
+    let feargreedNum = document.querySelector(".feargreed-num");
+    feargreedNum.innerText = Math.floor(last.score);
+    console.log("feargreedNum.innerText: ", feargreedNum.innerText);
+};
+fearGreedRender();
+
+
 
 //region NEWS
 let news_List = [];
