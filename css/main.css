@@ -63,6 +63,8 @@ ul, li{
 }
 .search-icon {
   position: absolute;
+  right: 358px;
+  top: 39px;
   /* right: -22em;
   top: 0em; */
   z-index: 1;
