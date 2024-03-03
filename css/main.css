@@ -49,21 +49,23 @@ ul, li{
 }
 
 .input-box {
+  position: relative;
   width: 373px;
-  height: 41px;
+  height: 50px;
   border-radius: 10px;
+  border: none;
   padding: 0 1em;
-  background-color: #eeeeee;
+  background-color: #eeedf0;
 
   &::placeholder {
     text-align: center;
   }
 }
 .search-icon {
-  position: relative;
-  right: -22em;
-  top: 0em;
-  z-index: 9999;
+  position: absolute;
+  /* right: -22em;
+  top: 0em; */
+  z-index: 1;
 }
 .navbar-wrapper {
   display: flex;
