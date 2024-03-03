@@ -843,7 +843,7 @@ input[type="radio"]:hover {
   color: rgb(128, 126, 126);
 }
 
-/*fix*/
+/*fix, error*/
 .fix-container {
   display:flex;
   flex-flow:column;
@@ -875,6 +875,7 @@ input[type="radio"]:hover {
   color:#3f3f3f;
   margin-top:50px;
   margin-bottom:10px;
+  text-align: center;
 }
 
 .fix-message-area p {
