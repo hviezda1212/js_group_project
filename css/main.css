@@ -1004,6 +1004,13 @@ footer{
   .area-wrapper{
     height: 100%;
   }
+  .feargreed-result-box{
+    top: 0;
+    right: 59px;
+  }
+  .feargreed-result-box .feargreed-num{
+    font-size: 32px;
+  }
 
   /* footer */
   .footer-container{
