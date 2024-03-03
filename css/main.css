@@ -1005,11 +1005,15 @@ footer{
     height: 100%;
   }
   .feargreed-result-box{
-    top: 0;
+    top: 43px;
     right: 59px;
   }
   .feargreed-result-box .feargreed-num{
     font-size: 32px;
+  }
+  .indicator{
+    width: 14px;
+    height: 14px;
   }
 
   /* footer */
