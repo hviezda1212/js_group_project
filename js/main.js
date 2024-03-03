@@ -143,6 +143,16 @@ function toggleStar(img) {
   }
 }
 
+// 검색창 기능 시작(주연)
+const getCoinByKeyword =  () => {
+    const searchInput = document.getElementById("input-search");
+    let keyword = searchInput.value;
+    console.log(keyword)
+
+}
+
+// 검색창 기능 끝(주연)
+
 // const render = () => {
 //   let tableHTML = "";
 //   for (let i = 0; i < coinList.length; i++) {
@@ -403,6 +413,7 @@ const topCoinRender = () => {
   document.getElementById("coldChart").innerHTML = coldHTML;
 };
 
+/*
 //const APIKEY = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinListItems = []; // 코인 정보를 담을 배열
 
@@ -443,7 +454,7 @@ const getlist = async (keyword) => {
 //     await getlist("BT");
 //     console.log(coinList.map((e) => e.symbol));
 // })();
-
+*/
 const fearGreed = async () => {
   let endTime = Math.floor(Date.now() / 1000);
   let startTime = endTime - 604800;
@@ -456,7 +467,7 @@ const fearGreed = async () => {
 
   return data.data.dataList;
 };
-
+/*
 const fearGreedRender = async () => {
   let dataList = await fearGreed();
   let last = dataList[dataList.length - 1];
@@ -510,6 +521,7 @@ const rendering = () => {
   document.querySelector("#table-data").innerHTML = resultHTML;
 };
 getlist();
+*/
 
 //region NEWS
 let news_List = [];
@@ -787,17 +799,17 @@ news_showSlide(0);
 
 //x버튼 클릭시 메뉴창 사라지고 원래 이미지 노출
 
-let listItems = document.querySelector(".mobile-container");
-let header = document.querySelector("header");
+// let listItems = document.querySelector(".mobile-container");
+// let header = document.querySelector("header");
 
-function toggleMenu() {
-  listItems.style.display === "none"
-    ? ((listItems.style.display = "block"), (header.style.display = "none"))
-    : (listItems.style.display = "none");
-}
+// function toggleMenu() {
+//   listItems.style.display === "none"
+//     ? ((listItems.style.display = "block"), (header.style.display = "none"))
+//     : (listItems.style.display = "none");
+// }
 
-let closeBtn = document.querySelector(".close-btn");
-closeBtn.addEventListener("click", () => {
-  listItems.style.display = "none";
-  header.style.display = "block";
-});
+// let closeBtn = document.querySelector(".close-btn");
+// closeBtn.addEventListener("click", () => {
+//   listItems.style.display = "none";
+//   header.style.display = "block";
+// });
