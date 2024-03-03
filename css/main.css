@@ -24,6 +24,7 @@ body {
 }
 
 main {
+  position: relative;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -469,6 +470,7 @@ ul, li{
 
 .coin-chart {
   width: 1414px;
+  position: relative;   /* 추가(03/03/3:52) */
 }
 
 .content-table {
@@ -957,11 +959,12 @@ footer{
 }
 
 /* test */
-.dummy-item{
-  width: 100px;
-  height: 20px;
-  border: 1px solid red;
-  background-color: gray;
+.cover{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.822);
 }
 
 /* 모바일 버전 */
