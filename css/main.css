@@ -991,7 +991,7 @@ footer{
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #111;
+    background-color: #713edff8;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -1001,16 +1001,30 @@ footer{
 }
 
 .side-nav a{
-  padding: 8px 32px 8px 8px;
+  display: flex;
+    padding: 15px 30px 15px 8px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
+    font-size: 18px;
+    color: white;
     transition: 0.3s;
+    white-space: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    border-bottom: 0.6px solid rgba(255, 255, 255, 0.342);
 }
 
 .side-nav a:hover{
     color: #f1f1f1;
+}
+
+.side-nav a:nth-child(4){
+  display: flex;
+  align-items: center;
+}
+.side-nav a:nth-child(4) img{
+  opacity: 0.6;
+  margin-right: 5px;
 }
 
 .side-nav .close-btn {
@@ -1022,7 +1036,7 @@ footer{
     font-size: 30px;
     border: none;
     background: 0;
-    color: #818181;
+    color: white;
   }
 
 
