@@ -4,151 +4,155 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="../assets/images/logo-icon.png" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="../assets/images/logo-icon.png"
+      type="image/x-icon"
+    />
     <title>누나코인::구현중</title>
+    <script
+      src="https://kit.fontawesome.com/f1fec7c721.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="../css/main.css" />
   </head>
-
-  <!-- header -->
-  <header>
-    <div class="navbar-container">
-      <div class="navbar-wrapper">
-        <img src="../assets/images/logo.svg" class="logo-img" alt="" />
-        <ul class="list-items">
-          <li class="list-item"><a href="../html/fix.html">가상자산</a></li>
-          <li class="news-item"><a href="../html/fix.html">뉴스룸</a></li>
-        </ul>
-      </div>
-      <div class="input-container">
-        <div class="search-area">
-          <input
-            type="text"
-            class="input-box"
-            placeholder="코인명이나 심볼로 검색해주세요."
-          />
-          <i
-            class="fa-solid fa-magnifying-glass search-icon"
-            id="mobile-search"
-          ></i>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="navbar-container">
+        <div class="navbar-wrapper">
+          <a href="../html/main.html"><img src="../assets/images/logo.svg" class="logo-img" alt="" /></a>
+          <ul class="list-items">
+            <li class="list-item"><a href="../html/fix.html">가상자산</a></li>
+            <li class="news-item"><a href="../html/fix.html">뉴스룸</a></li>
+          </ul>
         </div>
-        <div class="right-area">
-          <a href="#" id="dark-toggle"
-            ><img src="../assets/images/moon.png" alt="" />
-          </a>
-          <label>
-            <a class="watchist-btn" href="../html/watchList.html">
-              <img
-                src="../assets/images/star.png"
-                width="20"
-                height="19"
-                alt=""
-                class="star-img"
-              />
-              <!-- <button id="watch-list-btn">관심 목록</button> -->
-              <p id="watch-list-btn">관심 목록</p>
+        <div class="input-container">
+          <div class="search-area">
+            <input
+              type="text"
+              class="input-box"
+              placeholder="코인명이나 심볼로 검색해주세요."
+            />
+            <i
+              class="fa-solid fa-magnifying-glass search-icon"
+              id="mobile-search"
+            ></i>
+          </div>
+          <div class="right-area">
+            <a href="#" id="dark-toggle"
+              ><img src="../assets/images/moon.png" alt="" />
             </a>
-          </label>
-          <div class="login-btn-area">
-            <a href="../html/index.html"
-              ><button class="login-btn">로그인</button></a
-            >
-            <a href="../html/index.html"
-              ><button class="resister-btn">회원가입</button></a
-            >
+            <label>
+              <a class="watchist-btn" href="../html/watchList.html">
+                <img
+                  src="../assets/images/star.png"
+                  width="20"
+                  height="19"
+                  alt=""
+                  class="star-img"
+                />
+                <!-- <button id="watch-list-btn">관심 목록</button> -->
+                <p id="watch-list-btn">관심 목록</p>
+              </a>
+            </label>
+            <div class="login-btn-area">
+              <a href="../html/index.html"
+                ><button class="login-btn">로그인</button></a
+              >
+              <a href="../html/index.html"
+                ><button class="resister-btn">회원가입</button></a
+              >
+            </div>
           </div>
         </div>
+        <div class="mobile-right">
+          <i
+            class="fa-solid fa-magnifying-glass"
+            id="mobile-search-icon"
+            onclick="toggleSearch()"
+          ></i>
+          <i class="fa-solid fa-bars" id="menu-bars" onclick="openNav()"></i>
+        </div>
       </div>
-      <div class="mobile-right">
-        <i
-          class="fa-solid fa-magnifying-glass"
-          id="mobile-search-icon"
-          onclick="toggleSearch()"
-        ></i>
-        <i class="fa-solid fa-bars" id="menu-bars" onclick="openNav()"></i>
-      </div>
-    </div>
-  </header>
+    </header>
 
-
-
-  <body>
     <div class="fix-container">
-      <div class="logo-area">
-        <a href="../html/main.html"
-          ><img src="../assets/images/logo.svg" alt="logo"
-        /></a>
-      </div>
       <div class="fix-message-area">
         <img src="../assets/images/fix.svg" alt="error" / width="150px">
         <h1>구현 예정 페이지 입니다.</h1>
         <p>(구현 예정일: 25년 3월 3일)</p>
       </div>
     </div>
-  </body>
 
-  <!-- footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-top">
-        <div class="footer-logo">
-          <a href="../html/main.html"
-            ><img class="footer-img" src="../assets/images/logo.svg" alt="logo"
-          /></a>
-        </div>
-        <div class="footer-menu-area">
-          <div class="footer-menu-group">
-            <div class="footer-menu">
-              <h5 class="menu-title">서비스</h5>
-              <ul class="menu-list">
-                <li class="menu-item">CN Labs</li>
-                <li class="menu-item">ChatGPT Plugin</li>
-                <li class="menu-item">가상자산 API</li>
-                <li class="menu-item">가상자산 지수</li>
-                <li class="menu-item">Doodles</li>
-                <li class="menu-item">사이트맵</li>
-                <li class="menu-item">광고</li>
-              </ul>
+    <!-- footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-logo">
+            <a href="../html/main.html"
+              ><img
+                class="footer-img"
+                src="../assets/images/logo.svg"
+                alt="logo"
+            /></a>
+          </div>
+          <div class="footer-menu-area">
+            <div class="footer-menu-group">
+              <div class="footer-menu">
+                <h5 class="menu-title">서비스</h5>
+                <ul class="menu-list">
+                  <li class="menu-item">CN Labs</li>
+                  <li class="menu-item">ChatGPT Plugin</li>
+                  <li class="menu-item">가상자산 API</li>
+                  <li class="menu-item">가상자산 지수</li>
+                  <li class="menu-item">Doodles</li>
+                  <li class="menu-item">사이트맵</li>
+                  <li class="menu-item">광고</li>
+                </ul>
+              </div>
+              <div class="footer-menu">
+                <h5 class="menu-title">회사</h5>
+                <ul class="menu-list">
+                  <li class="menu-item">우리에 대하여</li>
+                  <li class="menu-item">이용 약관</li>
+                  <li class="menu-item">개인 정보 보호 정책</li>
+                  <li class="menu-item">Cookie preferences</li>
+                  <li class="menu-item">쿠키 정책</li>
+                  <li class="menu-item">커뮤니티 규칙</li>
+                  <li class="menu-item">고지사항</li>
+                  <li class="menu-item">방법론</li>
+                  <li class="menu-item">직업</li>
+                </ul>
+              </div>
             </div>
-            <div class="footer-menu">
-              <h5 class="menu-title">회사</h5>
-              <ul class="menu-list">
-                <li class="menu-item">우리에 대하여</li>
-                <li class="menu-item">이용 약관</li>
-                <li class="menu-item">개인 정보 보호 정책</li>
-                <li class="menu-item">Cookie preferences</li>
-                <li class="menu-item">쿠키 정책</li>
-                <li class="menu-item">커뮤니티 규칙</li>
-                <li class="menu-item">고지사항</li>
-                <li class="menu-item">방법론</li>
-                <li class="menu-item">직업</li>
-              </ul>
+            <div class="footer-menu-group">
+              <div class="footer-menu footer-menu-third">
+                <h5 class="menu-title">지원</h5>
+                <ul class="menu-list">
+                  <li class="menu-item">신청 양식</li>
+                  <li class="menu-item">고객 지원</li>
+                  <li class="menu-item">FAQ</li>
+                  <li class="menu-item">용어집</li>
+                </ul>
+              </div>
+              <div class="footer-menu">
+                <h5 class="menu-title">소셜 미디어</h5>
+                <ul class="menu-list">
+                  <li class="menu-item">X (Twitter)</li>
+                  <li class="menu-item">Telegram</li>
+                  <li class="menu-item">Instagram</li>
+                  <li class="menu-item">Facebook</li>
+                  <li class="menu-item">레딧</li>
+                  <li class="menu-item">LikedIn</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div class="footer-menu-group">
-            <div class="footer-menu footer-menu-third">
-              <h5 class="menu-title">지원</h5>
-              <ul class="menu-list">
-                <li class="menu-item">신청 양식</li>
-                <li class="menu-item">고객 지원</li>
-                <li class="menu-item">FAQ</li>
-                <li class="menu-item">용어집</li>
-              </ul>
-            </div>
-            <div class="footer-menu">
-              <h5 class="menu-title">소셜 미디어</h5>
-              <ul class="menu-list">
-                <li class="menu-item">X (Twitter)</li>
-                <li class="menu-item">Telegram</li>
-                <li class="menu-item">Instagram</li>
-                <li class="menu-item">Facebook</li>
-                <li class="menu-item">레딧</li>
-                <li class="menu-item">LikedIn</li>
-              </ul>
-            </div>
-          </div>
         </div>
+        <div class="copyright">©2024 CoinNoona. All rights reserved</div>
       </div>
-      <div class="copyright">©2024 CoinNoona. All rights reserved</div>
-    </div>
-  </footer>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
 </html>
