@@ -184,12 +184,11 @@ const resultRender = () => {
     // 검색결과가 없는 경우
     if(resultList <= 0){
         resultHTML += `
-        <div id="cover"><h2 id="no-result-title">"${keyword}" 에 대한 검색 결과가 없습니다.</h2></div>
+
         `
-        document.getElementById("main-container").innerHTML = resultHTML;
-        // document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과가 없습니다.`;
+        document.getElementById("table-data").innerHTML = resultHTML;
+        document.getElementById("section-title").innerText = `"${keyword}" 에 대한 검색 결과가 없습니다.`;
     }else{
-        let resultHTML = "";
         for (let i = 0; i < resultList.length; i++) {
             coin = resultList[i];
             coinSymbol = coin["symbol"];
